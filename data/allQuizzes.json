@@ -1,0 +1,232 @@
+[
+  {
+    "id": "885e010a-8f7e-4a93-9b49-51483b4d54ef",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What items should be part of the Basic Disaster Supplies Kit",
+    "options": [
+      "Food (at least a several-day supply of non-perishable food)",
+      "perfume",
+      "Battery-powered or hand crank radio and a NOAA Weather Radio with tone alert",
+      "Water (one gallon per person per day for several days, for drinking and sanitation)",
+      "teddy bear"
+    ],
+    "correctAnswer": [
+      "Water (one gallon per person per day for several days, for drinking and sanitation)",
+      "Food (at least a several-day supply of non-perishable food)",
+      "Battery-powered or hand crank radio and a NOAA Weather Radio with tone alert"
+    ]
+  },
+  {
+    "id": "0ae592c9-1f7a-4a49-8bc5-bf7f3960b39e",
+    "category": ["Flood",
+        "Earthquake",
+        "Hurricane",
+        "Tornado",
+        "Wildfire",
+        "Tsunami",
+        "Pandemic"],
+    "question": "What items should be part of the Additional Emergency Supplies",
+    "options": [
+      "Soap, hand sanitizer and disinfecting wipes to disinfect surfaces",
+      "Prescription medications. About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency.",
+      "photos",
+      "Non-prescription medications such as pain relievers, anti-diarrhea medication, antacids or laxatives",
+      "camera"
+    ],
+    "correctAnswer": [
+      "Soap, hand sanitizer and disinfecting wipes to disinfect surfaces",
+      "Prescription medications. About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency.",
+      "Non-prescription medications such as pain relievers, anti-diarrhea medication, antacids or laxatives"
+    ]
+  },
+  {
+    "id": "8c82d91d-0c8b-41c0-b0f1-ecf626566d49",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What items should be part of the Emergency Kit for the Car",
+    "options": [
+      "Jumper cables",
+      "Flares or reflective triangle",
+      "games",
+      "Ice scraper",
+      "tv"
+    ],
+    "correctAnswer": [
+      "Jumper cables",
+      "Flares or reflective triangle",
+      "Ice scraper"
+    ]
+  },
+  {
+    "id": "fd63e52d-47d0-438b-8fc8-eda22c56e875",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to Prepare Your Car for Emergencies",
+    "options": [
+      "Brakes",
+      "Antifreeze levels",
+      "watches",
+      "camera",
+      "Battery and ignition system"
+    ],
+    "correctAnswer": [
+      "Antifreeze levels",
+      "Battery and ignition system",
+      "Brakes"
+    ]
+  },
+  {
+    "id": "dcf60c7a-76e5-456c-8c71-b0051d27eaa9",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What should be done to ensure Car Safety?",
+    "options": [
+      "Do not drive through flooded areas. Six inches of water can cause a vehicle to lose control or possibly stall. A foot of water will float many cars.",
+      "Keep your gas tank full in case of evacuation or power outages. A full tank will also keep the fuel line from freezing.",
+      "Install good winter tires and make sure they have enough tread, or any chains or studs required in your local area.",
+      "perfume",
+      "remote"
+    ],
+    "correctAnswer": [
+      "Keep your gas tank full in case of evacuation or power outages. A full tank will also keep the fuel line from freezing.",
+      "Install good winter tires and make sure they have enough tread, or any chains or studs required in your local area.",
+      "Do not drive through flooded areas. Six inches of water can cause a vehicle to lose control or possibly stall. A foot of water will float many cars."
+    ]
+  },
+  {
+    "id": "c59420cf-c045-4f26-9159-ff1af1559af5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What items should be part of the Suggested Emergency Food Supplies",
+    "options": [
+      "Ready-to-eat canned meats, fruits, vegetables and a can opener",
+      "Protein or fruit bars",
+      "remote",
+      "Dry cereal or granola",
+      "tv"
+    ],
+    "correctAnswer": [
+      "Ready-to-eat canned meats, fruits, vegetables and a can opener",
+      "Protein or fruit bars",
+      "Dry cereal or granola"
+    ]
+  },
+  {
+    "id": "e1fb331a-39d8-4c00-8cc4-f3d54878dabf",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What are the correct ways to ensure Food Safety and Sanitation",
+    "options": [
+      "Keep food in covered containers.",
+      "Keep cooking and eating utensils clean.",
+      "remote",
+      "Throw away any food that has come into contact with contaminated flood water.",
+      "sunglasses"
+    ],
+    "correctAnswer": [
+      "Keep food in covered containers.",
+      "Keep cooking and eating utensils clean.",
+      "Throw away any food that has come into contact with contaminated flood water."
+    ]
+  },
+  {
+    "id": "fbacb223-de0b-4740-940a-157973bfb75f",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to ensure safety during Cooking?",
+    "options": [
+      "remote",
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage.",
+      "photos"
+    ],
+    "correctAnswer": [
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage."
+    ]
+  },
+  {
+    "id": "6b5993ed-c877-4623-a425-f08ee602d081",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to manage food without power?",
+    "options": [
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "remote",
+      "games",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage."
+    ],
+    "correctAnswer": [
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage."
+    ]
+  },
+  {
+    "id": "abeb00cb-40b0-40c5-b427-d1194e493410",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to determine Water Needs",
+    "options": [
+      "camera",
+      "Do not drink carbonated or caffeinated beverages instead of drinking water. Caffeinated drinks and alcohol dehydrate the body which increases the need for drinking water.",
+      "tv",
+      "Drink water that you know is not contaminated first. If necessary, suspicious water, such as cloudy water from regular faucets or water from streams or ponds, can be used after it has been treated. If water treatment is not possible put off drinking suspicious water as long as possible but do not become dehydrated.",
+      "Never ration drinking water unless ordered to do so by authorities. Drink the amount you need today and try to find more for tomorrow. Minimize the amount of water your body needs by reducing activity and staying cool."
+    ],
+    "correctAnswer": [
+      "Never ration drinking water unless ordered to do so by authorities. Drink the amount you need today and try to find more for tomorrow. Minimize the amount of water your body needs by reducing activity and staying cool.",
+      "Drink water that you know is not contaminated first. If necessary, suspicious water, such as cloudy water from regular faucets or water from streams or ponds, can be used after it has been treated. If water treatment is not possible put off drinking suspicious water as long as possible but do not become dehydrated.",
+      "Do not drink carbonated or caffeinated beverages instead of drinking water. Caffeinated drinks and alcohol dehydrate the body which increases the need for drinking water."
+    ]
+  }
+]

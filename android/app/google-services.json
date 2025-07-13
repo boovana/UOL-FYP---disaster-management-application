@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "839917662899",
+    "project_id": "sturdy-layout-462317-b2",
+    "storage_bucket": "sturdy-layout-462317-b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839917662899:android:0c5d52cd61456fbe2036c6",
+        "android_client_info": {
+          "package_name": "com.boovana.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839917662899-aa1k2dr6kuk8agid5fa8urn2uhuh3v9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.boovana.test",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "839917662899-0hfjsues32hkhj6tvnj15mpsqbpe7mai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz-jc9bQGSS9VmJdKdCFEiRdyphc-fsfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839917662899-0hfjsues32hkhj6tvnj15mpsqbpe7mai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "13c277ae-b178-4e5a-96a1-2c4caf4c6914",
+    "category": "supplies",
+    "question": "What are some correct actions to take to prepare for a tsunami?",
+    "options": [
+      "A tsunami wont happen",
+      "Create a family emergency communication plan that has an out-of-state contact. Plan where to meet if you get separated.",
+      "Know and practice community evacuation plans. Some at-risk communities have maps with evacuation zones and routes. Map out your routes from home, work and play. Pick shelters 100 feet or more above sea level, or at least one mile inland.",
+      "Learn the signs of a potential tsunami, such as an earthquake, a loud roar from the ocean, or unusual ocean behavior, such as a sudden rise or wall of water or sudden draining of water showing the ocean floor.",
+    ],
+    "correctAnswer": [
+      "Learn the signs of a potential tsunami, such as an earthquake, a loud roar from the ocean, or unusual ocean behavior, such as a sudden rise or wall of water or sudden draining of water showing the ocean floor.",
+      "Know and practice community evacuation plans. Some at-risk communities have maps with evacuation zones and routes. Map out your routes from home, work and play. Pick shelters 100 feet or more above sea level, or at least one mile inland.",
+      "Create a family emergency communication plan that has an out-of-state contact. Plan where to meet if you get separated."
+    ]
+  },
+  {
+    "id": "408bbeff-ca59-4d47-ad6a-e061a2f185b7",
+    "category": "supplies",
+    "question": "What are some correct actions to take to survive a tsunami",
+    "options": [
+      "Try to surf the tsunami",
+      "Bring all family members and run to the basement",
+      "If there is an earthquake and you are in a tsunami area, protect yourself from the earthquake first. Drop, Cover, and Hold On. Drop to your hands and knees. Cover your head and neck with your arms. Hold on to any sturdy furniture until the shaking stops. Crawl only if you can reach a better cover, but do not go through an area with more debris.",
+      "When the shaking stops, if there are natural signs or official warnings of a tsunami, move immediately to a safe place as high and as far inland as possible. Listen to the authorities, but do not wait for tsunami warnings and evacuation orders.",
+      "If you are outside of the tsunami hazard zone and receive a warning, stay where you are unless officials tell you otherwise."
+    ],
+    "correctAnswer": [
+      "If there is an earthquake and you are in a tsunami area, protect yourself from the earthquake first. Drop, Cover, and Hold On. Drop to your hands and knees. Cover your head and neck with your arms. Hold on to any sturdy furniture until the shaking stops. Crawl only if you can reach a better cover, but do not go through an area with more debris.",
+      "When the shaking stops, if there are natural signs or official warnings of a tsunami, move immediately to a safe place as high and as far inland as possible. Listen to the authorities, but do not wait for tsunami warnings and evacuation orders.",
+      "If you are outside of the tsunami hazard zone and receive a warning, stay where you are unless officials tell you otherwise."
+    ]
+  },
+  {
+    "id": "3e1e0bee-6be2-4ee0-97b7-4242f59615da",
+    "category": "supplies",
+    "question": "What are some correct actions to be safe after a tsunami?",
+    "options": [
+      "Save phone calls for emergencies. Phone systems often are down or busy after a disaster. Use text messages or social media to communicate with family and friends.",
+      "Enter buildings to see if people are injured",
+      "Go to coastal areas to see if the tsunami has fully subsided",
+      "Avoid wading in floodwater, which can contain dangerous debris. Water may be deeper than it appears.",
+      "Listen to local alerts and authorities for information on areas to avoid and shelter locations."
+    ],
+    "correctAnswer": [
+      "Listen to local alerts and authorities for information on areas to avoid and shelter locations.",
+      "Save phone calls for emergencies. Phone systems often are down or busy after a disaster. Use text messages or social media to communicate with family and friends.",
+      "Avoid wading in floodwater, which can contain dangerous debris. Water may be deeper than it appears."
+    ]
+  }
+]

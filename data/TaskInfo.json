@@ -1,0 +1,1213 @@
+[
+  {
+    "id": "885e010a-8f7e-4a93-9b49-51483b4d54ef",
+    "title": "Basic Disaster Supplies Kit",
+    "description": "These resources teach you to build an emergency kit filled with the items you need to survive on your own for several days after a disaster. After an emergency, you may need to survive on your own for several days. Being prepared means having your own food, water and other supplies to last for several days. A disaster supplies kit is a collection of basic items your household may need in the event of an emergency.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Water (one gallon per person per day for several days, for drinking and sanitation)",
+      "Food (at least a several-day supply of non-perishable food)",
+      "Battery-powered or hand crank radio and a NOAA Weather Radio with tone alert",
+      "Flashlight",
+      "First aid kit",
+      "Extra batteries",
+      "Whistle (to signal for help)",
+      "Dust mask (to help filter contaminated air)",
+      "Plastic sheeting, scissors and duct tape (to shelter in place)",
+      "Moist towelettes, garbage bags and plastic ties (for personal sanitation)",
+      "Wrench or pliers (to turn off utilities)",
+      "Manual can opener (for food)",
+      "Local maps",
+      "Cell phone with chargers and a backup battery"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "0ae592c9-1f7a-4a49-8bc5-bf7f3960b39e",
+    "title": "Additional Emergency Supplies",
+    "description": "These resources teach you to build an emergency kit filled with the items you need to survive on your own for several days after a disaster. After an emergency, you may need to survive on your own for several days. Being prepared means having your own food, water and other supplies to last for several days. A disaster supplies kit is a collection of basic items your household may need in the event of an emergency.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Soap, hand sanitizer and disinfecting wipes to disinfect surfaces",
+      "Prescription medications. About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency.",
+      "Non-prescription medications such as pain relievers, anti-diarrhea medication, antacids or laxatives",
+      "Prescription eyeglasses and contact lens solution",
+      "Infant formula, bottles, diapers, wipes and diaper rash cream",
+      "Pet food and extra water for your pet",
+      "Cash or traveler's checks",
+      "Important family documents such as copies of insurance policies, identification and bank account records saved electronically or in a waterproof, portable container",
+      "Sleeping bag or warm blanket for each person"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "8c82d91d-0c8b-41c0-b0f1-ecf626566d49",
+    "title": "Emergency Kit for the Car",
+    "description": "Get tips on how to prepare your car for an emergency and car safety. Plan long trips carefully and listen to the radio or television for up-to-date weather forecasts and road conditions. In bad weather drive only if absolutely necessary. Emergency Kit for the Car In case you are stranded, keep an emergency supply kit in your car with these automobile extras:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Jumper cables",
+      "Flares or reflective triangle",
+      "Ice scraper",
+      "Car cell phone charger",
+      "Blanket",
+      "Map",
+      "Cat litter or sand (for better tire traction)"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "fd63e52d-47d0-438b-8fc8-eda22c56e875",
+    "title": "Prepare Your Car for Emergencies",
+    "description": "Get tips on how to prepare your car for an emergency and car safety. Plan long trips carefully and listen to the radio or television for up-to-date weather forecasts and road conditions. In bad weather drive only if absolutely necessary. Emergency Kit for the Car In case you are stranded, keep an emergency supply kit in your car with these automobile extras:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Antifreeze levels",
+      "Battery and ignition system",
+      "Brakes",
+      "Exhaust system",
+      "Fuel and air filters",
+      "Heater and defroster",
+      "Lights and flashing hazard lights",
+      "Oil",
+      "Thermostat",
+      "Windshield wiper equipment and washer fluid level"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "dcf60c7a-76e5-456c-8c71-b0051d27eaa9",
+    "title": "Car Safety Tips",
+    "description": "Get tips on how to prepare your car for an emergency and car safety. Plan long trips carefully and listen to the radio or television for up-to-date weather forecasts and road conditions. In bad weather drive only if absolutely necessary. Emergency Kit for the Car In case you are stranded, keep an emergency supply kit in your car with these automobile extras:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Keep your gas tank full in case of evacuation or power outages. A full tank will also keep the fuel line from freezing.",
+      "Install good winter tires and make sure they have enough tread, or any chains or studs required in your local area.",
+      "Do not drive through flooded areas. Six inches of water can cause a vehicle to lose control or possibly stall. A foot of water will float many cars.",
+      "Be aware of areas where floodwaters have receded. Roads may have weakened and could collapse under the weight of a car.",
+      "Disable your vehicle’s cruise control when driving on slippery, icy or snowy roads. That’s because if you lose traction or start to skid, the cruise control will accelerate to maintain your vehicle’s speed, causing your wheels to spin even faster. On wet roads, if your cruise control is set at too high a speed, it could cause your car to hydroplane when it goes over standing water.",
+      "If a power line falls on your car you are at risk of electrical shock. Stay inside until a trained person removes the wire.",
+      "If it becomes hard to control the car, pull over, stop the car and set the parking brake.",
+      "If the emergency could affect the stability of the roadway avoid overpasses, bridges, power lines, signs and other hazards."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "c59420cf-c045-4f26-9159-ff1af1559af5",
+    "title": "Suggested Emergency Food Supplies",
+    "description": "Consider the following tips when putting together your emergency food supplies. Suggested Food Supplies Food Safety and Sanitation Cooking Managing Food without Power Following a disaster there may be power outages that could last for several days. Stock canned foods, dry mixes and other staples that do not require refrigeration, cooking, water or special preparation. Be sure to include a manual can opener and eating utensils.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Ready-to-eat canned meats, fruits, vegetables and a can opener",
+      "Protein or fruit bars",
+      "Dry cereal or granola",
+      "Peanut butter",
+      "Dried fruit",
+      "Canned juices",
+      "Non-perishable pasteurized milk",
+      "High-energy foods",
+      "Food for infants",
+      "Comfort/stress foods"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "e1fb331a-39d8-4c00-8cc4-f3d54878dabf",
+    "title": "Food Safety and Sanitation",
+    "description": "Consider the following tips when putting together your emergency food supplies. Suggested Food Supplies Food Safety and Sanitation Cooking Managing Food without Power Following a disaster there may be power outages that could last for several days. Stock canned foods, dry mixes and other staples that do not require refrigeration, cooking, water or special preparation. Be sure to include a manual can opener and eating utensils.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Keep food in covered containers.",
+      "Keep cooking and eating utensils clean.",
+      "Throw away any food that has come into contact with contaminated flood water.",
+      "Throw away any food that has been at room temperature for two hours or more.",
+      "Throw away any food that has an unusual odor, color or texture.",
+      "Use ready-to-feed formula. If you must mix infant formula use bottled water or boiled water as a last resort."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "fbacb223-de0b-4740-940a-157973bfb75f",
+    "title": "Cooking",
+    "description": "Consider the following tips when putting together your emergency food supplies. Suggested Food Supplies Food Safety and Sanitation Cooking Managing Food without Power Following a disaster there may be power outages that could last for several days. Stock canned foods, dry mixes and other staples that do not require refrigeration, cooking, water or special preparation. Be sure to include a manual can opener and eating utensils.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage.",
+      "Use a refrigerator thermometer to check temperature.",
+      "Refrigerated food should be safe as long as the power was out for no more than four hours.",
+      "Discard any perishable food such as meat, poultry, fish, eggs or leftovers that have been above 40 degrees Fahrenheit for two hours or more."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "6b5993ed-c877-4623-a425-f08ee602d081",
+    "title": "Managing Food without Power",
+    "description": "Consider the following tips when putting together your emergency food supplies. Suggested Food Supplies Food Safety and Sanitation Cooking Managing Food without Power Following a disaster there may be power outages that could last for several days. Stock canned foods, dry mixes and other staples that do not require refrigeration, cooking, water or special preparation. Be sure to include a manual can opener and eating utensils.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Keep the refrigerator and freezer doors closed as much as possible.",
+      "The refrigerator will keep food cold for about four hours if it is unopened.",
+      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage.",
+      "Use a refrigerator thermometer to check temperature.",
+      "Refrigerated food should be safe as long as the power was out for no more than four hours.",
+      "Discard any perishable food such as meat, poultry, fish, eggs or leftovers that have been above 40 degrees Fahrenheit for two hours or more."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "abeb00cb-40b0-40c5-b427-d1194e493410",
+    "title": "Determining Water Needs",
+    "description": "Following a disaster, clean drinking water may not be available. Learn how to build a water supply that will meet your family’s needs during an emergency. Determine Water Needs Water Storage Water Treatment Following a disaster clean drinking water may not be available. Your regular water source could be cut-off or compromised through contamination. Prepare yourself by building a supply of water that will meet your family’s needs during an emergency. View the recommended emergency supplies list (PDF).",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Never ration drinking water unless ordered to do so by authorities. Drink the amount you need today and try to find more for tomorrow. Minimize the amount of water your body needs by reducing activity and staying cool.",
+      "Drink water that you know is not contaminated first. If necessary, suspicious water, such as cloudy water from regular faucets or water from streams or ponds, can be used after it has been treated. If water treatment is not possible put off drinking suspicious water as long as possible but do not become dehydrated.",
+      "Do not drink carbonated or caffeinated beverages instead of drinking water. Caffeinated drinks and alcohol dehydrate the body which increases the need for drinking water."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "a0ec91e6-4869-4e08-bd5c-021624529058",
+    "title": "Prepare Before an Earthquake",
+    "description": "Learn how to stay safe before, during, and after an earthquake. Prepare Before Stay Safe During Stay Safe After Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Earthquake"
+    ],
+    "steps": [
+      "Practice how to protect yourself during earthquakes, with family and coworkers.",
+      "Make an Emergency Plan: Create a family emergency communications plan that has an out-of-state contact. Plan where to meet if you get separated. Make a supply kit that includes enough food and water for several days, a flashlight, a fire extinguisher and a whistle.Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals.Remember that not everyone can afford to respond by stocking up on necessities. For those who can afford it, make essential purchases and slowly build up supplies.",
+      "Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals.",
+      "Remember that not everyone can afford to respond by stocking up on necessities. For those who can afford it, make essential purchases and slowly build up supplies.",
+      "Protect Your Home: Secure heavy items in your home like bookcases, refrigerators, water heaters, televisions and objects that hang on walls. Store heavy and breakable objects on low shelves.Consider making improvements to your building to fix structural issues that could cause your building to collapse during an earthquake.Consider obtaining an earthquake insurance policy. A standard homeowner’s insurance policy does not cover earthquake damage.",
+      "Consider making improvements to your building to fix structural issues that could cause your building to collapse during an earthquake.",
+      "Consider obtaining an earthquake insurance policy. A standard homeowner’s insurance policy does not cover earthquake damage."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "0ea88f52-83ba-4413-8b0d-cd12df42af51",
+    "title": "Stay Safe During an Earthquake",
+    "description": "Learn how to stay safe before, during, and after an earthquake. Prepare Before Stay Safe During Stay Safe After Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Earthquake"
+    ],
+    "steps": [
+      "If you are inside, stay and do not run outside and avoid doorways.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you're outside, stay there. Move to an open area away from buildings, trees, streetlights, and power lines. Drop and cover until shaking stops to protect yourself from flying debris. Learn more at Earthquake Country Alliance."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "9d6e5995-94bb-4cdf-9fc7-15ded88d8eeb",
+    "title": "Stay Safe After an Earthquake",
+    "description": "Learn how to stay safe before, during, and after an earthquake. Prepare Before Stay Safe During Stay Safe After Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Earthquake"
+    ],
+    "steps": [
+      "Expect aftershocks to follow the main shock of an earthquake. Be ready to Drop, Cover, and Hold On if you feel an aftershock.",
+      "If you are in a damaged building, go outside and quickly move away from the building. Do not enter damaged buildings.",
+      "If you are trapped, send a text or bang on a pipe or wall. Cover your mouth with your shirt for protection and instead of shouting, use a whistle.",
+      "If you are in an area that may experience tsunamis, go inland or to higher ground immediately after the shaking stops. Avoid contact with floodwaters as they can contain chemicals, sewage, and debris.",
+      "Check yourself to see if you are hurt and help others if you have training. Learn how to be the help until help arrives.If you are sick or injured and need medical attention, contact your healthcare provider for instructions. If you are experiencing a medical emergency, call 9-1-1.",
+      "If you are sick or injured and need medical attention, contact your healthcare provider for instructions. If you are experiencing a medical emergency, call 9-1-1."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "a6d18ed7-8133-4c0b-abe9-94829d8504f3",
+    "title": "Preparing for a Flood",
+    "description": "Floods are the most common natural disaster in the United States. Learn how to stay safe when a flood threatens. Prepare for a flood During a flood After a flood Associated content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood"
+    ],
+    "steps": [
+      "Know Your Risk for Floods: Visit FEMA's Flood Map Service Center to know types of flood risk in your area. However, remember that flooding doesn’t follow lines on a map. Where it can rain it can flood. Sign up for your community’s warning system. The Emergency Alert System (EAS) and National Oceanic and Atmospheric Administration (NOAA) Weather Radio also provide emergency alerts. The National Risk Index is an easy-to-use, interactive tool that shows which communities are most at risk to natural hazards like flooding.",
+      "Purchase Flood Insurance: Purchase or renew a flood insurance policy. Homeowner’s insurance policies do not cover flooding. It typically takes up to 30 days for a policy to go into effect so the time to buy is well before a disaster. Get flood coverage under the National Flood Insurance Program (NFIP).",
+      "Preparing for a Flood: Make a plan for your household, including your pets, so that you and your family know what to do, where to go, and what you will need to protect yourselves from flooding. Learn and practice evacuation routes, shelter plans, and flash flood response. Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area.",
+      "In Case of Emergency: Keep important documents in a waterproof container. Create password-protected digital copies. Protect your property. Move valuables to higher levels. Declutter drains and gutters. Install check valves. Consider a sump pump with a battery."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "b3af9ceb-8621-4a36-a68f-bceaf57bf3b5",
+    "title": "Staying Safe During a Flood",
+    "description": "Floods are the most common natural disaster in the United States. Learn how to stay safe when a flood threatens. Prepare for a flood During a flood After a flood Associated content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood"
+    ],
+    "steps": [
+      "Evacuate immediately, if told to evacuate. Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas.",
+      "Contact your healthcare provider If you are sick and need medical attention. Wait for further care instructions and shelter in place, if possible. If you are experiencing a medical emergency, call 9-1-1.",
+      "Listen to EAS, NOAA Weather Radio or local alerting systems for current emergency information and instructions regarding flooding.",
+      "Do not walk, swim or drive through flood waters. Turn Around. Don’t Drown!",
+      "Stay off bridges over fast-moving water. Fast-moving water can wash bridges away without warning.",
+      "Stay inside your car if it is trapped in rapidly moving water. Get on the roof if water is rising inside the car.",
+      "Get to the highest level if trapped in a building. Only get on the roof if necessary and once there signal for help. Do not climb into a closed attic to avoid getting trapped by rising floodwater."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "08797f54-a2f9-44a1-aed1-67a1761c605a",
+    "title": "Staying Safe After a Flood",
+    "description": "Floods are the most common natural disaster in the United States. Learn how to stay safe when a flood threatens. Prepare for a flood During a flood After a flood Associated content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood"
+    ],
+    "steps": [
+      "Pay attention to authorities for information and instructions. Return home only when authorities say it is safe.",
+      "Avoid driving except in emergencies.",
+      "Wear heavy work gloves, protective clothing and boots during clean up and use appropriate face coverings or masks if cleaning mold or other debris.",
+      "People with asthma and other lung conditions and/or immune suppression should not enter buildings with indoor water leaks or mold growth that can be seen or smelled. Children should not take part in disaster cleanup work.",
+      "Be aware that snakes and other animals may be in your house.",
+      "Be aware of the risk of electrocution. Do not touch electrical equipment if it is wet or if you are standing in water. Turn off the electricity to prevent electric shock if it is safe to do so.",
+      "Avoid wading in floodwater, which can be contaminated and contain dangerous debris. Underground or downed power lines can also electrically charge the water.",
+      "Use a generator or other gasoline-powered machinery ONLY outdoors and away from windows."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "09f3a134-5f8e-4d1c-91ea-a94cc336b23d",
+    "title": "Prepare for Hurricanes",
+    "description": "Learn how to prepare for a hurricane, stay safe during a hurricane, and what to do when returning home from a hurricane. Hurricanes are dangerous and can cause major damage because of storm surge, wind damage, and flooding. They can happen along any U.S. coast or in any territory in the Atlantic or Pacific oceans. Storm surge is historically the leading cause of hurricane-related deaths in the United States.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Hurricane"
+    ],
+    "steps": [
+      "Know Your Hurricane Risk: Hurricanes are not just a coastal problem. Find out how rain, wind, water and even tornadoes could happen far inland from where a hurricane or tropical storm makes landfall. Start preparing now",
+      "Make an Emergency Plan: Make sure everyone in your household knows and understands your hurricane plans. Include the office, kids’ day care, and anywhere else you frequent in your hurricane plans. Ensure your business has a continuity plan to continue operating when disaster strikes.",
+      "Know your Evacuation Zone: You may have to evacuate quickly due to a hurricane if you live in an evacuation zone. Learn your evacuation routes, practice with your household and pets, and identify where you will stay. ",
+      "Follow the instructions from local emergency managers, who work closely with state, local, tribal, and territorial agencies and partners. They will provide the latest recommendations based on the threat to your community and appropriate safety measures.",
+      "Recognize Warnings and Alerts: Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which require no sign up.",
+      "Those with Disabilities:Identify if you may need additional help during an emergency if you or anyone else in your household is an individual with a disability.",
+      "Review Important Documents: Make sure your insurance policies and personal documents, such as ID, are up to date. Make copies and keep them in a secure password-protected digital space.",
+      "Strengthen your Home: De-clutter drains and gutters, bring in outside furniture, and consider hurricane shutters.",
+      "Get Tech Ready: Keep your cell phone charged when you know a hurricane is in the forecast and purchase backup charging devices to power electronics.",
+      "Help your Neighborhood:Check with neighbors, senior adults, or those who may need additional help securing hurricane plans to see how you can be of assistance to others",
+      "Gather Supplies: Have enough supplies for your household, include medication, disinfectant supplies and pet supplies in your go bag or car trunk. You may not have access to these supplies for days or even weeks after a hurricane."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "d348241d-1777-4c0e-b90a-6e7232441765",
+    "title": "Stay Safe During a Hurricane",
+    "description": "Learn how to prepare for a hurricane, stay safe during a hurricane, and what to do when returning home from a hurricane. Hurricanes are dangerous and can cause major damage because of storm surge, wind damage, and flooding. They can happen along any U.S. coast or in any territory in the Atlantic or Pacific oceans. Storm surge is historically the leading cause of hurricane-related deaths in the United States.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Hurricane"
+    ],
+    "steps": [
+      "Pay attention to emergency information and alerts.",
+      "If you live in a mandatory evacuation zone and local officials tell you to evacuate, do so immediately.",
+      "Determine how best to protect yourself from high winds and flooding.",
+      "Take refuge in a designated storm shelter or an interior room for high winds.",
+      "Go to the highest level of the building if you are trapped by flooding. Do not climb into a closed attic. You may become trapped by rising flood water.",
+      "Do not walk, swim or drive through flood waters. Turn Around. Don’t Drown! Just six inches of fast-moving water can knock you down, and one foot of moving water can sweep your vehicle away."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "795337a7-716c-4f89-b21a-83b405aafa87",
+    "title": "Returning Home After a Hurricane",
+    "description": "Learn how to prepare for a hurricane, stay safe during a hurricane, and what to do when returning home from a hurricane. Hurricanes are dangerous and can cause major damage because of storm surge, wind damage, and flooding. They can happen along any U.S. coast or in any territory in the Atlantic or Pacific oceans. Storm surge is historically the leading cause of hurricane-related deaths in the United States.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Hurricane"
+    ],
+    "steps": [
+      "Pay attention to local officials for information and special instructions.",
+      "Be careful during clean up. Wear protective clothing, use appropriate face coverings or masks if cleaning mold or other debris. People with asthma and other lung conditions and/or immune suppression should not enter buildings with indoor water leaks or mold growth that can be seen or smelled, even if these individuals are not allergic to mold. Children should not help with disaster cleanup work.",
+      "Wear protective clothing and work with someone else.",
+      "Do not touch electrical equipment if it is wet or if you are standing in water. If it is safe to do so, turn off electricity at the main breaker or fuse box to prevent electric shock.",
+      "Do not wade in flood water, which can contain dangerous pathogens that cause illnesses. This water also can contain debris, chemicals, waste and wildlife. Underground or downed power lines also can electrically charge the water.",
+      "Save phone calls for emergencies. Phone systems often are down or busy after a disaster. Use text messages or social media to communicate with family and friends.",
+      "Document any property damage with photographs. Contact your insurance company for assistance."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "c2ba8ec8-2d7c-48cb-b0d1-b5e38a1abfd4",
+    "title": "Preparing for a Tornado",
+    "description": "Learn what to do if you are under a tornado warning and how to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe During Stay Safe After Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tornado"
+    ],
+    "steps": [
+      "Know your area’s tornado risk. In the U.S., the Midwest and the Southeast have a greater risk for tornadoes.",
+      "Know the signs of a tornado, including a rotating, funnel-shaped cloud, an approaching cloud of debris, or a loud roar like a freight train.",
+      "Sign up for your community’s warning system. The Emergency Alert System (EAS) and NOAA Weather Radio also provide emergency alerts. If your community has sirens, then become familiar with the warning tone.",
+      "Pay attention to weather reports. Meteorologists can predict when conditions might be right for a tornado.",
+      "Identify and practice going to a safe shelter such as a safe room built using FEMA criteria or a storm shelter built to ICC 500 standards. The next best protection is a small, interior, windowless room or basement on the lowest level of a sturdy building.",
+      "Plan for your pet. They are an important member of your family, so they need to be included in your family’s emergency plan.",
+      "Prepare for long-term stay at home or sheltering in place by gathering emergency supplies, cleaning supplies, non-perishable foods, water, medical supplies and medication."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "1ffe0e6c-2e19-494c-8134-cb53c68e0e21",
+    "title": "Staying Safe During a Tornado",
+    "description": "Learn what to do if you are under a tornado warning and how to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe During Stay Safe After Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tornado"
+    ],
+    "steps": [
+      "Immediately go to a safe location that you have identified.",
+      "Pay attention to EAS, NOAA Weather Radio, or local alerting systems for current emergency information and instructions.",
+      "Protect yourself by covering your head or neck with your arms and putting materials such as furniture and blankets around or on top of you.",
+      "In a car or truck: There is no safe option when caught in a tornado in a car, just slightly less-dangerous ones. If the tornado is visible, far away, and the traffic is light, you may be able to drive out of its path by moving at right angles to the tornado. If you are caught by extreme winds or flying debris, park the car as quickly and safely as possible -- out of the traffic lanes. Stay in the car with the seat belt on. Put your head down below the windows; cover your head with your hands and a blanket, coat, or other cushion if possible. If you can safely get noticeably lower than the level of the roadway, leave your car and lie in that area, covering your head with your hands. Avoid seeking shelter under bridges, which can create deadly traffic hazards while offering little protection against flying debris.",
+      "If the tornado is visible, far away, and the traffic is light, you may be able to drive out of its path by moving at right angles to the tornado.",
+      "If you are caught by extreme winds or flying debris, park the car as quickly and safely as possible -- out of the traffic lanes.",
+      "Stay in the car with the seat belt on. Put your head down below the windows; cover your head with your hands and a blanket, coat, or other cushion if possible.",
+      "If you can safely get noticeably lower than the level of the roadway, leave your car and lie in that area, covering your head with your hands.",
+      "Avoid seeking shelter under bridges, which can create deadly traffic hazards while offering little protection against flying debris."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "457db9cc-8f18-4148-8119-6649ccf26ad9",
+    "title": "Staying Safe After a Tornado",
+    "description": "Learn what to do if you are under a tornado warning and how to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe During Stay Safe After Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tornado"
+    ],
+    "steps": [
+      "Pay attention to EAS, NOAA Weather Radio, and local authorities for updated information.",
+      "Stay clear of fallen power lines or broken utility lines.",
+      "Contact your healthcare provider if you are sick and need medical attention. Wait for further care instructions and continue to shelter in place.",
+      "Wear appropriate gear during clean-up such as thick-soled shoes, long pants, and work gloves, use appropriate face coverings or masks if cleaning mold or other debris."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "cc1a6380-e483-4ce3-876e-8c81b27817b6",
+    "title": "Prepare for Wildfires",
+    "description": "How to prepare for a wildfire, stay safe during a wildfire, and return home safely after a wildfire. Prepare for Wildfires Stay Safe During After a Wildfire Wildfire Summit Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Wildfire"
+    ],
+    "steps": [
+      "Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which requires no-sign up.",
+      "Pay attention to air quality alerts."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "b65b2cfb-8ae9-47b9-8db0-2cf646fb28cf",
+    "title": "Stay Safe During a wildfire",
+    "description": "How to prepare for a wildfire, stay safe during a wildfire, and return home safely after a wildfire. Prepare for Wildfires Stay Safe During After a Wildfire Wildfire Summit Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Wildfire"
+    ],
+    "steps": [
+      "Pay attention to emergency alerts and notifications for information and instructions."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "eabfe4f9-c21d-492b-9b73-ce461bcc5485",
+    "title": "Returning Home After a Wildfire",
+    "description": "How to prepare for a wildfire, stay safe during a wildfire, and return home safely after a wildfire. Prepare for Wildfires Stay Safe During After a Wildfire Wildfire Summit Additional Resources",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Wildfire"
+    ],
+    "steps": [
+      "Do not return home until authorities say it is safe to do so.",
+      "Avoid hot ash, charred trees, smoldering debris and live embers. The ground may contain heat pockets that can burn you or spark another fire.",
+      "When cleaning, wear protective clothing – including a long-sleeved shirt, long pants, work gloves and sturdy thick-soled shoes – during clean-up efforts.",
+      "Use a respirator to limit your exposure, and wet debris to minimize breathing dust particles. People with asthma, COPD and/or other lung conditions should take precautions in areas with poor air quality, as it can worsen symptoms.",
+      "Document property damage with photographs. Conduct an inventory and contact your insurance company for assistance.",
+      "Send text messages or use social media to reach out to family and friends. Phone systems are often busy following a disaster. Make calls only in emergencies."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "13c277ae-b178-4e5a-96a1-2c4caf4c6914",
+    "title": "Prepare for a tsunami",
+    "description": "Learn what to do if you are under a tsunami warning and how to stay safe when a tsunami threatens. Prepare Now Survive During Be Safe After Related Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tsunami"
+    ],
+    "steps": [
+      "Learn the signs of a potential tsunami, such as an earthquake, a loud roar from the ocean, or unusual ocean behavior, such as a sudden rise or wall of water or sudden draining of water showing the ocean floor.",
+      "Know and practice community evacuation plans. Some at-risk communities have maps with evacuation zones and routes. Map out your routes from home, work and play. Pick shelters 100 feet or more above sea level, or at least one mile inland.",
+      "Create a family emergency communication plan that has an out-of-state contact. Plan where to meet if you get separated.",
+      "Sign up for your community’s warning system. The Emergency Alert System (EAS) and National Oceanic and Atmospheric Administration (NOAA) Weather Radio also provide emergency alerts.",
+      "Consider earthquake insurance and a flood insurance policy through the National Flood Insurance Program (NFIP). Standard homeowner’s insurance does not cover flood or earthquake damage."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "408bbeff-ca59-4d47-ad6a-e061a2f185b7",
+    "title": "Survive a tsunami",
+    "description": "Learn what to do if you are under a tsunami warning and how to stay safe when a tsunami threatens. Prepare Now Survive During Be Safe After Related Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tsunami"
+    ],
+    "steps": [
+      "If there is an earthquake and you are in a tsunami area, protect yourself from the earthquake first. Drop, Cover, and Hold On. Drop to your hands and knees. Cover your head and neck with your arms. Hold on to any sturdy furniture until the shaking stops. Crawl only if you can reach a better cover, but do not go through an area with more debris.",
+      "When the shaking stops, if there are natural signs or official warnings of a tsunami, move immediately to a safe place as high and as far inland as possible. Listen to the authorities, but do not wait for tsunami warnings and evacuation orders.",
+      "If you are outside of the tsunami hazard zone and receive a warning, stay where you are unless officials tell you otherwise.",
+      "Leave immediately if you are told to do so. Evacuation routes often are marked by a wave with an arrow in the direction of higher ground.",
+      "If you are in the water, then grab onto something that floats, such as a raft or tree trunk.",
+      "If you are in a boat, face the direction of the waves and head out to sea. If you are in a harbor, go inland."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "3e1e0bee-6be2-4ee0-97b7-4242f59615da",
+    "title": "Be Safe after a tsunami",
+    "description": "Learn what to do if you are under a tsunami warning and how to stay safe when a tsunami threatens. Prepare Now Survive During Be Safe After Related Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Tsunami"
+    ],
+    "steps": [
+      "Listen to local alerts and authorities for information on areas to avoid and shelter locations.",
+      "Save phone calls for emergencies. Phone systems often are down or busy after a disaster. Use text messages or social media to communicate with family and friends.",
+      "Avoid wading in floodwater, which can contain dangerous debris. Water may be deeper than it appears.",
+      "Be aware of the risk of electrocution. Underground or downed power lines can electrically charge water. Do not touch electrical equipment if it is wet or if you are standing in water.",
+      "Stay away from damaged buildings, roads and bridges.",
+      "If you become injured or sick and need medical attention, contact your healthcare provider and shelter in place, if possible. Call 9-1-1 if you are experiencing a medical emergency.",
+      "Document property damage with photographs. Conduct an inventory and contact your insurance company for assistance."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "b2e660bc-ca1f-499d-995f-fe9fb3b363db",
+    "title": "How to Prepare Yourself for a Pandemic",
+    "description": "Learn what to do if a pandemic is declared and how to stay safe when a pandemic threatens. Prepare for Pandemic Stay Safe During Stay Safe After Associated Content A pandemic is a disease outbreak that spans several countries and affects a large number of people. Pandemics are most often caused by viruses which can easily spread from person to person.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Pandemic"
+    ],
+    "steps": [
+      "Learn how diseases spread to help protect yourself and others. Viruses can be spread from person to person, from a non-living object to a person and by people who are infected but don’t have any symptoms.",
+      "Prepare for the possibility of schools, workplaces and community centers being closed. Investigate and prepare for virtual coordination for school, work (telework) and social activities.",
+      "Gather supplies in case you need to stay home for several days or weeks. Supplies may include cleaning supplies, non-perishable foods, prescriptions and bottled water. Buy supplies slowly to ensure that everyone has the opportunity to buy what they need.",
+      "Create an emergency plan so that you and your family know what to do and what you will need in case an outbreak happens. Consider how a pandemic may affect your plans for other emergencies.",
+      "Review your health insurance policies to understand what they cover, including telemedicine options.",
+      "Create password-protected digital copies of important documents and store in a safe place. Watch out for scams and fraud."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "7b072901-911e-43b2-b1ab-9f969de74f87",
+    "title": "Stay Safe During a Pandemic",
+    "description": "Learn what to do if a pandemic is declared and how to stay safe when a pandemic threatens. Prepare for Pandemic Stay Safe During Stay Safe After Associated Content A pandemic is a disease outbreak that spans several countries and affects a large number of people. Pandemics are most often caused by viruses which can easily spread from person to person.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Pandemic"
+    ],
+    "steps": [
+      "Get vaccinated. Vaccines stimulate your immune system to produce antibodies, so vaccines actually prevent diseases.",
+      "Take actions to prevent the spread of disease. Cover coughs and sneezes. Wear a mask in public. Stay home when sick (except to get medical care). Disinfect surfaces. Wash hands with soap and water for at least 20 seconds. If soap and water are not available, use a hand sanitizer that contains at least 60 percent alcohol. Stay six feet away from people who are not part of your household.",
+      "If you believe you’ve been exposed to the disease, contact your doctor, follow the quarantine instructions from medical providers and monitor your symptoms. If you’re experiencing a medical emergency, call 9-1-1 and shelter in place with a mask, if possible, until help arrives.",
+      "Share accurate information about the disease with friends, family and people on social media. Sharing bad information about the disease or treatments for the disease may have serious health outcomes. Remember that stigma hurts everyone and can cause discrimination against people, places or nations.",
+      "Know that it’s normal to feel anxious or stressed. Engage virtually with your community through video and phone calls. Take care of your body and talk to someone if you are feeling upset."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "998f9be1-97c1-49b8-862c-32eddacfb483",
+    "title": "Stay Safe After a Pandemic",
+    "description": "Learn what to do if a pandemic is declared and how to stay safe when a pandemic threatens. Prepare for Pandemic Stay Safe During Stay Safe After Associated Content A pandemic is a disease outbreak that spans several countries and affects a large number of people. Pandemics are most often caused by viruses which can easily spread from person to person.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Pandemic"
+    ],
+    "steps": [
+      "Staying home when you are sick (except to get medical care).",
+      "Following the guidance of your health care provider.",
+      "Covering coughs and sneezes with a tissue.",
+      "Washing your hands with soap and water for at least 20 seconds."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "9f17b17b-b7a4-448d-81c4-6701f440d167",
+    "title": "Be in the Know",
+    "description": "Learn what to do before, during, and after an evacuation. Planning is vital to making sure that you can evacuate quickly and safely. Be in the Know Before an Evacuation During an Evacuation After an Evacuation Be in the Know We have all heard that knowledge is power. In an emergency, it can be lifesaving. This is why we are encouraging everyone to “Be in the Know” to evacuate safely.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "It’s important to understand your location’s risks because no two communities face the same extreme weather conditions. You can find your local risks with FEMA’s National Risk Index.",
+      "Whether it's the home of a friend or family member or a pre-designated shelter, know your evacuation destination.",
+      "Build a go-bag with all the essentials you might need, so you don’t need to scramble in an evacuation situation.",
+      "Make sure everyone in your household knows where the bag is stored, and who is responsible for it in the event of an emergency. ",
+      "Identify where you can access reliable information so you can make informed decisions before, during, and after a disaster. Keeping up to date with the latest developments can save lives."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "7c11ffc7-3264-4e42-90f3-ba25fb0066c5",
+    "title": "Before an Evacuation",
+    "description": "Learn what to do before, during, and after an evacuation. Planning is vital to making sure that you can evacuate quickly and safely. Be in the Know Before an Evacuation During an Evacuation After an Evacuation Be in the Know We have all heard that knowledge is power. In an emergency, it can be lifesaving. This is why we are encouraging everyone to “Be in the Know” to evacuate safely.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Learn the types of disasters that are likely in your community and the local emergency, evacuation and shelter plans for each specific disaster.",
+      "Plan how you will leave and where you will go if you are advised to evacuate.",
+      "Check with local officials about what shelter spaces are available for this year.",
+      "Identify several places you could go in an emergency such as a friend’s home in another town or a motel. Choose destinations in different directions so that you have options during an emergency.",
+      "If needed, identify a place to stay that will accept pets. Most public shelters allow only service animals.",
+      "Be familiar with alternate routes and other means of transportation out of your area.",
+      "Always follow the instructions of local officials and remember that your evacuation route may be on foot depending on the type of disaster.",
+      "Visit FEMA’s National Risk Index, an interactive tool anyone can use to improve their understanding of natural hazard risk where they live so they can take action to protect themselves.",
+      "Come up with a family/household plan to stay in touch in case you become separated; have a meeting place and update it depending on the circumstance.",
+      "Assemble supplies that are ready for evacuation. Prepare a “go-bag” you can carry when you evacuate on foot or public transportation and supplies for traveling longer distances if you have a car. ",
+      "If you have a car: Keep a full tank of gas if an evacuation seems likely. Keep a half tank of gas in it at all times in case of an unexpected need to evacuate. Gas stations may be closed during emergencies and unable to pump gas during power outages. Plan to take one car per family to reduce congestion and delay.",
+      "If you do not have a car, plan how you will leave if needed. Decide with family, friends or your local emergency management office to see what resources may be available."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "44877253-8a28-4088-ad8c-916e9155fe48",
+    "title": "During an Evacuation",
+    "description": "Learn what to do before, during, and after an evacuation. Planning is vital to making sure that you can evacuate quickly and safely. Be in the Know Before an Evacuation During an Evacuation After an Evacuation Be in the Know We have all heard that knowledge is power. In an emergency, it can be lifesaving. This is why we are encouraging everyone to “Be in the Know” to evacuate safely.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Listen to a battery-powered radio and follow local evacuation instructions.",
+      "Take your emergency supply kit.",
+      "Leave early enough to avoid being trapped by severe weather.",
+      "Take your pets with you but understand that only service animals may be allowed in public shelters. Plan how you will care for your pets in an emergency now.",
+      "If time allows: Call or email the out-of-state contact in your family communications plan. Tell them where you are going.",
+      "Secure your home by closing and locking doors and windows.",
+      "Unplug electrical equipment such as radios, televisions and small appliances. Leave freezers and refrigerators plugged in unless there is a risk of flooding. If there is damage to your home and you are instructed to do so, shut off water, gas and electricity before leaving.",
+      "Leave a note telling others when you left and where you are going.",
+      "Wear sturdy shoes and clothing that provides some protection such as long pants, long-sleeved shirts and a hat.",
+      "Check with neighbors who may need a ride.",
+      "Follow recommended evacuation routes. Do not take shortcuts, they may be blocked.",
+      "Be alert for road hazards such as washed-out roads or bridges and downed power lines. Do not drive into flooded areas."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "44877253-8a28-4088-ad8c-916e9155fe48",
+    "title": "After an Evacuation",
+    "description": "Learn what to do before, during, and after an evacuation. Planning is vital to making sure that you can evacuate quickly and safely. Be in the Know Before an Evacuation During an Evacuation After an Evacuation Be in the Know We have all heard that knowledge is power. In an emergency, it can be lifesaving. This is why we are encouraging everyone to “Be in the Know” to evacuate safely.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "If you evacuated for the storm, check with local officials both where you’re staying and back home before you travel.",
+      "If you are returning to disaster-affected areas, after significant events prepare for disruptions to daily activities and remember that returning home before storm debris is cleared is dangerous.",
+      "Let friends and family know before you leave and when you arrive.",
+      "Charge devices and consider getting back-up batteries in case power-outages continue.",
+      "Fill up your gas tank and consider downloading a fuel app to check for outages along your route.",
+      "Bring supplies such as water and non-perishable food for the car ride.",
+      "Avoid downed power or utility lines, they may be live with deadly voltage. Stay away and report them immediately to your power or utility company.",
+      "Only use generators outside and away from your home and NEVER run a generator inside a home or garage or connect it to your home's electrical system."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ff2389af-38b4-4ad8-aee4-9c2841f52d75",
+    "title": "Make A Plan",
+    "description": "Learn the ways to stay prepared before an emergency and stay safe during an emergency. Technology has made it easier than ever to prepare for emergencies, but it can be unreliable in an emergency if you haven’t kept your gadgets protected and powered up. Here are some tips to make sure you are tech ready:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Mobile networks can become overwhelmed during emergencies, making it hard to make and get phone calls. Text messages require less bandwidth, which means they are able to be transmitted more reliably during situations when many people are trying to use their mobile phones at the same time.",
+      "Social media channels such as Facebook and Twitter can also be an effective way to update family and friends during emergencies. Facebook’s Safety Check feature allows users to easily post a status update indicating that they are safe during a time of disaster.",
+      "Have an emergency charging option for your phone and other mobile devices. Smartphones have become a vital tool to get emergency alerts and warnings so it’s important to make sure you can keep them powered up in an emergency.",
+      "At home: Prior to severe weather make sure that all of your electronic devices are fully charged. If the power goes out save battery power by minimizing device use. Keep a back-up power source on hand.",
+      "In your car: Keep a portable phone charger in your car at all times and consider purchasing a back-up power supply to keep in your car as well.",
+      "Change the settings on your phone to low power mode or place it on airplane mode to conserve energy.",
+      "Store important documents on a secure, password-protected jump drive or in the cloud.",
+      "There are several apps for mobile devices that let you use your phone’s camera as a scanning device. This lets you capture electronic versions of important documents such as insurance policies, identification documents and medical records. Don’t forget to include your pet’s information.",
+      "Back-up your computer to protect photos and other important electronic documents.",
+      "Scan old photos to protect them from loss.",
+      "Keep your contacts updated and synced across all of your channels, including phone, email and social media. This will make it easy to reach out to the right people quickly to get information and give updates. Consider creating a group listserv of your top contacts.",
+      "Create a group chat via a texting app or a thread for family/friends/coworkers to communicate quickly during a disaster.",
+      "Sign up for direct deposit and electronic banking through your financial institution so you can access your paycheck and make electronic payments wherever you are."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "d23e79f4-ce88-4ecc-a41a-50cdac0082af",
+    "title": "Get Informed",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Know what disasters could affect your area, which ones could call for an evacuation and when to shelter in place.",
+      "Keep a NOAA Weather Radio tuned to your local emergency station and monitor TV and radio. Follow mobile alerts and warnings about severe weather in your area."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "079d74c6-2c96-4d00-a667-0c3293ed745f",
+    "title": "Make a Plan for individuals with disabilities",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Create a support network of people who can help you in a disaster. Keep a contact list in a watertight container in your emergency kit or on your electronic devices.",
+      "Inform your support network where you keep your emergency supplies. You may want to consider giving a trusted member a key to your house or apartment.",
+      "Plan ahead for accessible transportation that you may need for evacuation or getting around during or after disaster. Check with local transit providers as well as with your emergency management agency to identify appropriate accessible options.",
+      "Many city and county emergency management agencies maintain voluntary registries for people with disabilities to self-identify in order to receive targeted assistance during emergencies and disasters. Contact your local emergency management office to find out more.",
+      "If you are on dialysis or other life-sustaining medical treatment know the location and availability of more than one facility that can help you.",
+      "If you use medical equipment in your home that requires electricity, talk to your doctor or health care provider about what you may be able to do to keep it running during a power outage. You can also ask your power provider to put you on a list for priority power restoration.",
+      "About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for medications",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Talk to your doctor or pharmacist about how you can create an emergency supply of medicines.",
+      "Keep a list of your prescription medicines. Include information about your diagnosis, dosage, frequency, medical supply needs and allergies.",
+      "Store extra nonprescription drugs, like pain and fever relievers, antihistamines and antidiarrheal medicines.",
+      "Have a cooler and chemical ice packs available to chill medicines that need to be refrigerated."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for People Who are Deaf or Hard of Hearing",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Weather radio (with text display and a flashing alert)",
+      "Extra hearing-aid batteries",
+      "Pen and paper (in case you have to communicate with someone who does not know sign language)",       
+      "Battery operated lantern to enable communication by sign language or lip reading, especially when the electricity is out and it’s dark."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for People Who are Blind or Have Low Vision",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Mark emergency supplies with Braille labels or large print. Keep a list of your emergency supplies and where you bought them on a portable flash drive or make an audio file that is kept in a safe place where you can access it.",
+      "Keep communication devices for your particular needs, such as a Braille or deaf-blind communications device as part of your emergency supply kit."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for People with Speech Disability",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "If you use an augmentative communications device or other assistive technologies plan how you will evacuate with the devices or how you will replace equipment if it is lost or destroyed. Keep model information and note where the equipment came from (Medicaid, Medicare, private insurance, etc.).",
+      "Plan how you will communicate with others if your equipment is not working, including laminated cards with phrases and/or pictogram."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for People with Mobility Disability",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "If you use a power wheelchair have a lightweight manual chair available as a backup if possible.",
+      "Show others how to assemble, disassemble and operate your wheelchair.",
+      "Purchase an extra battery for a power wheelchair or other battery-operated medical or assistive technology devices. If you can't purchase an extra battery, find out what agencies, organizations or local charitable groups can help you buy one. Keep extra batteries charged at all times.",
+      "Consider keeping a patch kit or can of sealant for flat tires and/or extra inner tube if wheelchair or scooter is not puncture proof.",
+      "Keep an extra mobility device such as a cane or walker if you use one.",
+      "Keep a portable air pump for wheelchair tires.",
+      "If you use a seat cushion to protect your skin or maintain your balance and you must evacuate, consider keeping an extra cushion on hand.",
+      "Communicate with neighbors who can assist you if you need to evacuate the building."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Tips for Individuals with Alzheimer’s and Related Dementia",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Do not leave the person alone. Even those who aren’t prone to wandering away may do so in unfamiliar environments or situations.",
+      "If evacuating, help manage the change in environment by bringing a pillow and blanket or other comforting items they can hold onto.",
+      "When at a shelter, try to stay away from exits and choose a quiet corner.",
+      "If there is an episode of agitation, respond to the emotions being expressed. For example, say “You’re frightened and want to go home. It’s ok. I’m right here with you."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "title": "Individuals with Intellectual or Developmental Disabilities",
+    "description": "Get tips on emergency planning for individuals with disabilities. Get Informed Make a Plan Build a Kit People Experiencing Extreme Heat Associated Content",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Keep handheld electronic devices charged and loaded with videos and activities.",
+      "Purchase spare chargers for electronic devices and keep them charged.",
+      "Include sheets and twine or a small pop-up tent (to decrease visual stimulation in a busy room or to provide instant privacy).",      
+      "Consider a pair of noise-canceling headphones to decrease auditory stimuli.",
+      "Have comfort snacks available."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "e1b1dac7-ca75-4169-b116-9f352ef8c34d",
+    "title": "Make a Plan for your pets",
+    "description": "Learn how to make an emergency plan for your pets and how to build a pet emergency kit. Make a Plan Build a Kit Prepare Pets for Travel Tips for Large Animals Stay Informed Associated Content Your pets are an important member of your family, so they need to be included in your family’s emergency plan. To prepare for the unexpected follow these tips with your pets in mind:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Have an evacuation plan for your pet. Many public shelters and hotels do not allow pets inside. Know a safe place where you can take your pets before disasters and emergencies happen.",
+      "Develop a buddy system. Plan with neighbors, friends or relatives to make sure that someone is available to care for or evacuate your pets if you are unable to do so.",
+      "Have your pet microchipped. Make sure to keep your address and phone number up-to-date and include contact information for an emergency contact outside of your immediate area.",
+      "Contact your local emergency management office, animal shelter or animal control office to get additional advice and information if you’re unsure how to care for your pet in case of an emergency."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "4c9d4570-3417-4633-ab4d-6b7a181ad2e0",
+    "title": "Build a Kit for Your Pet",
+    "description": "Learn how to make an emergency plan for your pets and how to build a pet emergency kit. Make a Plan Build a Kit Prepare Pets for Travel Tips for Large Animals Stay Informed Associated Content Your pets are an important member of your family, so they need to be included in your family’s emergency plan. To prepare for the unexpected follow these tips with your pets in mind:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Food. Keep several days’ supply of food in an airtight, waterproof container.",
+      "Water. Store a water bowl and several days’ supply of water.",
+      "Medicine. Keep an extra supply of the medicine your pet takes on a regular basis in a waterproof container.",
+      "First aid kit. Talk to your veterinarian about what is most appropriate for your pet’s emergency medical needs.",
+      "Collar with ID tag and a harness or leash. Include a backup leash, collar and ID tag. Have copies of your pet’s registration information and other relevant documents in a waterproof container and available electronically.",
+      "Traveling bag, crate or sturdy carrier, ideally one for each pet.",
+      "Grooming items. Pet shampoo, conditioner and other items, in case your pet needs some cleaning up.",
+      "Sanitation needs. Include pet litter and litter box (if appropriate), newspapers, paper towels, plastic trash bags and household chlorine bleach to provide for your pet’s sanitation needs.",
+      "A picture of you and your pet together. If you become separated from your pet during an emergency, a picture of you and your pet together will help you document ownership and allow others to assist you in identifying your pet.",
+      "Familiar items. Put favorite toys, treats or bedding in your kit. Familiar items can help reduce stress for your pet."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "8680242b-60ca-465b-990f-ffd4423a715e",
+    "title": "Prepare Pets for Travel",
+    "description": "Learn how to make an emergency plan for your pets and how to build a pet emergency kit. Make a Plan Build a Kit Prepare Pets for Travel Tips for Large Animals Stay Informed Associated Content Your pets are an important member of your family, so they need to be included in your family’s emergency plan. To prepare for the unexpected follow these tips with your pets in mind:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Leave the carrier out in places your pet frequently visits",
+      "Leave the carrier open",
+      "Feed them treats near the carrier – you can even try putting a few treats inside the carrier",
+      "Add a favorite blanket or small bed inside the carrier so it smells familiar",
+      "Make note of where your pets hide, so you can easily find them in case you have to leave your house quickly."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "2cd4264c-5e06-4d6b-9e87-d0974c38bba2",
+    "title": "Tips for Large Animals",
+    "description": "Learn how to make an emergency plan for your pets and how to build a pet emergency kit. Make a Plan Build a Kit Prepare Pets for Travel Tips for Large Animals Stay Informed Associated Content Your pets are an important member of your family, so they need to be included in your family’s emergency plan. To prepare for the unexpected follow these tips with your pets in mind:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "If you have pets such as horses, goats or pigs on your property, be sure to prepare before a disaster.",
+      "Ensure all animals have some form of identification.",
+      "Evacuate animals earlier, whenever possible. Map out primary and secondary routes in advance.",
+      "Make available vehicles and trailers needed for transporting and supporting each type of animal. Also make available experienced handlers and drivers.",
+      "Ensure destinations have food, water, veterinary care and handling equipment.",
+      "If evacuation is not possible, animal owners must decide whether to move large animals to a barn or turn them loose outside."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "2a576bfd-d8e8-4bf4-ab79-9ae315702473",
+    "title": "Stay Informed",
+    "description": "Learn how to make an emergency plan for your pets and how to build a pet emergency kit. Make a Plan Build a Kit Prepare Pets for Travel Tips for Large Animals Stay Informed Associated Content Your pets are an important member of your family, so they need to be included in your family’s emergency plan. To prepare for the unexpected follow these tips with your pets in mind:",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Pay attention to wireless emergency alerts for local alerts and warnings sent by state and local public safety officials.",
+      "Listen to local officials when told to evacuate or shelter in place.",
+      "Always bring pets indoors at the first sign or warning of a storm or disaster."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "0365a087-4f44-41f9-945b-b5d1990b8f76",
+    "title": "Make an fire escape plan",
+    "description": "Creating and practicing a home fire escape plan is simple. Follow the steps below to make sure everyone in your home is prepared and knows what to do in case of a home fire.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Learn two ways out of every room in your home, in case one exit is blocked or dangerous to use. A second way out can include an escape ladder for rooms on an upper level.",
+      "Practice getting low and moving to your exits in case there is smoke.",
+      "Choose a safe meeting place a safe distance from your home.",
+      "Have a home fire drill at least twice a year."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "4ea53ce1-ed28-457a-b7fa-2f9340054954",
+    "title": "Children and Fire Safety",
+    "description": "Creating and practicing a home fire escape plan is simple. Follow the steps below to make sure everyone in your home is prepared and knows what to do in case of a home fire.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Have a plan for young children under six who cannot get outside by themselves. In your plan, talk about who will help each child get out safely.",
+      "Children should know what to do when they hear a smoke alarm and there is no adult around. Help them practice going to the outside meeting place.",
+      "Teach children to NEVER go back inside a burning building. Once they are out, stay out!",
+      "Teach your child to get low and crawl on the ground, where the air is less smoky.",
+      "Show a child how to use the back of their hand to check doors for heat before opening and to use a different way out if the door is hot.",
+      "If your child needs to use an escape ladder, show them where you keep it and practice how to use it."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "4ea53ce1-ed28-457a-b7fa-2f9340054954",
+    "title": "Conduct a Home Fire Drill",
+    "description": "Creating and practicing a home fire escape plan is simple. Follow the steps below to make sure everyone in your home is prepared and knows what to do in case of a home fire.",
+    "isCompleted": false,
+    "category": "supplies",
+    "disasterTypes": [
+      "Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"
+    ],
+    "steps": [
+      "Step 1: Know where to go. Review your safe meeting place. Explain to your kids that when the smoke alarm beeps, they need to get out of the house quickly and meet at that safety spot.",
+      "Step 2: Check your smoke alarms. Test your smoke alarms with your kids so they know the sound.",
+      "Step 3: Do the drill. Have kids head to their bedrooms and wait for the drill to begin. Assign adults to help young children. Put one adult in charge of sounding the smoke alarm and running the drill. Next, sound the smoke alarm, start the timer and have everyone book it to the safety spot. Once everyone gets to the safe meeting place stop the timer. If you all made it in under two minutes, you each get an imaginary gold medal. If not, give it another try. In a real fire, get to the safe meeting place, then call 9-1-1 and keep everyone close until firefighters arrive."
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1000&q=80"
+  }
+]

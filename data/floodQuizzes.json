@@ -1,0 +1,53 @@
+[
+  {
+    "id": "a6d18ed7-8133-4c0b-abe9-94829d8504f3",
+    "category": "supplies",
+    "question": "What are some actions to prepare for a Flood?",
+    "options": [
+      "Visit FEMA's Flood Map Service Center to know types of flood risk in your area. However, remember that flooding doesn’t follow lines on a map. Where it can rain it can flood. Sign up for your community’s warning system. The Emergency Alert System (EAS) and National Oceanic and Atmospheric Administration (NOAA) Weather Radio also provide emergency alerts. The National Risk Index is an easy-to-use, interactive tool that shows which communities are most at risk to natural hazards like flooding.",
+      "Ignore flood warnings",
+      "Purchase or renew a flood insurance policy. Homeowner’s insurance policies do not cover flooding. It typically takes up to 30 days for a policy to go into effect so the time to buy is well before a disaster. Get flood coverage under the National Flood Insurance Program (NFIP).",
+      "Assume that your area is not part of flood risk zone",
+      "Make a plan for your household, including your pets, so that you and your family know what to do, where to go, and what you will need to protect yourselves from flooding. Learn and practice evacuation routes, shelter plans, and flash flood response. Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area."
+    ],
+    "correctAnswer": [
+      "Visit FEMA's Flood Map Service Center to know types of flood risk in your area. However, remember that flooding doesn’t follow lines on a map. Where it can rain it can flood. Sign up for your community’s warning system. The Emergency Alert System (EAS) and National Oceanic and Atmospheric Administration (NOAA) Weather Radio also provide emergency alerts. The National Risk Index is an easy-to-use, interactive tool that shows which communities are most at risk to natural hazards like flooding.",
+      "Purchase or renew a flood insurance policy. Homeowner’s insurance policies do not cover flooding. It typically takes up to 30 days for a policy to go into effect so the time to buy is well before a disaster. Get flood coverage under the National Flood Insurance Program (NFIP).",
+      "Make a plan for your household, including your pets, so that you and your family know what to do, where to go, and what you will need to protect yourselves from flooding. Learn and practice evacuation routes, shelter plans, and flash flood response. Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area."
+    ]
+  },
+  {
+    "id": "b3af9ceb-8621-4a36-a68f-bceaf57bf3b5",
+    "category": "supplies",
+    "question": "What are some correct actions to take to stay safe during a Flood?",
+    "options": [
+      "Contact your healthcare provider If you are sick and need medical attention. Wait for further care instructions and shelter in place, if possible. If you are experiencing a medical emergency, call 9-1-1.",
+      "Swim to safety in the flood water",
+      "Start using electrical equipment to start removing water",
+      "Evacuate immediately, if told to evacuate. Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas.",
+      "Listen to EAS, NOAA Weather Radio or local alerting systems for current emergency information and instructions regarding flooding."
+    ],
+    "correctAnswer": [
+      "Evacuate immediately, if told to evacuate. Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas.",
+      "Contact your healthcare provider If you are sick and need medical attention. Wait for further care instructions and shelter in place, if possible. If you are experiencing a medical emergency, call 9-1-1.",
+      "Listen to EAS, NOAA Weather Radio or local alerting systems for current emergency information and instructions regarding flooding."
+    ]
+  },
+  {
+    "id": "08797f54-a2f9-44a1-aed1-67a1761c605a",
+    "category": "supplies",
+    "question": "What are some correct actions to take to following a Flood?",
+    "options": [
+      "Immediately return back to home",
+      "Start using utilies for cleanup purposes",
+      "Wear heavy work gloves, protective clothing and boots during clean up and use appropriate face coverings or masks if cleaning mold or other debris.",
+      "Avoid driving except in emergencies.",
+      "Pay attention to authorities for information and instructions. Return home only when authorities say it is safe."
+    ],
+    "correctAnswer": [
+      "Pay attention to authorities for information and instructions. Return home only when authorities say it is safe.",
+      "Avoid driving except in emergencies.",
+      "Wear heavy work gloves, protective clothing and boots during clean up and use appropriate face coverings or masks if cleaning mold or other debris."
+    ]
+  }
+]

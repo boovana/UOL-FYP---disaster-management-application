@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cc1a6380-e483-4ce3-876e-8c81b27817b6",
+    "category": "supplies",
+    "question": "What are some correct actions to take to prepare for wildfires?",
+    "options": [
+      "Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which requires no-sign up.",
+      "Pay attention to air quality alerts.",
+      "Wait for wildfire to happen and start preparing"
+    ],
+    "correctAnswer": [
+      "Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which requires no-sign up.",
+      "Pay attention to air quality alerts."
+    ]
+  },
+  {
+    "id": "b65b2cfb-8ae9-47b9-8db0-2cf646fb28cf",
+    "category": "supplies",
+    "question": "What are some correct actions to stay safe during a wildifre",
+    "options": [
+      "Wait for wildfire to pass",
+      "Wait for wildfire to happen and start preparing",
+      "Pay attention to emergency alerts and notifications for information and instructions."
+    ],
+    "correctAnswer": [
+      "Pay attention to emergency alerts and notifications for information and instructions."
+    ]
+  },
+  {
+    "id": "eabfe4f9-c21d-492b-9b73-ce461bcc5485",
+    "category": "supplies",
+    "question": "What are some correct actions to take after a Wildfire?",
+    "options": [
+      "Post teh situation on social media",
+      "Avoid hot ash, charred trees, smoldering debris and live embers. The ground may contain heat pockets that can burn you or spark another fire.",
+      "Return home immediately",
+      "When cleaning, wear protective clothing – including a long-sleeved shirt, long pants, work gloves and sturdy thick-soled shoes – during clean-up efforts."
+    ],
+    "correctAnswer": [
+      "Avoid hot ash, charred trees, smoldering debris and live embers. The ground may contain heat pockets that can burn you or spark another fire.",
+      "When cleaning, wear protective clothing – including a long-sleeved shirt, long pants, work gloves and sturdy thick-soled shoes – during clean-up efforts."
+    ]
+  }
+]

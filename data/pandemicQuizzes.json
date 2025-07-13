@@ -1,0 +1,53 @@
+[
+  {
+    "id": "b2e660bc-ca1f-499d-995f-fe9fb3b363db",
+    "category": "supplies",
+    "question": "What are some correct actions to take to prepare yourself for a Pandemic?",
+    "options": [
+      "Learn how diseases spread to help protect yourself and others. Viruses can be spread from person to person, from a non-living object to a person and by people who are infected but don’t have any symptoms.",
+      "Prepare for the possibility of schools, workplaces and community centers being closed. Investigate and prepare for virtual coordination for school, work (telework) and social activities.",
+      "Gather supplies in case you need to stay home for several days or weeks. Supplies may include cleaning supplies, non-perishable foods, prescriptions and bottled water. Buy supplies slowly to ensure that everyone has the opportunity to buy what they need.",
+      "Go out and get daily supplies",
+      "Wait for pandemic to happen and start preparing"
+    ],
+    "correctAnswer": [
+      "Learn how diseases spread to help protect yourself and others. Viruses can be spread from person to person, from a non-living object to a person and by people who are infected but don’t have any symptoms.",
+      "Prepare for the possibility of schools, workplaces and community centers being closed. Investigate and prepare for virtual coordination for school, work (telework) and social activities.",
+      "Gather supplies in case you need to stay home for several days or weeks. Supplies may include cleaning supplies, non-perishable foods, prescriptions and bottled water. Buy supplies slowly to ensure that everyone has the opportunity to buy what they need."
+    ]
+  },
+  {
+    "id": "7b072901-911e-43b2-b1ab-9f969de74f87",
+    "category": "supplies",
+    "question": "What are some correct actions to stay safe during a Pandemic?",
+    "options": [
+      "Take normal medicines and stay home",
+      "If you believe you’ve been exposed to the disease, contact your doctor, follow the quarantine instructions from medical providers and monitor your symptoms. If you’re experiencing a medical emergency, call 9-1-1 and shelter in place with a mask, if possible, until help arrives.",
+      "Take actions to prevent the spread of disease. Cover coughs and sneezes. Wear a mask in public. Stay home when sick (except to get medical care). Disinfect surfaces. Wash hands with soap and water for at least 20 seconds. If soap and water are not available, use a hand sanitizer that contains at least 60 percent alcohol. Stay six feet away from people who are not part of your household.",
+      "Get vaccinated. ",
+      "Always be in close contact with members of public"
+    ],
+    "correctAnswer": [
+      "Get vaccinated",
+      "Take actions to prevent the spread of disease. Cover coughs and sneezes. Wear a mask in public. Stay home when sick (except to get medical care). Disinfect surfaces. Wash hands with soap and water for at least 20 seconds. If soap and water are not available, use a hand sanitizer that contains at least 60 percent alcohol. Stay six feet away from people who are not part of your household.",
+      "If you believe you’ve been exposed to the disease, contact your doctor, follow the quarantine instructions from medical providers and monitor your symptoms. If you’re experiencing a medical emergency, call 9-1-1 and shelter in place with a mask, if possible, until help arrives."
+    ]
+  },
+  {
+    "id": "998f9be1-97c1-49b8-862c-32eddacfb483",
+    "category": "supplies",
+    "question": "What are some correct actions to take to stay safe After a Pandemic?",
+    "options": [
+      "Immediately stop wearing masks",
+      "Covering coughs and sneezes with a tissue.",
+      "Following the guidance of your health care provider.",
+      "Staying home when you are sick (except to get medical care).",
+      "Immediately have large gatherings to catch up with peers"
+    ],
+    "correctAnswer": [
+      "Staying home when you are sick (except to get medical care).",
+      "Following the guidance of your health care provider.",
+      "Covering coughs and sneezes with a tissue."
+    ]
+  }
+]

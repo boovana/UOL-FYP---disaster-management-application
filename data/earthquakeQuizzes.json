@@ -1,0 +1,53 @@
+[
+  {
+    "id": "a0ec91e6-4869-4e08-bd5c-021624529058",
+    "category": "supplies",
+    "question": "What are some correct actions to take before an Earthquake?",
+    "options": [
+      "Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals.",
+      "Make an Emergency Plan: Create a family emergency communications plan that has an out-of-state contact. Plan where to meet if you get separated. Make a supply kit that includes enough food and water for several days, a flashlight, a fire extinguisher and a whistle.Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals.Remember that not everyone can afford to respond by stocking up on necessities. For those who can afford it, make essential purchases and slowly build up supplies.",
+      "Nothing because the chances of an earthquake occuring is slim",
+      "Practice how to protect yourself during earthquakes, with family and coworkers.",
+      "Wait for earthquake to happen and start preparing"
+    ],
+    "correctAnswer": [
+      "Practice how to protect yourself during earthquakes, with family and coworkers.",
+      "Make an Emergency Plan: Create a family emergency communications plan that has an out-of-state contact. Plan where to meet if you get separated. Make a supply kit that includes enough food and water for several days, a flashlight, a fire extinguisher and a whistle.Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals.Remember that not everyone can afford to respond by stocking up on necessities. For those who can afford it, make essential purchases and slowly build up supplies.",
+      "Being prepared allows you to avoid unnecessary excursions and to address minor medical issues at home, alleviating the burden on urgent care centers and hospitals."
+    ]
+  },
+  {
+    "id": "0ea88f52-83ba-4413-8b0d-cd12df42af51",
+    "category": "supplies",
+    "question": "What are some correct actions to take during an Earthquake?",
+    "options": [
+      "Wait for earthquake to pass",
+      "Run outside",
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ],
+    "correctAnswer": [
+      "If you are inside, stay and do not run outside and avoid doorways.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are in a car, pull over and stop. Set your parking brake."
+    ]
+  },
+  {
+    "id": "9d6e5995-94bb-4cdf-9fc7-15ded88d8eeb",
+    "category": "supplies",
+    "question": "What are some correct actions to take after an Earthquake?",
+    "options": [
+      "If you are trapped, send a text or bang on a pipe or wall. Cover your mouth with your shirt for protection and instead of shouting, use a whistle.",
+      "Immediately evacuate using a car ",
+      "Expect aftershocks to follow the main shock of an earthquake. Be ready to Drop, Cover, and Hold On if you feel an aftershock.",
+      "If you are in a damaged building, go outside and quickly move away from the building. Do not enter damaged buildings.",
+      "If you are trapped without light, use matches or lighters as light source"
+    ],
+    "correctAnswer": [
+      "Expect aftershocks to follow the main shock of an earthquake. Be ready to Drop, Cover, and Hold On if you feel an aftershock.",
+      "If you are in a damaged building, go outside and quickly move away from the building. Do not enter damaged buildings.",
+      "If you are trapped, send a text or bang on a pipe or wall. Cover your mouth with your shirt for protection and instead of shouting, use a whistle."
+    ]
+  }
+]
