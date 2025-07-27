@@ -1,15 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  Alert,FlatList, Dimensions
-} from "react-native";
+import {View,Text, TouchableOpacity,Image,ScrollView,StyleSheet,SafeAreaView, Button, Alert,FlatList, Dimensions} from "react-native";
+import { auth, db } from './firebaseConfig';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+
 import ProgressBar from 'react-native-progress/Bar';
 import { useRoute, useNavigation,useFocusEffect } from '@react-navigation/native';
 import { SwipeListView } from 'react-native-swipe-list-view';
@@ -22,6 +15,7 @@ import tornadoQuizzes from './data/tornadoQuizzes.json'
 import pandemicQuizzes from './data/pandemicQuizzes.json'
 import wildfireQuizzes from './data/wildfireQuizzes.json'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { NativeModules } from 'react-native';
 
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -58,7 +52,6 @@ const Home = ({ navigation }) => {
   const [finalBadgeAwarded, setFinalBadgeAwarded] = useState(false);
   const [finalChallengeCompleted, setFinalChallengeCompleted] = useState(false);
 
-
   const [showModal, setShowModal] = useState(false);
 
   const [eligibility, setEligibility] = useState({
@@ -66,143 +59,312 @@ const Home = ({ navigation }) => {
     perfectScore: false,
     AllPerfectScores:false
   });
+  // console.log('Loaded and ahome page!')
 
-
+  
+  //get the current user ID
+  const userID = auth?.currentUser?.uid;
 
   // get users progress from their learning materials
-  useEffect(() => {
-    const loadProgress = async () => {
+  // useEffect(() => {
+  //   if (!auth.currentUser){
+  //     return
+  //   } 
+  //   const userID = auth.currentUser.uid;
+  //   const loadProgress = async () => {
+  //     try {
+  //       // save the progress to each user
+  //       const saved = await AsyncStorage.getItem(`${userID}_userProgress`);
+  //       if (saved) {
+  //         const parsedProgress = JSON.parse(saved);
+  //         // console.log('loaded user progress:', saved.length)
+  //         // setProgressValue(parsedProgress);
+  //         const totalProgress = Object.values(parsedProgress).reduce((sum, val) => {
+  //           return typeof val === 'number' && !isNaN(val) ? sum + val : sum;
+  //         }, 0);
+
+  //         const normalizedProgress = totalProgress / Object.keys(parsedProgress).length;
+
+  //         setProgressValue(normalizedProgress || 0);
+  //       }
+  //     } 
+  //     catch (e) {
+  //       console.error('Failed to load progress:', e);
+  //     }
+  //   };
+  //   loadProgress();
+  // }, [auth.currentUser]);
+
+  useEffect(()=>{
+    const loadProgress =async () =>{
       try {
-        const saved = await AsyncStorage.getItem('userProgress');
-        if (saved) {
-          setProgressValue(JSON.parse(saved));
+        const userID = auth.currentUser.uid;
+        
+        const docRef = doc(db, 'userProgress', userID);
+        
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const progressData = data.progress || {}; 
+          
+          const totalProgress = Object.values(progressData).reduce((sum, val) => {
+            return typeof val === 'number' && !isNaN(val) ? sum + val : sum;
+          }, 0);
+
+          const normalizedProgress =
+            Object.keys(progressData).length > 0
+              ? totalProgress / Object.keys(progressData).length
+              : 0;
+
+          setProgressValue(normalizedProgress);
+          console.log('✅ Loaded progress from Firestore:', normalizedProgress);
+        } 
+        else {
+          console.log('No progress found in Firestore for user.');
+          setProgressValue(0);
         }
       } 
-      catch (e) {
-        console.error('Failed to load progress:', e);
+      catch (error) {
+        console.error('❌ Failed to load progress from Firestore:', e);
+        setProgressValue(0);
       }
-    };
-    loadProgress();
-  }, []);
-  // load alerts from the alerts page
+    }
+    loadProgress()
+  },[auth.currentUser])
+
   useFocusEffect(
-    useCallback(() => {
-      const loadAlerts = async () => {
+    useCallback(() =>{
+      const loadAlerts = async () =>{
         try {
-          const json = await AsyncStorage.getItem('alerts');
-          if (json) {
-            setStoredAlerts(JSON.parse(json));
+          console.log('gettgin alerts from alerts page')
+          const docRef = doc(db, 'alerts', userID);
+          const docSnap = await getDoc(docRef);
+          
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            setStoredAlerts(data.data || []);
+            // console.log("storedalerts:", storedAlerts)
+            // console.log('✅ Loaded alerts from Firestore');
           } else {
+            // console.log('❌ No alert document found for user');
             setStoredAlerts([]);
           }
-        } catch (e) {
-          console.error('Failed to load alerts:', e);
-          setStoredAlerts([]);
-        }
-      };
-      loadAlerts();
-    }, [])
-  );
+          } catch (error) {
+            console.error('🔥 Error loading alerts from Firestore:', error);
+            setStoredAlerts([]);
+          }
+      }
+      loadAlerts()
+    }, [userID])
+  )
+  // // load alerts from the alerts page
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadAlerts = async () => {
+  //       try {
+  //         const json = await AsyncStorage.getItem(`${userID}_alerts`);
+  //         if (json) {
+  //           // console.log('loaded alerts')
+  //           setStoredAlerts(JSON.parse(json));
+  //         } 
+  //         else {
+  //           setStoredAlerts([]);
+  //         }
+  //       } catch (e) {
+  //         console.error('Failed to load alerts:', e);
+  //         setStoredAlerts([]);
+  //       }
+  //     };
+  //     loadAlerts();
+  //   }, [])
+  // );
 
-  //load user badges 
+  // //load user badges 
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadBadge = async () => {
+  //       try {
+  //         const allBadges = await AsyncStorage.getItem(`${userID}_userBadge`);
+  //         if (allBadges){
+  //           console.log('loaded user badges:', allBadges)
+  //           const parsed = JSON.parse(allBadges);
+  //           setBadges(parsed);
+  //         }
+  //         else{
+  //           // console.log('no user badges')
+  //         }
+  //       } 
+  //       catch (err) {
+  //         console.error("Failed to load badge:", err);
+  //       }
+  //     };
+  //     loadBadge();
+  //   }, [])
+  // );
   useFocusEffect(
     useCallback(() => {
       const loadBadge = async () => {
         try {
-          const allBadges = await AsyncStorage.getItem('userBadge');
-          if (allBadges){
-            const parsed = JSON.parse(allBadges);
-            setBadges(parsed);
-            console.log("Current badges:", badges);
+          const docRef = doc(db, 'userBadges', userID);
+          const docSnap = await getDoc(docRef);
 
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            console.log('✅ Loaded user badges from Firestore:', data);
+            setBadges(data);
+          } 
+          else {
+            console.log('No badge data found in Firestore.');
+            setBadges({});
           }
-        } 
-        catch (err) {
-          console.error("Failed to load badge:", err);
+        } catch (error) {
+          console.error("❌ Failed to load badge from Firestore:", error);
+          setBadges({});
         }
       };
+
       loadBadge();
     }, [])
   );
 
+  // useEffect(() => {
+  //   const loadChallengeProgress = async () => {
+  //     try {
+  //       const isDisasterTaskCompleted = await AsyncStorage.getItem(`${userID}_disasterCompletion`);
+  //       const scoresPerDisaster = await AsyncStorage.getItem(`${userID}_quizScores`);
+
+  //       const milestoneChallenges = ['Quarterly Challenge','Halfway Challenge','Tri-Quarter Challenge','Final Challenge'];
+
+  //       const completions = isDisasterTaskCompleted ? JSON.parse(isDisasterTaskCompleted) : {};
+  //       const scores = scoresPerDisaster ? JSON.parse(scoresPerDisaster) : {};
+
+  //       const completedDisasters = Object.keys(completions).filter(key => completions[key] && !milestoneChallenges.includes(key));
+  //       const numCompleted = completedDisasters.length;
+
+  //       const perfectScoreDisasters = completedDisasters.filter(
+  //         (disaster) => parseFloat(scores[disaster]) === 100
+  //       )
+  //       // total number of disasters with perfect score
+  //       const numPerfectScores = perfectScoreDisasters.length;
+
+  //       setCompletedDisasters(completedDisasters);
+
+  //       // show badge placeholders based on completion count
+  //       // if completed disaster is >= 2, show the badge but unable to attmept the quiz
+  //       if (numCompleted >= 2) {
+  //         setQuarterlyBadgeAwarded(true); 
+  //         await AsyncStorage.setItem(`${userID}_quarterlyBadgeAwarded`, JSON.stringify(true));
+  //       }
+  //       else{
+  //         setQuarterlyBadgeAwarded(false); 
+  //         await AsyncStorage.setItem(`${userID}_quarterlyBadgeAwarded`, JSON.stringify(false));
+  //       }
+  //        // if completed disaster is >= 4, show the midway badge but unable to attmept the quiz
+  //       if (numCompleted >= 4) {
+  //         setHalfWayBadgeAwarded(true); 
+  //         await AsyncStorage.setItem(`${userID}_halfWayBadgeAwarded`, JSON.stringify(true));
+  //       }
+  //       else{
+  //         setHalfWayBadgeAwarded(false)
+  //         await AsyncStorage.setItem(`${userID}_halfWayBadgeAwarded`, JSON.stringify(false));
+  //       }
+  //       // if completed disaster is >= 6, show the 3/4 badge but unable to attmept the quiz
+  //       if (numCompleted >= 6) {
+  //         setThreeQuarterBadgeAwarded(true); 
+  //         await AsyncStorage.setItem(`${userID}_threeQuarterBadgeAwarded`, JSON.stringify(true));
+  //       }
+  //       else{
+  //         setThreeQuarterBadgeAwarded(false)
+  //         await AsyncStorage.setItem(`${userID}_threeQuarterBadgeAwarded`, JSON.stringify(false));
+  //       }
+
+  //       // if completed disaster is >= 8, show the 3/4 badge but unable to attmept the quiz
+  //       if (numCompleted >= 8) {
+  //         setFinalBadgeAwarded(true); 
+  //         await AsyncStorage.setItem(`${userID}_finalBadgeAwarded`, JSON.stringify(true));
+  //       }
+  //       else{
+  //         setFinalBadgeAwarded(false)
+  //         await AsyncStorage.setItem(`${userID}_finalBadgeAwarded`, JSON.stringify(false));
+  //       }
+
+  //       // if completed disaster is >= 1 and has a perfectn score, show the badge and can attempt quiz
+  //       if (numPerfectScores >= 2) {
+  //         setQuarterlyQuiz(true); 
+  //       }
+  //       // if completed disaster is >= 2 and has a perfect score, show the midway badge and can attempt quiz
+  //       if (numPerfectScores >= 4) {
+  //         setHalfWayQuiz(true); 
+  //       }
+  //       // if completed disaster is >= 3 and has a perfect score, show the 3/4 badge and can attempt quiz
+  //       if (numPerfectScores >= 6) {
+  //         setThreeQuarterQuiz(true); 
+  //       }
+
+  //       // if completed disaster is >= 3 and has a perfect score, show the final badge and can attempt quiz
+  //       if (numPerfectScores >= 8) {
+  //         setFinalQuiz(true); 
+  //       }
+
+  //       setEligibility({
+  //         completedDisasters,
+  //         perfectScore: numPerfectScores === numCompleted && numCompleted > 0,
+  //         AllPerfectScores: perfectScoreDisasters
+  //       });
+
+  //     } catch (error) {
+  //       console.error('Error loading challenge progress:', error);
+  //     }
+  //   };
+
+  //   loadChallengeProgress();
+  // }, []);
+    
+  //load progress of challenges 
   useEffect(() => {
     const loadChallengeProgress = async () => {
       try {
-        const isDisasterTaskCompleted = await AsyncStorage.getItem('disasterCompletion');
-        const scoresPerDisaster = await AsyncStorage.getItem('quizScores');
 
+        const docRef = doc(db, 'userProgress', userID);
+        const docSnap = await getDoc(docRef);
+
+        if (!docSnap.exists()) {
+          console.warn('No user progress found.');
+          return;
+        }
+
+        const data = docSnap.data();
+        const completions = data.disasterCompletion || {};
+        const scores = data.quizScores || {};
+        // name of the challenges
         const milestoneChallenges = ['Quarterly Challenge','Halfway Challenge','Tri-Quarter Challenge','Final Challenge'];
-
-        const completions = isDisasterTaskCompleted ? JSON.parse(isDisasterTaskCompleted) : {};
-        const scores = scoresPerDisaster ? JSON.parse(scoresPerDisaster) : {};
-
-        const completedDisasters = Object.keys(completions).filter(key => completions[key] && !milestoneChallenges.includes(key));
+        // remove the challenged from the completed disaster categories
+        const completedDisasters = Object.keys(completions).filter(
+          key => completions[key] && !milestoneChallenges.includes(key)
+        );
+        // num of disaster categories completed
         const numCompleted = completedDisasters.length;
-
+        console.log(numCompleted)
+        // num of categories with perfect score
         const perfectScoreDisasters = completedDisasters.filter(
-          (disaster) => parseFloat(scores[disaster]) === 100
-        )
-        // total number of disasters with perfect score
+          disaster => parseFloat(scores[disaster]) === 100
+        );
         const numPerfectScores = perfectScoreDisasters.length;
-
+        console.log('numCompleted:', numCompleted)
+        console.log('numPerfectScores:', numPerfectScores)
         setCompletedDisasters(completedDisasters);
 
-        // show badge placeholders based on completion count
-        // if completed disaster is >= 2, show the badge but unable to attmept the quiz
-        if (numCompleted >= 2) {
-          setQuarterlyBadgeAwarded(true); 
-          await AsyncStorage.setItem('quarterlyBadgeAwarded', JSON.stringify(true));
-        }
-        else{
-          setQuarterlyBadgeAwarded(false); 
-          await AsyncStorage.setItem('quarterlyBadgeAwarded', JSON.stringify(false));
-        }
-         // if completed disaster is >= 4, show the midway badge but unable to attmept the quiz
-        if (numCompleted >= 4) {
-          setHalfWayBadgeAwarded(true); 
-          await AsyncStorage.setItem('halfWayBadgeAwarded', JSON.stringify(true));
-        }
-        else{
-          setHalfWayBadgeAwarded(false)
-          await AsyncStorage.setItem('halfWayBadgeAwarded', JSON.stringify(false));
-        }
-        // if completed disaster is >= 6, show the 3/4 badge but unable to attmept the quiz
-        if (numCompleted >= 6) {
-          setThreeQuarterBadgeAwarded(true); 
-          await AsyncStorage.setItem('threeQuarterBadgeAwarded', JSON.stringify(true));
-        }
-        else{
-          setThreeQuarterBadgeAwarded(false)
-          await AsyncStorage.setItem('threeQuarterBadgeAwarded', JSON.stringify(false));
-        }
+        // checking eligibility for the milestone challenges
+        setQuarterlyBadgeAwarded(numCompleted >= 2);
+        setHalfWayBadgeAwarded(numCompleted >= 4);
+        setThreeQuarterBadgeAwarded(numCompleted >= 6);
+        setFinalBadgeAwarded(numCompleted >= 8);
 
-        // if completed disaster is >= 8, show the 3/4 badge but unable to attmept the quiz
-        if (numCompleted >= 8) {
-          setFinalBadgeAwarded(true); 
-          await AsyncStorage.setItem('finalBadgeAwarded', JSON.stringify(true));
-        }
-        else{
-          setFinalBadgeAwarded(false)
-          await AsyncStorage.setItem('finalBadgeAwarded', JSON.stringify(false));
-        }
-
-        // if completed disaster is >= 1 and has a perfectn score, show the badge and can attempt quiz
-        if (numPerfectScores >= 2) {
-          setQuarterlyQuiz(true); 
-        }
-        // if completed disaster is >= 2 and has a perfect score, show the midway badge and can attempt quiz
-        if (numPerfectScores >= 4) {
-          setHalfWayQuiz(true); 
-        }
-        // if completed disaster is >= 3 and has a perfect score, show the 3/4 badge and can attempt quiz
-        if (numPerfectScores >= 6) {
-          setThreeQuarterQuiz(true); 
-        }
-
-         // if completed disaster is >= 3 and has a perfect score, show the final badge and can attempt quiz
-        if (numPerfectScores >= 8) {
-          setFinalQuiz(true); 
-        }
+        setQuarterlyQuiz(numPerfectScores >= 2);
+        setHalfWayQuiz(numPerfectScores >= 4);
+        setThreeQuarterQuiz(numPerfectScores >= 6);
+        setFinalQuiz(numPerfectScores >= 8);
 
         setEligibility({
           completedDisasters,
@@ -211,13 +373,13 @@ const Home = ({ navigation }) => {
         });
 
       } catch (error) {
-        console.error('Error loading challenge progress:', error);
+        console.error('Error loading challenge progress from Firestore:', error);
       }
     };
 
     loadChallengeProgress();
-  }, []);
-    
+  }, [userID]);
+
   // extract the completed disasters
   const getCompletedDisasters = (completionDisaster) =>{
     return Object.entries(completedDisasters).filter(([_, completed]) => completed).map(([disaster]) => disaster);
@@ -248,71 +410,121 @@ const Home = ({ navigation }) => {
     });
 
     return shuffleArray(combinedQuestions)
+
+    
   };
-  // quarterly badge awarded to user
+
   useFocusEffect(
     useCallback(() => {
-      const loadQuarterlyBadge = async () => {
+      const loadBadges = async () => {
         try {
-          const completedAndAwardedQuarterlyBadge = await AsyncStorage.getItem('quarterlyChallengeCompleted');
-          setQuarterlyChallengeCompleted(JSON.parse(completedAndAwardedQuarterlyBadge) === true);
-          console.log("Loaded quarterlyBadgeAwarded from AsyncStorage:", completedAndAwardedQuarterlyBadge);
+          const docRef = doc(db, 'userChallengeCompletion', userID);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) 
+          {
+            const data = docSnap.data();
+            console.log(data)
+            if (data.quarterlyChallengeCompleted === true) {
+              setQuarterlyChallengeCompleted(true);
+              // setQuarterlyBadgeAwarded(true)
+            }
+
+            if (data.halfwayChallengeCompleted === true) {
+              setHalfWayChallengeCompleted(true);
+            }
+
+            if (data.threeQuarterChallengeCompleted === true) {
+              setThreeQuarterChallengeCompleted(true);
+            }
+
+            if (data.finalChallengeCompleted === true) {
+              setFinalChallengeCompleted(true);
+            }
+          } 
+          else {
+            console.warn('No badge document found for user');
+          }
         } 
-        catch (err) {
-          console.error("Failed to load quarterly badge:", err);
+        catch (error) {
+          console.error('❌ Failed to load challenge badges:', error);
         }
       };
-      loadQuarterlyBadge();
-    }, [])
+
+      if (userID) {
+        loadBadges();
+      }
+    }, [userID])
   );
+  // quarterly badge awarded to user
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadQuarterlyBadge = async () => {
+  //       // get the quarterly challenge badge from the storage
+  //       try {
+  //         const completedAndAwardedQuarterlyBadge = await AsyncStorage.getItem(`${userID}_quarterlyChallengeCompleted`);
+  //         setQuarterlyChallengeCompleted(JSON.parse(completedAndAwardedQuarterlyBadge) === true);
+  //         // console.log("Loaded 25% milestone Badge :", completedAndAwardedQuarterlyBadge);
+  //       } 
+  //       // else show that it did not load the badge
+  //       catch (err) {
+  //         console.error("Failed to load quarterly badge:", err);
+  //       }
+  //     };
+  //     loadQuarterlyBadge();
+  //   }, [])
+  // );
   
   // half way progress badge for the user
-  useFocusEffect(
-    useCallback(() => {
-      const loadMidBadge = async () => {
-        try {
-          const completedAndAwardedHalfWayBadge = await AsyncStorage.getItem('halfWayChallengeCompleted');
-          setHalfWayChallengeCompleted(JSON.parse(completedAndAwardedHalfWayBadge) === true);
-        } 
-        catch (err) {
-          console.error("Failed to load mid badge:", err);
-        }
-      };
-      loadMidBadge();
-    }, [])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadMidBadge = async () => {
+  //       try {
+  //         const completedAndAwardedHalfWayBadge = await AsyncStorage.getItem(`${userID}_halfWayChallengeCompleted`);
+  //         setHalfWayChallengeCompleted(JSON.parse(completedAndAwardedHalfWayBadge) === true);
+  //         // console.log("Loaded 50% milestone Badge :", completedAndAwardedHalfWayBadge);
+  //       } 
+  //       catch (err) {
+  //         console.error("Failed to load mid badge:", err);
+  //       }
+  //     };
+  //     loadMidBadge();
+  //   }, [])
+  // );
 
   // load 3/4 progress badge
-  useFocusEffect(
-    useCallback(() => {
-      const loadThreeQuarterBadge = async () => {
-        try {
-          const completedAndAwardedThreeQuarterBadge = await AsyncStorage.getItem('threeQuarterChallengeCompleted');
-          setThreeQuarterChallengeCompleted(JSON.parse(completedAndAwardedThreeQuarterBadge) === true);
-        } 
-        catch (err) {
-          console.error("Failed to load mid badge:", err);
-        }
-      };
-      loadThreeQuarterBadge();
-    }, [])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadThreeQuarterBadge = async () => {
+  //       try {
+  //         const completedAndAwardedThreeQuarterBadge = await AsyncStorage.getItem(`${userID}_threeQuarterChallengeCompleted`);
+  //         setThreeQuarterChallengeCompleted(JSON.parse(completedAndAwardedThreeQuarterBadge) === true);
+  //         // console.log("Loaded 75%% milestone Badge :", completedAndAwardedThreeQuarterBadge);
+  //       } 
+  //       catch (err) {
+  //         console.error("Failed to load 3/4 badge:", err);
+  //       }
+  //     };
+  //     loadThreeQuarterBadge();
+  //   }, [])
+  // );
 
   //load final progress badge
-  useFocusEffect(
-    useCallback(() => {
-      const loadFinalBadge = async () => {
-        try {
-          const completedAndAwardedFinalBadge = await AsyncStorage.getItem('finalChallengeCompleted');
-          setFinalChallengeCompleted(JSON.parse(completedAndAwardedFinalBadge) === true);
-        } 
-        catch (err) {
-          console.error("Failed to load mid badge:", err);
-        }
-      };
-      loadFinalBadge();
-    }, [])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const loadFinalBadge = async () => {
+  //       try {
+  //         const completedAndAwardedFinalBadge = await AsyncStorage.getItem(`${userID}_finalChallengeCompleted`);
+  //         setFinalChallengeCompleted(JSON.parse(completedAndAwardedFinalBadge) === true);
+  //         // console.log("Loaded 100% milestone Badge :", completedAndAwardedFinalBadge);
+  //       } 
+  //       catch (err) {
+  //         console.error("Failed to load final badge:", err);
+  //       }
+  //     };
+  //     loadFinalBadge();
+  //   }, [])
+  // );
 
   
   // set the color of the alert
@@ -360,22 +572,26 @@ const Home = ({ navigation }) => {
   );
   // remove each notification when swiped to the left
   const deleteEachNotif = (itemToRemove) => {
+    console.log(`deleted alert - ${alert.headline}`)
     const updatedAlerts = storedAlerts.filter(alert =>
       alert.headline !== itemToRemove.headline || alert.effective !== itemToRemove.effective
     );
+    
     setStoredAlerts(updatedAlerts);
   };
   // remove all notifications
   const clearAllNotifs =async()=>{
     setStoredAlerts([]);
+    console.log('Clear all button clicked - removed all alerts from home page')
     await AsyncStorage.removeItem('alerts');
+
   }
 
   return (
     <View style={styles.container}>
       <SwipeListView
         data={storedAlerts}
-        keyExtractor={(item, index) => item.id || item.headline || item.event || index.toString()}
+        keyExtractor={(item, index) =>`${item.headline}-${item.event}-${item.effective}-${item.expires || index}`}
         renderItem={renderAlert}
         renderHiddenItem={renderHiddenItem}
         rightOpenValue={-75}
@@ -388,14 +604,14 @@ const Home = ({ navigation }) => {
         }
         ListHeaderComponent={
           <>
-            <Text style={styles.welcomeTitle}>Welcome back!</Text>
+            <Text style={styles.welcomeTitle}>Hello {auth.currentUser.displayName}!</Text>
             {/**progress bar */}
             <Text style={styles.subTitle}>Your preparedness</Text>
             <View style={styles.progressContainer}>
               <Text style={{fontSize:13, fontFamily:'times new roman', marginBottom:10, fontStyle:'italic', color:'#54626F',}}>Progress towards being disaster ready</Text>
               <ProgressBar progress={progressValue || 0} width={screenWidth * 0.9} height={25} color="#008080" borderColor="#D1D0CE" borderWidth={2} style={{alignSelf:'center', marginTop:10}}/>
               {/** continue learning button to nav to prep tasks */}
-              <TouchableOpacity style={styles.continueBtn} onPress={() => navigation.navigate('disasterPrepTasks')}>
+              <TouchableOpacity style={styles.continueBtn} onPress={() => {navigation.navigate('disasterPrepTasks'), console.log('continue learning button clicked!')}}>
                 <Text style={{padding:5, fontFamily:'times new roman', fontSize:12,color:'#3B444B',}}>Continue learning!</Text>
               </TouchableOpacity>
             </View>
@@ -403,6 +619,14 @@ const Home = ({ navigation }) => {
             <Text style={styles.subTitle}> Your achievements</Text>
             <View style={styles.badgeContainer}>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', padding: 15 }}>
+                {badges &&
+                  Object.entries(badges).filter(([disaster, _]) =>
+                    !['Halfway Challenge', 'Quarterly Challenge', 'Tri-Quarter Challenge', 'Final Challenge'].includes(disaster)
+                  ).length === 0 && (
+                    <Text style={{ fontFamily: 'times new roman', fontSize: 13, color: 'gray' }}>
+                      Complete disaster tasks and quizzes to earn badges!
+                    </Text>
+                )}
                 {badges && Object.keys(badges).length > 0 &&
                   Object.entries(badges)
                     .filter(([disaster, _]) => disaster !== 'Halfway Challenge' && disaster !== 'Quarterly Challenge' && disaster !== 'Tri-Quarter Challenge' && disaster !== 'Final Challenge' )
@@ -428,6 +652,7 @@ const Home = ({ navigation }) => {
                   <TouchableOpacity
                     onPress={() => {
                       if(quarterlyQuiz){
+                        console.log('attempting 25% milestone quiz!')
                         const mergedQuiz = generateProgressQuiz(eligibility.AllPerfectScores);
                         navigation.navigate('quiz', {
                           quizzes: mergedQuiz,
@@ -436,6 +661,7 @@ const Home = ({ navigation }) => {
                         });
                       }
                       else {
+                        console.log('Perfect scores in the completed disaster categories were not obtained!')
                         setShowModal(true);
                       }
                     }}
@@ -557,11 +783,15 @@ const Home = ({ navigation }) => {
 
             {showModal && (
               <View style={styles.modelContainer}>
-                <View style={styles.innerModelContainer}>
+                
+                <View style={styles.innerModelContainer}>      
+                  <View style ={styles.challengeHeader}>
+                    <Text style={{color:'white', fontFamily:'times new roman', fontSize:16}}> ~ Progress Challenge ~</Text>
+                  </View>           
                   <View style={{flexDirection:'row', padding:15, justifyContent:'space-between'}}>
                     <AntDesign
                       style={styles.icon}
-                      color="gold"
+                      color="orange"
                       name="star"
                       size={30}
                     />
@@ -572,7 +802,8 @@ const Home = ({ navigation }) => {
                   
                   <TouchableOpacity
                     style={{
-                      backgroundColor: '#3d6dc7',
+                      backgroundColor:'#3488e2ff',
+                      // backgroundColor: '#3d6dc7',
                       paddingVertical: 10,
                       paddingHorizontal: 20,
                       borderRadius: 5
@@ -719,11 +950,31 @@ const styles = StyleSheet.create({
   innerModelContainer:{
     width: '80%',
     padding: 20,
-    backgroundColor: '#C4C3D0',
+    backgroundColor: '#e9e5f3ff',
     borderRadius: 10,
     elevation: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    borderWidth:1,
+    borderColor:'gold'
+    // height:'50%'
   },
+  challengeHeader:{
+    backgroundColor:'#2C3863',
+    height:'40%',
+    width:'85%',
+    alignItems:'center',
+    justifyContent:'center',
+    top:-25,
+    position: 'absolute',
+    borderRadius:10,
+    borderWidth:1,
+    // borderRightWidth:1,
+    // borderLeftWidth:1,
+    // borderBottomWidth:1,
+    elevation:5,
+    borderColor:'gold'
+
+  }
  
 });
 

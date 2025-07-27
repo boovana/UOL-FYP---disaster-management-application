@@ -1,9 +1,11 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { FlatList, View, Text,TouchableOpacity, StyleSheet} from 'react-native';
+import { FlatList, View, Text,TouchableOpacity, StyleSheet, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TaskInfo from './data/TaskInfo.json';
+import { auth, db} from './firebaseConfig';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 import Footer from './footer'
@@ -14,6 +16,9 @@ const DisasterPrepTasks = ({navigation}) => {
     const disasterList = ["Common preparation and tips","Flood", "Earthquake", "Hurricane", "Tornado", "Wildfire", "Tsunami", "Pandemic"]
     const allDisasters = ["Flood", "Earthquake", "Hurricane", "Tornado", "Wildfire", "Tsunami", "Pandemic"]
     const [disasterCompleted, setDisasterCompleted] = useState({})
+    const userID = auth.currentUser?.uid;
+
+    console.log('successfully navigated to the prepare page')
     // filter the tasks if its commmon between all
     let filteredTasks;
     if(selectedDisaster == "Common preparation and tips"){
@@ -22,18 +27,41 @@ const DisasterPrepTasks = ({navigation}) => {
     else {
         filteredTasks = TaskInfo.filter(task =>task.disasterTypes.length === 1 && task.disasterTypes[0] === selectedDisaster);
     }
+    useEffect(() => {
+        console.log('Disaster completed map:', disasterCompleted);
+    }, [disasterCompleted]);
+
 
     // find out if the disaster tasks have been completed
+    // useEffect(() => {
+    //     const loadCompletion = async () => {
+    //     try {
+    //         const stored = await AsyncStorage.getItem(`${userID}_disasterCompletion`);
+    //         if (stored) {
+    //         setDisasterCompleted(JSON.parse(stored));
+    //         }
+    //     } catch (error) {
+    //         console.error('Error loading disaster completion status:', error);
+    //     }
+    //     };
+
+    //     loadCompletion();
+    // }, []);
     useEffect(() => {
         const loadCompletion = async () => {
-        try {
-            const stored = await AsyncStorage.getItem('disasterCompletion');
-            if (stored) {
-            setDisasterCompleted(JSON.parse(stored));
+            try {
+            const docRef = doc(db, 'userProgress', userID); // adjust path if needed
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                if (data.disasterCompletion) {
+                setDisasterCompleted(data.disasterCompletion);
+                }
             }
-        } catch (error) {
-            console.error('Error loading disaster completion status:', error);
-        }
+            } catch (error) {
+            console.error('Error loading disaster completion from Firestore:', error);
+            }
         };
 
         loadCompletion();
@@ -53,16 +81,43 @@ const DisasterPrepTasks = ({navigation}) => {
                 renderItem={({ item }) => {
                     const isCompleted = disasterCompleted[item]; 
                     return(
-                        <TouchableOpacity style={styles.disasterBox} onPress={() => {setSelectedDisaster(item), navigation.navigate('allTasks', {selectedDisaster:item})}}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'space-between' }}>
-                                <Text style={{ fontFamily: 'times new roman', color: '#2A3439' }}>{item}</Text>
-                                {isCompleted && (
+                        <TouchableOpacity style={styles.disasterBox} onPress={() => {setSelectedDisaster(item), navigation.navigate('allTasks', {selectedDisaster:item}, console.log("selected disaster type:", item))}}>
+                            <View style={{ flexDirection: 'row', justifyContent:'space-evenly'}}>
+                                {item == "Common preparation and tips" && (
+                                    <Image style={styles.icon} source={require('./assets/images/preparation.png')}/>
+                                )}
+                                {item == "Flood" && (
+                                    <Image style={styles.icon} source={require('./assets/images/flood.png')}/>
+                                )}
+                                {item == "Earthquake" && (
+                                    <Image style={styles.icon} source={require('./assets/images/earthquake.png')}/>
+                                )}
+                                {item == "Hurricane" && (
+                                    <Image style={styles.icon} source={require('./assets/images/hurricane.png')}/>
+                                )}
+                                {item == "Tornado" && (
+                                    <Image style={styles.icon} source={require('./assets/images/tornado.png')}/>
+                                )}
+                                {item == "Wildfire" && (
+                                    <Image style={styles.icon} source={require('./assets/images/wildfire.png')}/>
+                                )}
+                                {item == "Tsunami" && (
+                                    <Image style={styles.icon} source={require('./assets/images/tsunami.png')}/>
+                                )}
+                                {item == "Pandemic" && (
+                                    <Image style={styles.icon} source={require('./assets/images/virus.png')}/>
+                                )}
+                                <View style={{width:'50%', alignItems:'center', justifyContent:'center'}}>
+                                    <Text style={{ fontFamily: 'times new roman', color: '#2A3439', fontSize:15}}>{item}</Text>
+                                </View>
+                                
+                                {isCompleted && ( 
                                     <AntDesign
-                                        style={{ marginLeft: 8 }}
+                                        style={{ alignSelf:'center'}}
                                         color="#008080"
                                         name="Safety"
-                                        size={20}
-                                    />
+                                        size={25}
+                                    />                                   
                                 )}
                             </View>
                         </TouchableOpacity>
@@ -90,6 +145,10 @@ const styles = StyleSheet.create({
     borderWidth:1,
     borderColor:'#4d5d53',
     elevation:3,
+  },
+  icon:{
+    width:40,
+    height:40
   }
 })
 

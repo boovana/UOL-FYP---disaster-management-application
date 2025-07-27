@@ -20,6 +20,8 @@ import VideoPlayerScreen from './playVideo'
 import QuizScore from './quizScore'
 import PDFViewer from './viewPDF'
 import Resources  from './resources';
+import Settings  from './settings';
+
 import { enableScreens } from 'react-native-screens';
 
 enableScreens();
@@ -45,6 +47,7 @@ export default function App() {
           <Stack.Screen name="quizScore" component={QuizScore} />
           <Stack.Screen name="viewPDF" component={PDFViewer} />
           <Stack.Screen name="resources" component={Resources} />
+          <Stack.Screen name="settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

@@ -1,12 +1,15 @@
 
 import { auth } from './firebaseConfig';
-
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut as firebaseSignOut,GoogleAuthProvider,signInWithCredential,sendPasswordResetEmail } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {EmailAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut as firebaseSignOut,GoogleAuthProvider,signInWithCredential,sendPasswordResetEmail,sendEmailVerification, updateProfile} from 'firebase/auth';
 
 // sign up with email and password
-export const signUp = async (email, password) => {
+export const signUp = async (email, password, displayName) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(userCredential.user, {
+      displayName: displayName
+    });
     return userCredential.user;
   } 
   catch (error) {
@@ -56,7 +59,29 @@ export const signOut = async () => {
   }
 };
 
-// retreive current user
-export const getCurrentUser = () => {
-  return auth.currentUser;
+
+const actionCodeSettings = {
+  // URL to redirect to after email link is clicked
+  url: 'https://sturdy-layout-462317-b2.firebaseapp.com', // replace with your app URL or deep link
+  handleCodeInApp: true,  
+  android: { packageName: 'com.boovana.test', installApp: true, minimumVersion: '12' },
+};
+
+export const sendVerificationEmailToUser = async () => {
+  try {
+    const user = auth.currentUser;
+    if (!user) throw new Error("No user is currently signed in.");
+
+    await sendEmailVerification(user, actionCodeSettings);
+    console.log("Verification email sent to:", user.email);
+    const actionCodeSettings = {
+      url: "https://www.google.com", // harmless neutral destination
+      handleCodeInApp: false,
+    };
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error sending verification email:", error);
+    return { success: false, message: error.message };
+  }
 };

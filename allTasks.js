@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text,TouchableOpacity, StyleSheet, Button, ScrollView, ActivityIndicator, Image} from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import { auth, db} from './firebaseConfig';
+import * as FileSystem from 'expo-file-system';
+import * as IntentLauncher from 'expo-intent-launcher';
+import {Platform, Alert } from 'react-native';
+
+// import * as MediaLibrary from 'expo-media-library';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import DisasterPrepTasks from "./disastersPrep"
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,6 +32,10 @@ const AllTasks =() =>{
     const route = useRoute();
     const { selectedDisaster } = route.params;
     const [highestGrade, setHighestGrade] = useState(0);
+    const [crossedSteps, setCrossedSteps] = useState([]);
+
+    // get the user id
+    const userID = auth.currentUser?.uid;
     const navigation = useNavigation()
     const [videos, setVideos] = useState([]);
     const [loadingVideos, setLoadingVideos] = useState(true);
@@ -71,101 +82,258 @@ const AllTasks =() =>{
           }
     }
     // load the score for the quiz for each disaster 
-    useEffect(() => {
+    // useEffect(() => {
+    //   const loadScore = async () => {
+    //     try {
+    //       const stored = await AsyncStorage.getItem(`${userID}_quizScores`);
+    //       if (stored) {
+    //         const scores = JSON.parse(stored);
+    //         if (scores[selectedDisaster]) {
+    //           setHighestGrade(scores[selectedDisaster]);
+    //         }
+    //       }
+    //     } catch (err) {
+    //       console.error('Error loading quiz score:', err);
+    //     }
+    //   };
+    //   loadScore()
+    // }, [selectedDisaster]);
+    useEffect(()=>{
       const loadScore = async () => {
         try {
-          const stored = await AsyncStorage.getItem('quizScores');
-          if (stored) {
-            const scores = JSON.parse(stored);
-            if (scores[selectedDisaster]) {
-              setHighestGrade(scores[selectedDisaster]);
+          const docRef = doc(db, 'userProgress', userID);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            const grade = data?.quizScores?.[selectedDisaster];
+            if (grade !== undefined) {
+              setHighestGrade(grade);
+              console.log(`Loaded quiz score for ${selectedDisaster}:`, grade);
+            } else {
+              setHighestGrade(0);
+              console.log(`No quiz score found for ${selectedDisaster}`);
             }
+          } else {
+            console.log('No user progress document found');
           }
-        } catch (err) {
-          console.error('Error loading quiz score:', err);
+        } catch (error) {
+          console.error('Error loading quiz score from Firestore:', error);
         }
       };
       loadScore()
-    }, [selectedDisaster]);
+    },[userID, selectedDisaster])
+    
+
 
     //calculate total number of tasks and quizzes 
     const allTasks = TaskInfo.filter(task =>task.disasterTypes.some(disaster => allDisasters.includes(disaster)));
     const allQuizzes = quizzes.filter(quiz =>quiz.category.some(category => allDisasters.includes(category)));
     // ratio of completed tasks to total number of tasks to reflect on the home progress bar 
     const totalTasks = (allTasks.length + allQuizzes.length)
-    const addCompletedTask = (taskTitle) => {
-      setCompletedTasks(prev => {
-        if (!prev.includes(taskTitle)) {
-          return [...prev, taskTitle];
-        }
-        return prev;  
-      });
+
+    // if a task from a category is completed, update the progress
+    const markTaskAsCompleted = async (task) => {
+      try {
+        const updatedTasks = [...completedTasks, task];
+        setCompletedTasks(updatedTasks);
+
+        const docRef = doc(db, 'userProgress', userID);
+        await setDoc(docRef, {
+          completedTasks: updatedTasks
+        }, { merge: true });
+
+        console.log(`✅ Marked "${task}" as completed in Firestore`);
+      } catch (error) {
+        console.error("❌ Error updating completedTasks:", error);
+      }
     };
+
+
+    // const addCompletedTask = (taskTitle) => {
+    //   setCompletedTasks(prev => {
+    //     if (!prev.includes(taskTitle)) {
+    //       return [...prev, taskTitle];
+    //     }
+    //     return prev;  
+    //   });
+    // };
+
     // total completed tasks
     const completedCount = filteredTasks.filter(task => completedTasks.includes(task.title)).length;
     // completed tasks per disaster
-    const allPrepTasksPerDisasterCompleted = filteredTasks.every(task => completedTasks.includes(task.title));
+    const allPrepTasksPerDisasterCompleted = filteredTasks.every(task =>completedTasks.includes(task.title));
+
     // considered completed if user pass the quiz
-    const quizCompleted = highestGrade >= 50;
+    const quizCompleted = typeof highestGrade === 'number' && highestGrade >= 50;
+
     const allDisasterTasksCompleted = allPrepTasksPerDisasterCompleted && quizCompleted;
 
-    // console.log('completed:', completedCount)
-    const progressValue = totalTasks === 0 ? 0 : (completedCount / totalTasks);
-    // save user's progress
-    useEffect(() => {
-      const saveProgress = async (progress) => {
-        try {
-          await AsyncStorage.setItem('userProgress', JSON.stringify(progress));
-        } catch (error) {
-          console.error('Error saving progress:', error);
-        }
-      };
+  
+    const disasterTotalTasks = filteredTasks.length + filteredQuizzes.length;
+    const disasterCompletedCount = filteredTasks.filter(task => completedTasks.includes(task.title)).length + (quizCompleted ? 1 : 0);
+    const progressValue = disasterTotalTasks === 0 ? 0 : disasterCompletedCount / disasterTotalTasks;
 
-      saveProgress(progressValue);
-    }, [progressValue]);
+    console.log('Checking disaster completion...');
+    console.log('Filtered tasks:', filteredTasks.map(t => t.title));
+    console.log('Completed tasks:', completedTasks);
+    console.log('All prep tasks per disaster completed:', allPrepTasksPerDisasterCompleted);
+    console.log('Quiz completed:', quizCompleted);
+    console.log('All disaster tasks completed:', allDisasterTasksCompleted);
+
+
+    // save user progress for each disasster
+    const saveProgress = async (disasterType, progress) => {
+      try {
+        const docRef = doc(db, 'userProgress', userID);
+        await setDoc(docRef, {progress: {[disasterType]: progress}}, { merge: true });
+
+      } 
+      catch (error) {
+        console.error('❌ Error saving progress to Firestore:', error);
+      }
+    };
+    // const saveProgress = async (disasterType, progress) => {
+    //   try {
+    //     const stored = await AsyncStorage.getItem(`${userID}_userProgress`);
+    //     const progressMap = stored ? JSON.parse(stored) : {};
+
+    //     progressMap[disasterType] = progress;
+
+    //     await AsyncStorage.setItem(`${userID}_userProgress`, JSON.stringify(progressMap));
+    //     console.log(`✅ Saved ${disasterType} progress:`, progress);
+    //   } catch (error) {
+    //     console.error('❌ Error saving progress:', error);
+    //   }
+    // };
+
+    useEffect(() => {
+      if (selectedDisaster && userID) {
+        saveProgress(selectedDisaster, progressValue);
+      }
+    }, [progressValue, selectedDisaster, userID]);
 
     // save the completed tasks 
     useEffect(() => {
-      const loadCompleted = async () => 
-        {
-          try {
-            const saved = await AsyncStorage.getItem('completedTasks');
-            if (saved) {
-              setCompletedTasks(JSON.parse(saved));
+      const fetchUserProgress = async () => {
+        if (!userID) return;
+        try {
+          const docRef = doc(db, 'userProgress', userID);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            const progress = data?.progress?.[selectedDisaster] || Array(filteredTasks.length).fill(false);
+            setCrossedSteps(progress);
+
+            const completed = data?.completedTasks || [];
+            setCompletedTasks(completed);
+
+            const grade = data?.quizScores?.[selectedDisaster];
+            if (grade !== undefined) {
+              setHighestGrade(grade);
             }
-            else {
-              setCompletedTasks([]);
-            }
+          } 
+          else {
+            console.log('📭 No progress found in Firestore.');
           }
-        
-        catch (e) {
-          console.error('Error loading completed tasks:', e);
+        } catch (error) {
+          console.error('❌ Error loading progress from Firestore:', error);
         }
       };
 
-      const unsubscribe = navigation.addListener('focus', loadCompleted);
+      const unsubscribe = navigation.addListener('focus', fetchUserProgress);
       return unsubscribe;
-    }, [navigation]);
+    }, [navigation, selectedDisaster, userID]);
+    // useEffect(() => {
+    //   const loadCompleted = async () => 
+    //     {
+    //       try {
+    //         const saved = await AsyncStorage.getItem(`${userID}_completedTasks`);
+    //         if (saved) {
+    //           // setCompletedTasks(JSON.parse(saved));
+    //           const parsed = JSON.parse(saved);
+    //           if (Array.isArray(parsed)) 
+    //             {
+    //             setCompletedTasks(parsed);
+    //           } 
+    //           else {
+    //             console.warn('⚠️ Invalid data in completedTasks');
+    //             setCompletedTasks([]);
+    //           }
+    //         } 
+    //         else {
+    //           setCompletedTasks([]);
+    //         }
+    //       }
+    //     catch (e) {
+    //       console.error('Error loading completed tasks:', e);
+    //     }
+    //   };
+
+    //   const unsubscribe = navigation.addListener('focus', loadCompleted);
+    //   return unsubscribe;
+    // }, [navigation]);
 
     // save the completion of each disaster
+    // useEffect(() => {
+    //   const saveCompletionStatus = async () => {
+    //     if (allDisasterTasksCompleted) {
+    //       try {
+    //         const stored = await AsyncStorage.getItem(`${userID}_disasterCompletion`);
+    //         const completion = stored ? JSON.parse(stored) : {};
+    //         completion[selectedDisaster] = true;  
+    //         await AsyncStorage.setItem(`${userID}_disasterCompletion`, JSON.stringify(completion));
+    //         // console.log(`Saved completion for ${selectedDisaster}, ${JSON.stringify(completion)}`);
+    //       } 
+    //       catch (error) {
+    //         console.error('Error saving disaster completion status:', error);
+    //       }
+    //     }
+    //   };
+
+    //   saveCompletionStatus();
+    // }, [allDisasterTasksCompleted, selectedDisaster]);
     useEffect(() => {
       const saveCompletionStatus = async () => {
-        if (allDisasterTasksCompleted) {
+        if (allDisasterTasksCompleted && selectedDisaster) {
           try {
-            const stored = await AsyncStorage.getItem('disasterCompletion');
-            const completion = stored ? JSON.parse(stored) : {};
-            completion[selectedDisaster] = true;  
-            await AsyncStorage.setItem('disasterCompletion', JSON.stringify(completion));
-            // console.log(`Saved completion for ${selectedDisaster}, ${JSON.stringify(completion)}`);
-          } 
-          catch (error) {
-            console.error('Error saving disaster completion status:', error);
+            console.log("trying to save disaster compeletion" )
+            const docRef = doc(db, 'userProgress', userID);
+            const docSnap = await getDoc(docRef);
+
+            let existingData = docSnap.exists() ? docSnap.data() : {};
+            let currentCompletion = existingData.disasterCompletion || {};
+
+            currentCompletion[selectedDisaster] = true;
+
+            await setDoc(docRef, {
+              disasterCompletion: currentCompletion
+            }, { merge: true });
+
+            console.log(`✅ Saved completion for ${selectedDisaster}`);
+          } catch (error) {
+            console.error('❌ Error saving disaster completion status to Firestore:', error);
           }
         }
       };
 
       saveCompletionStatus();
     }, [allDisasterTasksCompleted, selectedDisaster]);
+    // const markTaskAsCompleted = async (task) => {
+    //   try {
+    //     const updatedTasks = [...completedTasks, task];
+    //     setCompletedTasks(updatedTasks);
+
+    //     const docRef = doc(db, 'userProgress', userID);
+    //     await setDoc(docRef, {
+    //       completedTasks: updatedTasks
+    //     }, { merge: true });
+
+    //     console.log(`✅ Marked "${task}" as completed in Firestore`);
+    //   } catch (error) {
+    //     console.error("❌ Error updating completedTasks:", error);
+    //   }
+    // };
 
     // fetch videos from youtube
     useEffect(() => {
@@ -197,6 +365,58 @@ const AllTasks =() =>{
     fetchVideos();
     }, [selectedDisaster]);
     
+    // const downloadPDF = async(url) =>{
+    //   const downloadUrl = url;
+    //   const fileUri = FileSystem.documentDirectory +'flood-info.pdf';
+
+    //   try {
+    //     const { uri } = await FileSystem.downloadAsync(url, fileUri);
+    //     console.log('Downloaded to:', uri);
+
+    //     const permission = await MediaLibrary.requestPermissionsAsync();
+    //     if (!permission.granted) {
+    //       alert('Permission to access media library is required!');
+    //       return;
+    //     }
+
+    //     const asset = await MediaLibrary.createAssetAsync(uri);
+    //     await MediaLibrary.createAlbumAsync('Download', asset, false);
+
+    //     IntentLauncher.startActivityAsync('android.intent.action.VIEW', {
+    //       data: asset.uri,
+    //       flags: 1,
+    //       type: 'application/pdf',
+    //     });
+    //   } catch (err) {
+    //     console.error('Download error:', err);
+    //     alert('Failed to download or open PDF.');
+    //   }
+    // } 
+    const downloadPDF = async (url) => {
+      try {
+        const fileUri = FileSystem.documentDirectory + "downloaded-file.pdf";
+
+        // Download file
+        const { uri } = await FileSystem.downloadAsync(url, fileUri);
+        console.log('File downloaded to:', uri);
+
+        if (Platform.OS === 'android') {
+          // Use IntentLauncher to open the PDF on Android
+          IntentLauncher.startActivityAsync('android.intent.action.VIEW', {
+            data: uri,
+            flags: 1, // FLAG_GRANT_READ_URI_PERMISSION
+            type: 'application/pdf',
+          });
+        } else {
+          // For iOS, use Linking to open the file
+          Linking.openURL(uri).catch(() => {
+            Alert.alert('Error', 'Cannot open PDF file');
+          });
+        }
+      } catch (error) {
+        console.error('Download or open error:', error);
+      }
+    };
    
   return (
     <View style={{ flex: 1, backgroundColor:'white'}}>
@@ -205,7 +425,7 @@ const AllTasks =() =>{
           data={filteredTasks}
           keyExtractor={(item, i) => i.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.taskTitleContainer} onPress={() => navigation.navigate('prepTasks', { selectedTitle: item.title, selectedDisaster:selectedDisaster, })}>
+            <TouchableOpacity style={styles.taskTitleContainer} onPress={() => {navigation.navigate('prepTasks', { selectedTitle: item.title, selectedDisaster:selectedDisaster, }, console.log(`selected ${item.title} from ${selectedDisaster}`) )}}>
               <Text style={{ fontSize: 15, fontFamily:'times new roman',color:'#3B444B'  }}>{item.title}</Text>
               {completedTasks?.includes(item.title) && (
                 <AntDesign
@@ -268,19 +488,26 @@ const AllTasks =() =>{
 
         {/* flood information sheet*/}
         {selectedDisaster === "Flood" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf',
-                title: 'FEMA Flood Hazard Info Sheet'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Flood hazard information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View> 
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf',
+                    title: 'FEMA Flood Hazard Info Sheet'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Flood hazard information sheet
+                </Text>
+              </TouchableOpacity>  
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download PDF</Text>
+              </TouchableOpacity>            
+            </View>    
+            
+          </View>
+          
         )}
         {/* earthquake information sheet*/}
         {selectedDisaster === "Earthquake" && (
@@ -491,6 +718,9 @@ const styles = StyleSheet.create({
     taskTitleContainer:{
       flexDirection:'row',
       padding:20,
+      // backgroundColor:'red',
+      // width:'100%',
+      // height:'10%',
       backgroundColor:'#F5ECCF',
       marginTop:10,
       borderRadius:10,

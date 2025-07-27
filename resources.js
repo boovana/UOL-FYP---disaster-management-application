@@ -27,9 +27,9 @@ const Resources = ({title,category, navigation}) => {
     const disasterTypes = ['earthquake', 'storm', 'flood', 'forestfire', 'hurricane', 'tsunami', 'pandemic', 'wildfire'];
     const newsAPIKey = '4e9e1b1df0bd43d1af09fa5268b6e45b';
 
-
-
     const[expandSection, setExpandSection] = useState({})
+
+    console.log('successfully navigated to the resources page')
 
     // fetch user's location
     useEffect(() => {
@@ -180,7 +180,7 @@ const Resources = ({title,category, navigation}) => {
     ];
     // toggle between expansion and compression of secctions
     const toggleSection =(title)=>{
-        console.log('pressed')
+        console.log('pressed on ', title)
         setExpandSection(prev => ({
         ...prev,
         [title]: !prev[title]
@@ -251,7 +251,7 @@ const Resources = ({title,category, navigation}) => {
     // show activity indicator if loading
     if (loading){
         return (
-        <View style={styles.centered}>
+        <View style={styles.centeredLoading}>
             <ActivityIndicator size="large" />
             <Text>{searchLoc ? "Searching..." : "Loading resources..."}</Text>
         </View>
@@ -272,7 +272,7 @@ const Resources = ({title,category, navigation}) => {
                 />
                 <Text style={styles.error} >{error}</Text>
                 <TouchableOpacity onPress={findResourcesForLocationSearched} style={styles.findResourcesBtn}>
-                    <Text style={{fontFamily:'times new roman'}}>Find</Text>
+                    <Text style={{fontFamily:'times new roman', color:'black'}}>Find</Text>
                 </TouchableOpacity>
 
                 {autoComplete.length > 0 && (
@@ -307,7 +307,7 @@ const Resources = ({title,category, navigation}) => {
                 keyExtractor={(item, index) => item?.properties?.place_id ?? index.toString()}
                 renderSectionHeader={({ section: { title } }) => ( 
                     <TouchableOpacity onPress={() => toggleSection(title)} style={styles.sectionHeader}>
-                        <Text style={{fontFamily:'times new roman', fontSize:18, fontWeight:'bold'}}>{title}</Text>
+                        <Text style={{fontFamily:'times new roman', fontSize:18, fontWeight:'bold', color:'#3B444B'}}>{title}</Text>
                         <Text style={[styles.title,{ color: 'black', alignSelf:'center'}]}>{expandSection[title] ?'-':'+'}</Text>
                     </TouchableOpacity>
                 )}
@@ -318,7 +318,7 @@ const Resources = ({title,category, navigation}) => {
                     return (
                         <View style={styles.resourceItem}>
                             <Text style={styles.name}>{props.address_line1 || 'Unnamed'}</Text>
-                            <Text style={{fontFamily:'times new roman'}}>{props.address_line2 || ''}</Text>
+                            <Text style={{fontFamily:'times new roman', color:'grey'}}>{props.address_line2 || ''}</Text>
                         </View>
                     );
                 }}
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         padding: 16,
-        paddingBottom:150,
+        paddingBottom:100,
         backgroundColor:'white'
     },
     title: { 
@@ -352,23 +352,27 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'#B2BEB5',
         borderRadius: 8,
-        elevation:2
+        elevation:2,
+       
     },
     name: { 
         fontSize:16,
         fontWeight: 'bold',
         fontFamily:'times new roman',
-        marginBottom:10
+        marginBottom:10,
+        color:'grey'
     },
     error: { 
         color: 'red',
         padding:10,
         fontStyle:'italic'
     },
-    centered: { 
+    centeredLoading: { 
         flex: 1, 
         justifyContent: 'center', 
-        alignItems: 'center' 
+        alignItems: 'center',
+        color:'black',
+        fontFamily:'times new roman'
     },
     searchLocationInput:{
         borderRadius:10,
@@ -392,7 +396,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         marginTop:20,
-        padding:10,
+        padding:15,
         backgroundColor:'#F5ECCF',
         borderRadius:10,
         alignItems:'center'

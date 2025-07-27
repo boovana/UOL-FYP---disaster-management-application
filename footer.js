@@ -30,7 +30,7 @@ const Footer =({navigation}) =>{
             </TouchableOpacity>
 
              {/** settings icon */}
-            <TouchableOpacity onPress={()=>navigation.navigate('Settings')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('settings')}>
                 <Image style={styles.footerButtonIcon} source={require('./assets/images/settings.png')}/>
                 <Text style={styles.footerText}>Settings</Text>
             </TouchableOpacity>

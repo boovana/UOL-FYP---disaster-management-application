@@ -5,7 +5,7 @@ import { Text, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Imag
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
 import {auth, GoogleAuthProvider} from './firebaseConfig';
-import {signIn} from './auth'
+import {signIn, sendVerificationEmailToUser} from './auth'
 import { signInWithCredential } from 'firebase/auth';
 
  
@@ -21,6 +21,8 @@ const Login = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
+
 
     // function to sign in using google 
     const googleSignIn = async () => {
@@ -28,7 +30,6 @@ const Login = ({navigation}) => {
         await GoogleSignin.hasPlayServices();
 
         await GoogleSignin.signOut();
-
 
          // sign in with Google
         const userInfo = await GoogleSignin.signIn();
@@ -40,7 +41,8 @@ const Login = ({navigation}) => {
 
         // sign in with google using the credentials and go to 
         await signInWithCredential(auth, googleCredential);
-
+        console.log('Signed in using Google signin')
+        // nav to home page after login
         navigation.navigate('home');
       }
        catch (error) {
@@ -52,15 +54,31 @@ const Login = ({navigation}) => {
     const successfulLogin = async () => {
         try {
           await signIn(email, password);
-          console.log("login")
-          navigation.navigate('home')
+          const currentUser = auth.currentUser;
+          await currentUser.reload();
+          setUser(currentUser);
+
+          if (!currentUser.emailVerified) {
+            setError("Your email is not verified. Please verify your email before you can log in.");
+            return;
+          }
+         
+    
+          // if (email === 'test@gmail.com') {
+          //   console.log("mock login using test@gmail.com -- successful!");
+          //   setError("");
+          //   navigation.navigate('home');
+          //   return;
+          // }
+          console.log("Successful login using correct email and password!");
+          navigation.navigate('home');
         } 
         catch (error) {
           console.error("Login Error:", error);
           if (error.code === "auth/invalid-email" ||error.code === "auth/invalid-credential") 
           {
               setError("Invalid email or password");
-          } 
+          }
           else {
               setError(error.message);
           }
@@ -76,11 +94,26 @@ const Login = ({navigation}) => {
         <TextInput style={styles.logintextInput} placeholderTextColor="#ACACAC" placeholder="Password" secureTextEntry={true}
           value={password} onChangeText={setPassword} />
       </View>
+      {error && <Text style={styles.error}>{error}</Text>}
+
       <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
       </TouchableOpacity>
-      {error && <Text style={styles.error}>{error}</Text>}
-
+      {user && !user.emailVerified && (
+        <TouchableOpacity
+          onPress={async () => {
+            try {
+              await sendVerificationEmailToUser();
+              setError("Verification email resent. Please check your inbox/spam.");
+            } catch (err) {
+              console.error("Resend verification error:", err);
+              setError("Failed to resend verification email.");
+            }
+          }}
+        >
+          <Text style={styles.forgotPasswordText}>Resend verification link</Text>
+        </TouchableOpacity>
+      )}
       <View>
         <TouchableOpacity onPress={successfulLogin} style={styles.loginButton}>
           <Text style={styles.loginButtontext}>Login</Text>

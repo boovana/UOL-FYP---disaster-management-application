@@ -15,7 +15,7 @@
       },
       "edgeToEdgeEnabled": false,
       "package": "com.boovana.test",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
     },
     "web": {
       "bundler": "metro",
@@ -45,7 +45,7 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-web-browser"
+      "expo-web-browser",
     ],
     "experiments": {
       "typedRoutes": true
