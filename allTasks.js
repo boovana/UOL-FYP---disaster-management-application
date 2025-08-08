@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text,TouchableOpacity, StyleSheet, Button, ScrollView, ActivityIndicator, Image} from 'react-native';
+import { FlatList, View, Text,TouchableOpacity, StyleSheet, Button, ScrollView, ActivityIndicator, Image, PermissionsAndroid} from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { auth, db} from './firebaseConfig';
-import * as FileSystem from 'expo-file-system';
-import * as IntentLauncher from 'expo-intent-launcher';
 import {Platform, Alert } from 'react-native';
-
-// import * as MediaLibrary from 'expo-media-library';
+import RNBlobUtil from 'react-native-blob-util';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import DisasterPrepTasks from "./disastersPrep"
@@ -40,6 +37,8 @@ const AllTasks =() =>{
     const [videos, setVideos] = useState([]);
     const [loadingVideos, setLoadingVideos] = useState(true);
     const [completedTasks, setCompletedTasks] = useState([])
+    const [downloadProgress, setDownloadProgress] = useState(0);
+    const [document, setDocument] = useState(null);
 
     const API_KEY ='AIzaSyBGNxrx2-9Z6aIonU8ofk9uEEHAZkMnBuE'
 
@@ -82,22 +81,6 @@ const AllTasks =() =>{
           }
     }
     // load the score for the quiz for each disaster 
-    // useEffect(() => {
-    //   const loadScore = async () => {
-    //     try {
-    //       const stored = await AsyncStorage.getItem(`${userID}_quizScores`);
-    //       if (stored) {
-    //         const scores = JSON.parse(stored);
-    //         if (scores[selectedDisaster]) {
-    //           setHighestGrade(scores[selectedDisaster]);
-    //         }
-    //       }
-    //     } catch (err) {
-    //       console.error('Error loading quiz score:', err);
-    //     }
-    //   };
-    //   loadScore()
-    // }, [selectedDisaster]);
     useEffect(()=>{
       const loadScore = async () => {
         try {
@@ -150,15 +133,6 @@ const AllTasks =() =>{
     };
 
 
-    // const addCompletedTask = (taskTitle) => {
-    //   setCompletedTasks(prev => {
-    //     if (!prev.includes(taskTitle)) {
-    //       return [...prev, taskTitle];
-    //     }
-    //     return prev;  
-    //   });
-    // };
-
     // total completed tasks
     const completedCount = filteredTasks.filter(task => completedTasks.includes(task.title)).length;
     // completed tasks per disaster
@@ -174,13 +148,6 @@ const AllTasks =() =>{
     const disasterCompletedCount = filteredTasks.filter(task => completedTasks.includes(task.title)).length + (quizCompleted ? 1 : 0);
     const progressValue = disasterTotalTasks === 0 ? 0 : disasterCompletedCount / disasterTotalTasks;
 
-    console.log('Checking disaster completion...');
-    console.log('Filtered tasks:', filteredTasks.map(t => t.title));
-    console.log('Completed tasks:', completedTasks);
-    console.log('All prep tasks per disaster completed:', allPrepTasksPerDisasterCompleted);
-    console.log('Quiz completed:', quizCompleted);
-    console.log('All disaster tasks completed:', allDisasterTasksCompleted);
-
 
     // save user progress for each disasster
     const saveProgress = async (disasterType, progress) => {
@@ -193,19 +160,6 @@ const AllTasks =() =>{
         console.error('❌ Error saving progress to Firestore:', error);
       }
     };
-    // const saveProgress = async (disasterType, progress) => {
-    //   try {
-    //     const stored = await AsyncStorage.getItem(`${userID}_userProgress`);
-    //     const progressMap = stored ? JSON.parse(stored) : {};
-
-    //     progressMap[disasterType] = progress;
-
-    //     await AsyncStorage.setItem(`${userID}_userProgress`, JSON.stringify(progressMap));
-    //     console.log(`✅ Saved ${disasterType} progress:`, progress);
-    //   } catch (error) {
-    //     console.error('❌ Error saving progress:', error);
-    //   }
-    // };
 
     useEffect(() => {
       if (selectedDisaster && userID) {
@@ -244,55 +198,8 @@ const AllTasks =() =>{
       const unsubscribe = navigation.addListener('focus', fetchUserProgress);
       return unsubscribe;
     }, [navigation, selectedDisaster, userID]);
-    // useEffect(() => {
-    //   const loadCompleted = async () => 
-    //     {
-    //       try {
-    //         const saved = await AsyncStorage.getItem(`${userID}_completedTasks`);
-    //         if (saved) {
-    //           // setCompletedTasks(JSON.parse(saved));
-    //           const parsed = JSON.parse(saved);
-    //           if (Array.isArray(parsed)) 
-    //             {
-    //             setCompletedTasks(parsed);
-    //           } 
-    //           else {
-    //             console.warn('⚠️ Invalid data in completedTasks');
-    //             setCompletedTasks([]);
-    //           }
-    //         } 
-    //         else {
-    //           setCompletedTasks([]);
-    //         }
-    //       }
-    //     catch (e) {
-    //       console.error('Error loading completed tasks:', e);
-    //     }
-    //   };
-
-    //   const unsubscribe = navigation.addListener('focus', loadCompleted);
-    //   return unsubscribe;
-    // }, [navigation]);
-
-    // save the completion of each disaster
-    // useEffect(() => {
-    //   const saveCompletionStatus = async () => {
-    //     if (allDisasterTasksCompleted) {
-    //       try {
-    //         const stored = await AsyncStorage.getItem(`${userID}_disasterCompletion`);
-    //         const completion = stored ? JSON.parse(stored) : {};
-    //         completion[selectedDisaster] = true;  
-    //         await AsyncStorage.setItem(`${userID}_disasterCompletion`, JSON.stringify(completion));
-    //         // console.log(`Saved completion for ${selectedDisaster}, ${JSON.stringify(completion)}`);
-    //       } 
-    //       catch (error) {
-    //         console.error('Error saving disaster completion status:', error);
-    //       }
-    //     }
-    //   };
-
-    //   saveCompletionStatus();
-    // }, [allDisasterTasksCompleted, selectedDisaster]);
+   
+    // save the completeion status of the disaster categories
     useEffect(() => {
       const saveCompletionStatus = async () => {
         if (allDisasterTasksCompleted && selectedDisaster) {
@@ -319,21 +226,7 @@ const AllTasks =() =>{
 
       saveCompletionStatus();
     }, [allDisasterTasksCompleted, selectedDisaster]);
-    // const markTaskAsCompleted = async (task) => {
-    //   try {
-    //     const updatedTasks = [...completedTasks, task];
-    //     setCompletedTasks(updatedTasks);
 
-    //     const docRef = doc(db, 'userProgress', userID);
-    //     await setDoc(docRef, {
-    //       completedTasks: updatedTasks
-    //     }, { merge: true });
-
-    //     console.log(`✅ Marked "${task}" as completed in Firestore`);
-    //   } catch (error) {
-    //     console.error("❌ Error updating completedTasks:", error);
-    //   }
-    // };
 
     // fetch videos from youtube
     useEffect(() => {
@@ -364,59 +257,35 @@ const AllTasks =() =>{
 
     fetchVideos();
     }, [selectedDisaster]);
-    
-    // const downloadPDF = async(url) =>{
-    //   const downloadUrl = url;
-    //   const fileUri = FileSystem.documentDirectory +'flood-info.pdf';
+  
 
-    //   try {
-    //     const { uri } = await FileSystem.downloadAsync(url, fileUri);
-    //     console.log('Downloaded to:', uri);
-
-    //     const permission = await MediaLibrary.requestPermissionsAsync();
-    //     if (!permission.granted) {
-    //       alert('Permission to access media library is required!');
-    //       return;
-    //     }
-
-    //     const asset = await MediaLibrary.createAssetAsync(uri);
-    //     await MediaLibrary.createAlbumAsync('Download', asset, false);
-
-    //     IntentLauncher.startActivityAsync('android.intent.action.VIEW', {
-    //       data: asset.uri,
-    //       flags: 1,
-    //       type: 'application/pdf',
-    //     });
-    //   } catch (err) {
-    //     console.error('Download error:', err);
-    //     alert('Failed to download or open PDF.');
-    //   }
-    // } 
+    // download the pdf files 
     const downloadPDF = async (url) => {
+      const { config, fs } = RNBlobUtil;
+      const fileName = 'disaster-info-file.pdf';
+      const downloadPath = `${fs.dirs.DownloadDir}/${fileName}`;
+
       try {
-        const fileUri = FileSystem.documentDirectory + "downloaded-file.pdf";
+        const res = await config({
+          fileCache: true,
+          addAndroidDownloads: {
+            useDownloadManager: true,
+            notification: true,
+            path: downloadPath,
+            description: 'Downloading PDF',
+            mime: 'application/pdf',
+            mediaScannable: true,
+          },
+        }).fetch('GET', url);
 
-        // Download file
-        const { uri } = await FileSystem.downloadAsync(url, fileUri);
-        console.log('File downloaded to:', uri);
-
-        if (Platform.OS === 'android') {
-          // Use IntentLauncher to open the PDF on Android
-          IntentLauncher.startActivityAsync('android.intent.action.VIEW', {
-            data: uri,
-            flags: 1, // FLAG_GRANT_READ_URI_PERMISSION
-            type: 'application/pdf',
-          });
-        } else {
-          // For iOS, use Linking to open the file
-          Linking.openURL(uri).catch(() => {
-            Alert.alert('Error', 'Cannot open PDF file');
-          });
-        }
-      } catch (error) {
-        console.error('Download or open error:', error);
+        Alert.alert('Download complete', `Saved to Downloads folder.`);
+      } catch (err) {
+        Alert.alert('Download failed', 'Check storage permissions and try again!');
       }
     };
+  
+    
+
    
   return (
     <View style={{ flex: 1, backgroundColor:'white'}}>
@@ -477,7 +346,8 @@ const AllTasks =() =>{
           </TouchableOpacity>
             {/** nav to the interactive game on ready.gov to build a kit */}
           <TouchableOpacity
-            onPress={() => Linking.openURL('https://www.ready.gov/kids/games/data/bak-english/index.html')} style={styles.taskTitleContainer}>
+            onPress={() => navigation.navigate('buildKitGame')}
+            style={styles.taskTitleContainer}>
             <Text style={styles.pdfLink}>
               Can you build a kit?
             </Text>
@@ -502,7 +372,7 @@ const AllTasks =() =>{
                 </Text>
               </TouchableOpacity>  
               <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download PDF</Text>
+                <Text style={{color:'red'}} >Download</Text>
               </TouchableOpacity>            
             </View>    
             
@@ -511,100 +381,135 @@ const AllTasks =() =>{
         )}
         {/* earthquake information sheet*/}
         {selectedDisaster === "Earthquake" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_earthquake_hazard-info-sheet.pdf',
-                title: 'Earthquake information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Earthquake information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View >
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_earthquake_hazard-info-sheet.pdf',
+                    title: 'Earthquake information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Earthquake information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_earthquake_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
         )}
         {/* hurricane information sheet*/}
         {selectedDisaster === "Hurricane" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_hurricane_hazard-info-sheet.pdf',
-                title: 'Hurricane information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Hurricane information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_hurricane_hazard-info-sheet.pdf',
+                    title: 'Hurricane information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Hurricane information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_hurricane_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
+          
         )}
 
         {/* pandemic information sheet*/}
         {selectedDisaster === "Pandemic" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_novel-pandemic_hazard-info-sheet.pdf',
-                title: 'Pandemic information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Pandemic information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}> 
+            <View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_novel-pandemic_hazard-info-sheet.pdf',
+                    title: 'Pandemic information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Pandemic information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_novel-pandemic_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
+          
         )}
         {/* tornado information sheet*/}
         {selectedDisaster === "Tornado" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_tornado_hazard-info-sheet.pdf',
-                title: 'Tornado information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Tornado information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_tornado_hazard-info-sheet.pdf',
+                    title: 'Tornado information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Tornado information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tornado_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
+          
         )}
         {/* tsunami information sheet*/}
         {selectedDisaster === "Tsunami" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_tsunami_hazard-info-sheet.pdf',
-                title: 'Tsunami information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Tsunami information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_tsunami_hazard-info-sheet.pdf',
+                    title: 'Tsunami information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Tsunami information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tsunami_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
+          
         )}
         {/* Wildfire information sheet*/}
         {selectedDisaster === "Wildfire" && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('viewPDF', {
-                url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_wildfire_hazard-info-sheet.pdf',
-                title: 'Wildfire information poster'
-              })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Wildfire information sheet
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.taskTitleContainer}>
+            <View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('viewPDF', {
+                    url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_wildfire_hazard-info-sheet.pdf',
+                    title: 'Wildfire information poster'
+                  })
+                }>
+                <Text style={styles.pdfLink}>
+                  Wildfire information sheet
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_wildfire_hazard-info-sheet.pdf')} >
+                <Text style={{color:'red'}} >Download</Text>
+              </TouchableOpacity> 
+            </View>
+          </View>
+          
         )}
 
         {/* quiz start Button */}

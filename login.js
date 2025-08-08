@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import {auth, GoogleAuthProvider} from './firebaseConfig';
 import {signIn, sendVerificationEmailToUser} from './auth'
 import { signInWithCredential } from 'firebase/auth';
@@ -74,10 +74,10 @@ const Login = ({navigation}) => {
           navigation.navigate('home');
         } 
         catch (error) {
-          console.error("Login Error:", error);
+          // console.error("Login Error:", error);
           if (error.code === "auth/invalid-email" ||error.code === "auth/invalid-credential") 
           {
-              setError("Invalid email or password");
+              setError("Invalid email or password!");
           }
           else {
               setError(error.message);
@@ -87,6 +87,20 @@ const Login = ({navigation}) => {
 
    return (
     <SafeAreaView style={styles.container}>
+      <View style={{marginBottom:50, elevation:2,textShadowColor: 'rgba(252, 0, 0, 0.2)',textShadowOffset: { width: 2, height: 2 },textShadowRadius: 3}}>
+        <Text style={styles.welcomeTitle}>
+          Welcome to 
+        </Text>
+        <View style={{ flexDirection: 'row', justifyContent:'center', borderWidth:1, borderRadius:10, borderColor:'#D25D5D', height:100, alignItems:'center'}}>
+          <Text style={styles.crisisText}>CrisisReady!</Text>
+          <MaterialIcons
+            style={{ marginLeft: 20 }}
+            name="health-and-safety"
+            size={50}
+            color="#008080"
+          />
+        </View>
+      </View>
       <View>
         <TextInput style={styles.logintextInput} placeholderTextColor="#ACACAC" placeholder="Email" value={email} onChangeText={setEmail} />
       </View>
@@ -106,7 +120,7 @@ const Login = ({navigation}) => {
               await sendVerificationEmailToUser();
               setError("Verification email resent. Please check your inbox/spam.");
             } catch (err) {
-              console.error("Resend verification error:", err);
+              // console.error("Resend verification error:", err);
               setError("Failed to resend verification email.");
             }
           }}
@@ -188,6 +202,7 @@ const styles = StyleSheet.create({
     color: 'red',
     marginBottom: 15,
     textAlign: 'center',
+    fontFamily:'times new roman'
   },
   signUp: {
     marginTop: 20,
@@ -217,6 +232,28 @@ const styles = StyleSheet.create({
   googleImage: {
     height: 20,
     width: 20,
+  },
+  welcomeTitle:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#2C3E50',
+    // textAlign: 'center',
+    marginTop: 40,
+    marginBottom: 20,
+    // marginLeft:20,
+    fontFamily: 'serif',
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 3,  
+  },
+  crisisText:{
+    fontSize: 40,
+    fontFamily: 'serif',
+    color: '#D32F2F', 
+    fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 3,
   },
 
 });

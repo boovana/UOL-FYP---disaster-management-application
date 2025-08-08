@@ -1,4 +1,4 @@
-# ASP_NutriTrack_Team89
+# CrisisREADY
 The application serves as a platform to receive near real time weather alerts, enhance prepardness and provide access to local resources such as shelters, hospitals, contacts, etc.
 
 ## Getting Started

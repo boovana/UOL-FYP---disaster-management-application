@@ -118,7 +118,7 @@ const Home = ({ navigation }) => {
               : 0;
 
           setProgressValue(normalizedProgress);
-          console.log('✅ Loaded progress from Firestore:', normalizedProgress);
+          // console.log('✅ Loaded progress from Firestore:', normalizedProgress);
         } 
         else {
           console.log('No progress found in Firestore for user.');
@@ -137,7 +137,7 @@ const Home = ({ navigation }) => {
     useCallback(() =>{
       const loadAlerts = async () =>{
         try {
-          console.log('gettgin alerts from alerts page')
+          // console.log('gettgin alerts from alerts page')
           const docRef = doc(db, 'alerts', userID);
           const docSnap = await getDoc(docRef);
           
@@ -211,7 +211,7 @@ const Home = ({ navigation }) => {
 
           if (docSnap.exists()) {
             const data = docSnap.data();
-            console.log('✅ Loaded user badges from Firestore:', data);
+            // console.log('✅ Loaded user badges from Firestore:', data);
             setBadges(data);
           } 
           else {
@@ -345,14 +345,14 @@ const Home = ({ navigation }) => {
         );
         // num of disaster categories completed
         const numCompleted = completedDisasters.length;
-        console.log(numCompleted)
+        // console.log(numCompleted)
         // num of categories with perfect score
         const perfectScoreDisasters = completedDisasters.filter(
           disaster => parseFloat(scores[disaster]) === 100
         );
         const numPerfectScores = perfectScoreDisasters.length;
-        console.log('numCompleted:', numCompleted)
-        console.log('numPerfectScores:', numPerfectScores)
+        // console.log('numCompleted:', numCompleted)
+        // console.log('numPerfectScores:', numPerfectScores)
         setCompletedDisasters(completedDisasters);
 
         // checking eligibility for the milestone challenges
@@ -443,7 +443,7 @@ const Home = ({ navigation }) => {
             }
           } 
           else {
-            console.warn('No badge document found for user');
+            // console.warn('No badge document found for user');
           }
         } 
         catch (error) {
@@ -532,19 +532,19 @@ const Home = ({ navigation }) => {
   {
     switch (severity?.toLowerCase()) {
       case 'moderate':
-        return '#FCEF91'; 
+        return '#f1e166ff'; 
       case 'severe':
         return '#FB9E3A'; 
       case 'extreme':
-        return '#D84040'; 
+        return '#d75050ff'; 
       default:
-        return '#EDEADE'; 
+        return '#B0BEC5'; 
     }
   };
   const renderAlert = ({ item: alert }) => {
     const severityColor = getAlertColor(alert.severity);
     return (
-      <TouchableOpacity style={styles.alertTouchable} onPress={()=>navigation.navigate('weatherForecast')}>
+      <TouchableOpacity style={styles.alertTouchable} onPress={()=>navigation.navigate('weatherAlerts')}>
         <View style={[styles.alertBox, { backgroundColor: severityColor }]}>
           <Text style={{ fontFamily: 'times new roman', color: "black", marginBottom: 10 }}>
             <Text style={{ fontWeight: 'bold' }}>Headline: </Text>
@@ -861,13 +861,17 @@ const styles = StyleSheet.create({
     marginBottom:20
   },
   welcomeTitle:{
-    fontSize:30,
+    fontSize:27,
     color:'#54626F',
     fontFamily:'times new roman',
     fontWeight:'bold',
+    padding:20,
+    marginTop:20,
+    marginBottom:20,
+    elevation:5,
     textAlign:'center',
-    padding:10,
-    marginTop:10,
+    backgroundColor:'#faf1e67b',
+    // height:100
   },
   subTitle:{
     fontSize:16, 

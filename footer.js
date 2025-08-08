@@ -12,7 +12,7 @@ const Footer =({navigation}) =>{
             </TouchableOpacity>
 
             {/** alerts icon */}
-            <TouchableOpacity onPress={()=>navigation.navigate('weatherForecast')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('weatherAlerts')}>
                 <Image style={styles.footerButtonIcon} source={require('./assets/images/alerts.png')}/>
                 <Text style={styles.footerText}>Alerts</Text>
             </TouchableOpacity>

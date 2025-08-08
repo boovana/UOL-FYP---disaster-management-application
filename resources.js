@@ -29,7 +29,7 @@ const Resources = ({title,category, navigation}) => {
 
     const[expandSection, setExpandSection] = useState({})
 
-    console.log('successfully navigated to the resources page')
+    // console.log('successfully navigated to the resources page')
 
     // fetch user's location
     useEffect(() => {
@@ -176,7 +176,7 @@ const Resources = ({title,category, navigation}) => {
         { title: 'Nearby Food Banks', data: foodBanks },
         { title: 'Nearby Shelters', data: shelters },
         { title: 'Emergency Contacts', data: contacts },
-        { title: 'News & Updates', data: newsArticles },
+        // { title: 'News & Updates', data: newsArticles },
     ];
     // toggle between expansion and compression of secctions
     const toggleSection =(title)=>{
@@ -274,7 +274,7 @@ const Resources = ({title,category, navigation}) => {
                 <TouchableOpacity onPress={findResourcesForLocationSearched} style={styles.findResourcesBtn}>
                     <Text style={{fontFamily:'times new roman', color:'black'}}>Find</Text>
                 </TouchableOpacity>
-
+                {/** autocomplete */}
                 {autoComplete.length > 0 && (
                     <View style={{ backgroundColor: '#FAF9F6', borderRadius: 14, elevation: 5 }}>
                         {autoComplete.map((item, index) => (
@@ -312,7 +312,10 @@ const Resources = ({title,category, navigation}) => {
                     </TouchableOpacity>
                 )}
                 renderItem={({ item, section}) => {
-                    if (!expandSection[section.title]) return null; 
+                    if (!expandSection[section.title]) {
+                        // console.log('no resources found')
+                        return null
+                    }; 
 
                     const props = item.properties;
                     return (
@@ -321,6 +324,17 @@ const Resources = ({title,category, navigation}) => {
                             <Text style={{fontFamily:'times new roman', color:'grey'}}>{props.address_line2 || ''}</Text>
                         </View>
                     );
+                }}
+                //  if no resources are found for the searched location -- show no resouces found 
+                renderSectionFooter={({ section }) => {
+                    if (expandSection[section.title] && section.data.length === 0) {
+                        return (
+                        <Text style={{ padding: 10, fontStyle: 'italic', color: 'grey', textAlign: 'center' }}>
+                            No resources found for your location
+                        </Text>
+                        );
+                    }
+                    return null;
                 }}
             />
             
