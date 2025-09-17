@@ -102,7 +102,7 @@ const WeatherForecast = ({navigation}) => {
           }
         } 
         catch (err) {
-          console.error("Notification setup error:", err);
+          console.log("Notification setup error:", err);
         }
       };
 
@@ -178,7 +178,7 @@ const WeatherForecast = ({navigation}) => {
         }
       } 
       catch (err) {
-        console.error("Error getting push token:", err);
+        console.log("Error getting push token:", err);
         return null;
       }
     };
@@ -203,7 +203,7 @@ const WeatherForecast = ({navigation}) => {
         await setDoc(docRef, { data: locationsList }, { merge: true });
 
       } catch (error) {
-        console.error('unable to save locations to firestore:', error);
+        console.log('unable to save locations to firestore:', error);
       }
     };
 
@@ -223,7 +223,7 @@ const WeatherForecast = ({navigation}) => {
         await setDoc(alertsRef, { data: allAlerts });
       } 
       catch (error) {
-        console.error('Failed to save alerts to Firestore:', error);
+        console.log('Failed to save alerts to Firestore:', error);
       }
     }
 
@@ -266,7 +266,7 @@ const WeatherForecast = ({navigation}) => {
             }
           }
         } catch (error) {
-          console.error('failed to load locations:', error);
+          console.log('failed to load locations:', error);
         }
       };
 
@@ -302,7 +302,7 @@ const WeatherForecast = ({navigation}) => {
           allItems.push(...countryFiltered);
         } 
         catch (error) {
-          console.error(`❌ Failed to fetch GDACS RSS [${key}]:`, error.message);
+          console.log(`❌ Failed to fetch GDACS RSS [${key}]:`, error.message);
         }
       }
       // remove duplicates
@@ -502,7 +502,7 @@ const WeatherForecast = ({navigation}) => {
           }
         }
         catch (err) {
-          console.error(`Failed to fetch CAP feed for ${country}:`, err.message);
+          console.log(`Failed to fetch CAP feed for ${country}:`, err.message);
         }
       }
       const uniqueAlerts = [];
@@ -566,7 +566,6 @@ const WeatherForecast = ({navigation}) => {
         } 
         // show error
         catch (error) {
-          // console.error("API error:", error.response?.data || error.message);
           setErrorMsg('Failed to fetch weather & alerts data \nPlease ensure you have granted permissions to access location!');
           setLoading(false);
         }
@@ -672,7 +671,6 @@ const WeatherForecast = ({navigation}) => {
         setShowModal(false);
       } 
       catch (error) {
-        console.error('add location error:', error.message);
         alert("Couldn't find that location. Please try a valid city name");
         setShowModal(false);
       }
@@ -847,7 +845,7 @@ const WeatherForecast = ({navigation}) => {
           setLocationName(updatedLocations);
         }
       } catch (error) {
-        console.error('failed to update locations after removal:', error);
+        console.log('failed to update locations after removal:', error);
       }
     };
 
