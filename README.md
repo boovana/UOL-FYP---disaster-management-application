@@ -51,8 +51,7 @@ Make sure you have the following installed:
 ## Installation
 
 1. Clone the repository
-2. Navigate to the project directory
-3. Install dependencies:
+2. Install dependencies:
    ```
    npm install
    ```
