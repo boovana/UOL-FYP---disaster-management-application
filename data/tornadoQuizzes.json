@@ -3,6 +3,7 @@
     "id": "c2ba8ec8-2d7c-48cb-b0d1-b5e38a1abfd4",
     "category": "supplies",
     "question": "What are some correct actions to prepare for a Tornado?",
+    "image": "thinkingEmoji.png",
     "options": [
       "Know the signs of a tornado, including a rotating, funnel-shaped cloud, an approaching cloud of debris, or a loud roar like a freight train.",
       "Ignore weather warnings",
@@ -20,6 +21,7 @@
     "id": "1ffe0e6c-2e19-494c-8134-cb53c68e0e21",
     "category": "supplies",
     "question": "What are some correct actions to stay safe during a Tornado?",
+    "image": "tornadoWarning.png",
     "options": [
       "Go outside and take shelter in large open space",
       "Look out the window to see if it has passed",
@@ -37,12 +39,13 @@
     "id": "457db9cc-8f18-4148-8119-6649ccf26ad9",
     "category": "supplies",
     "question": "What are some correct actions to take for: Staying Safe After a Tornado?",
+    "image": "thinkingEmoji.png",
     "options": [
       "Pay attention to EAS, NOAA Weather Radio, and local authorities for updated information.",
       "Stay clear of fallen power lines or broken utility lines.",
       "Contact your healthcare provider if you are sick and need medical attention. Wait for further care instructions and continue to shelter in place.",
-      "Go home",
-      "Start cleaning everything yourself"
+      "Go home immediately.",
+      "Start cleaning everything yourself."
     ],
     "correctAnswer": [
       "Pay attention to EAS, NOAA Weather Radio, and local authorities for updated information.",

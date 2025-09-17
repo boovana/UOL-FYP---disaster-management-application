@@ -14,7 +14,6 @@ import { doc, setDoc, getDoc, collection, updateDoc, arrayRemove, deleteField, o
 import { XMLParser } from 'fast-xml-parser';
 import {capFeeds} from './capfeeds'
 import Footer from './footer'
-import MapView, { Marker } from 'react-native-maps';
 import { ProgressBar } from 'react-native-paper';
 import { Linking } from 'react-native';
 
@@ -84,6 +83,9 @@ const WeatherForecast = ({navigation}) => {
     const globalExpoPushTokenRef = useRef(null);
     const [progress, setProgress] = useState(0);
 
+    const [allowNotification, setAllowNotification] = useState(false)
+
+
 
 
     const userID = auth.currentUser?.uid;
@@ -97,7 +99,6 @@ const WeatherForecast = ({navigation}) => {
             setExpoPushToken(token)
             setGlobalExpoPushToken(token);
             globalExpoPushTokenRef.current = token; 
-            console.log("push token:", token);
           }
         } 
         catch (err) {
@@ -144,23 +145,30 @@ const WeatherForecast = ({navigation}) => {
 
           let finalStatus = existingStatus;
           if(existingStatus =='granted'){
+            setAllowNotification(true)
             console.log('permission granted to send notifs!')
           }
 
           //ask for permission to send notification
           if (existingStatus !== 'granted') {
+            setAllowNotification(false)
             console.log(' no permisssion to send notifs')
             const { status } = await Notifications.requestPermissionsAsync();
             finalStatus = status;
           }
 
           if (finalStatus !== 'granted') {
+            setAllowNotification(false)
             console.log('Permission not granted for push notifications');
             return null;
           }
 
           token = (await Notifications.getExpoPushTokenAsync()).data;
+          
           console.log("Expo Push Token:", token);
+          if (userID && token) {
+            await setDoc(doc(db, 'users', userID), { expoPushToken: token }, { merge: true });
+          }
           return token;
         } 
         // ensure its not an emulator
@@ -174,102 +182,6 @@ const WeatherForecast = ({navigation}) => {
         return null;
       }
     };
-
-    const checkAndNotifyNewAlerts = async (locationName, newAlerts, previousAlerts) => {
-      try {
-        const previousKeys = new Set(previousAlerts?.map(a => `${a.headline}-${a.event}-${a.expires}`) || []);
-        const newUniqueAlerts = newAlerts.filter(alert => {
-          const key = `${alert.headline}-${alert.event}-${alert.expires}`;
-          return !previousKeys.has(key);
-        });
-        for (const alert of newUniqueAlerts) {
-          const message = {
-            title: `⚠️ Alert ${locationName}`,
-            body: alert.headline || "New alert available.",
-            data: { alert },  
-          };
-
-          // send push notif
-          if (globalExpoPushToken) {
-            await sendPushNotification(globalExpoPushToken, message);
-            console.log("using token:", globalExpoPushToken);
-          } 
-          else {
-            console.log("No expo push token found, cannot send push.");
-          }
-        }
-
-        // save latest alerts to firestore
-        const alertsDocRef = doc(db, 'alerts', userID);
-        await setDoc(alertsDocRef, { alerts: newAlerts }, { merge: true });
-      } catch (err) {
-        console.error("Error in checkAndNotifyNewAlerts:", err);
-      }
-    };
-    const previousAlertsRef = useState([]);
-
-    useEffect(() => {
-      if(!userID){
-        console.log('no user id found')
-        return;
-      }
-      if(!globalExpoPushToken){
-        console.log('no expo push token found')
-        return;
-      }
-
-      const userDocRef = doc(db, 'locations', userID);
-      
-      const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          const allAlerts = [];
-
-          // get alerts
-          const locationsData = data.data || {};
-          Object.entries(locationsData).forEach(([city, cityData]) => {
-            if (cityData.alerts && cityData.alerts.length > 0) {
-              allAlerts.push(...cityData.alerts);
-            }
-          });
-          // call notification check here with new alerts
-          checkAndNotifyNewAlerts("", allAlerts, previousAlertsRef.current, globalExpoPushTokenRef.current);
-
-          previousAlertsRef.current = allAlerts;
-        }
-      });
-
-      return () => unsubscribe();
-    }, [userID, globalExpoPushToken]);
-
-
-    const sendPushNotification = async (expoPushToken, message) => {
-      try {
-        const payload = {
-          to: expoPushToken,
-          sound: 'default',
-          title: message.title,
-          body: message.body,
-          data: message.data,
-        };
-
-        const response = await fetch('https://exp.host/--/api/v2/push/send', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Accept-encoding': 'gzip, deflate',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
-      } catch (err) {
-        console.error("cannot send push notification:", err);
-      }
-    };
-
 
     // api key from weatherapi.com
     const weatherAPI = 'a733a9584b20404fbc1105651252505'; 
@@ -311,7 +223,7 @@ const WeatherForecast = ({navigation}) => {
         await setDoc(alertsRef, { data: allAlerts });
       } 
       catch (error) {
-        console.error('❌ Failed to save alerts to Firestore:', error);
+        console.error('Failed to save alerts to Firestore:', error);
       }
     }
 
@@ -339,18 +251,19 @@ const WeatherForecast = ({navigation}) => {
             // set the addiitonal location data
             setAdditionalWeatherData(filteredData);
 
-            const firstLocationKey = locationsList[0];
-            // get the country name
-            const countryName = firstLocationKey.split(',').pop().trim(); 
-            const freshDisasters = await fetchGDACSByCountry(countryName);
+            if (locationsList?.length > 0) {
+              const firstLocationKey = locationsList[0];
+              // get the country name
+              const countryName = firstLocationKey.split(',').pop().trim(); 
+              const freshDisasters = await fetchGDACSByCountry(countryName);
 
-            filteredData[firstLocationKey].gdacsDisasters = freshDisasters;
+              filteredData[firstLocationKey].gdacsDisasters = freshDisasters;
 
-            await setDoc(docRef, { data: filteredData }, { merge: true });
-          }
-
-          else {
-            console.log('no locations found for user:', userID);
+              await setDoc(docRef, { data: filteredData }, { merge: true });
+            } 
+            else {
+              console.log('no locations found for user:', userID);
+            }
           }
         } catch (error) {
           console.error('failed to load locations:', error);
@@ -541,23 +454,23 @@ const WeatherForecast = ({navigation}) => {
               else if(fallbackInfo?.instruction){
                 instructionText = fallbackInfo.instruction;
               }
-              // console.log('englishInfo:', englishInfo);
-              // console.log('otherInfo:', otherInfo);
-              // console.log('fallbackInfo:', fallbackInfo);
-              // console.log('severity found:', fallbackInfo?.severity || englishInfo?.severity || otherInfo?.severity);
 
-
+              // get the description of the alerts in the available languages
               let descriptionText = 'No description available';
 
               if (englishInfo?.description) {
                 descriptionText = englishInfo.description;
-              } else if (englishInfo?.desc) {
+              } 
+              else if (englishInfo?.desc) {
                 descriptionText = englishInfo.desc;
-              } else if (otherInfo?.description) {
+              } 
+              else if (otherInfo?.description) {
                 descriptionText = otherInfo.description;
-              } else if (otherInfo?.desc) {
+              } 
+              else if (otherInfo?.desc) {
                 descriptionText = otherInfo.desc;
-              } else if (fallbackInfo?.description) {
+              } 
+              else if (fallbackInfo?.description) {
                 descriptionText = fallbackInfo.description;
               } else if (fallbackInfo?.desc) {
                 descriptionText = fallbackInfo.desc;
@@ -574,7 +487,6 @@ const WeatherForecast = ({navigation}) => {
                 effective: englishInfo?.effective || otherInfo?.effective || englishInfo?.onset || 'Uncertain',
                 expires: englishInfo?.expires || otherInfo?.expires || englishInfo?.onset || fallbackInfo?.expires ||'',
                 description:descriptionText,
-                // description: descriptionText,
                 instruction: instructionText,
                 severity: englishInfo?.severity || otherInfo?.severity || fallbackInfo?.severity||  'Unknown',
                 certainty: englishInfo?.certainty || otherInfo?.certainty || 'Unknown',
@@ -590,22 +502,22 @@ const WeatherForecast = ({navigation}) => {
           }
         }
         catch (err) {
-        console.error(`Failed to fetch CAP feed for ${country}:`, err.message);
+          console.error(`Failed to fetch CAP feed for ${country}:`, err.message);
+        }
       }
-    }
-    const uniqueAlerts = [];
-    const seen = new Set();
+      const uniqueAlerts = [];
+      const seen = new Set();
 
-    for (const alert of alerts) {
-      const key = `${alert.headline}-${alert.effective}-${alert.link}`;
-      if (!seen.has(key)) {
-        seen.add(key);
-        uniqueAlerts.push(alert);
+      for (const alert of alerts) {
+        const key = `${alert.headline}-${alert.effective}-${alert.link}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          uniqueAlerts.push(alert);
+        }
       }
-    }
 
-    return uniqueAlerts;
-  };
+      return uniqueAlerts;
+    };
 
     useEffect(() => {
       const fetchWeather = async () => {
@@ -644,15 +556,7 @@ const WeatherForecast = ({navigation}) => {
               normalize(a.desc) === normalize(alert.desc)
             )
           );
-          // const uniqueAlerts = alerts.filter((alert, index, self) =>
-          //   index === self.findIndex(a =>
-          //     a.headline === alert.headline &&
-          //     a.effective === alert.effective &&
-          //     a.expires === alert.expires
-          //   )
-          // );
-
-        
+  
           setCurrentLocation(country);
           setCurrentWeather(response.data.current);
           setCurrentForecast(response.data.forecast.forecastday);
@@ -662,14 +566,13 @@ const WeatherForecast = ({navigation}) => {
         } 
         // show error
         catch (error) {
-          console.error("API error:", error.response?.data || error.message);
-          setErrorMsg('Failed to fetch weather data');
+          // console.error("API error:", error.response?.data || error.message);
+          setErrorMsg('Failed to fetch weather & alerts data \nPlease ensure you have granted permissions to access location!');
           setLoading(false);
         }
       };
 
       fetchWeather();
-      // loadLocationsFromStorage();
 
     }, []);
 
@@ -678,7 +581,6 @@ const WeatherForecast = ({navigation}) => {
 
     // check if there are new alerts and save them
     useEffect(() => {
-      // console.log("allAlerts:", allAlerts.length)
       if (!loading && allAlerts.length > 0 &&  allAlerts.length <20)  {
         // console.log('Effect triggered: loading =', loading, ', allAlerts.length =', allAlerts.length);
       }
@@ -712,6 +614,11 @@ const WeatherForecast = ({navigation}) => {
         let alerts = forecastResponse.data.alerts?.alert || [];
         if (!alerts.length) {
           alerts = await fetchCAPAlertsByCountryName(countryFromApi);
+          // make sure expired alerts are not shown
+          alerts = alerts.filter(a => {
+            const expiry  = new Date(a.expires);
+            return isNaN(expiry.getTime()) || expiry > Date.now();
+          });
         }
         const gdacsDisasters = await fetchGDACSByCountry(countryFromApi);
 
@@ -755,7 +662,7 @@ const WeatherForecast = ({navigation}) => {
           const docRef = doc(db, 'locations', userID);
           const newLocationList = Object.keys(updated);
 
-          setDoc(docRef, {ata: updated,locations: newLocationList}, { merge: true });
+          setDoc(docRef, {data: updated,locations: newLocationList}, { merge: true });
 
           return updated;
         });
@@ -809,39 +716,23 @@ const WeatherForecast = ({navigation}) => {
             let alerts = forecastResponse.data.alerts?.alert || [];
             // ensure that expired alerts are not shown
             if (!alerts.length && existingData.alerts?.length) {
-              alerts = existingData.alerts.filter(a => {
-                const exp = new Date(a.expires);
-                return isNaN(exp.getTime()) || exp > Date.now();
-              });
+              alerts = existingData.alerts;
             }
 
             // use CAP alerts if nothing is found in the API -- fallback
             if (!alerts.length) {
               try {
-                alerts = await fetchCAPAlertsByCountryName(country);
+                alertsFetchedFromCAP = await fetchCAPAlertsByCountryName(country);
               } 
               catch (error) {
                 console.warn(`Failed to fetch CAP alerts for ${country}:`, error.message);
                 alerts = existingData.alerts || [];
               }
             }
-
-            // const testAlert = {
-            //   headline: "🚨 TEST TEST ALERT FOR NOTIFICATION 🚨",
-            //   event: "TestING Event",
-            //   desc: "This is a manually injected alert for testing AGAIN FOR THE MILLIONITH TIME.",
-            //   expires: new Date(Date.now() + 3600000).toISOString(), // +1 hour
-            //   severity: "SEVERE",
-            //   urgency: "Immediate",
-            //   areas: "HUEBI",
-            //   certainty: "LIKELY"
-            // };
-
-            // // Inject into Beijing manually for testing
-            // if (cityDisplayName === "Beijing, China") {
-            //   alerts.push(testAlert);
-            // }
-           
+            alerts = alerts.filter(a => {
+              const exp = new Date(a.expires);
+              return isNaN(exp.getTime()) || exp > Date.now();
+            });
                       
             // get rid duplicates from the feeds/api
             const seenKeys = new Set();
@@ -852,7 +743,7 @@ const WeatherForecast = ({navigation}) => {
               return true;
             });
             // notify about new alerts
-            await checkAndNotifyNewAlerts(cityDisplayName, uniqueAlerts, existingData.alerts, expoPushToken);
+            // await checkAndNotifyNewAlerts(cityDisplayName, uniqueAlerts, existingData.alerts, expoPushToken);
 
             // preserve GDACS if available
             const gdacsDisasters = existingData.gdacsDisasters || [];
@@ -908,7 +799,7 @@ const WeatherForecast = ({navigation}) => {
     if (errorMsg) {
       return (
         <View style={styles.center}>
-          <Text>{errorMsg}</Text>
+          <Text style={styles.errMessage}>{errorMsg}</Text>
         </View>
       );
     }
@@ -944,14 +835,14 @@ const WeatherForecast = ({navigation}) => {
               updatedData[key] = currentData[key];
             }
           }
-
+          
           // overwrite with new values
           await setDoc(locDocRef, {
             data: updatedData,
             locations: updatedLocations
           }, { merge: false });
 
-          // Upupdating local state
+          // updating local state
           setAdditionalWeatherData(updatedData);
           setLocationName(updatedLocations);
         }
@@ -1064,7 +955,7 @@ const WeatherForecast = ({navigation}) => {
         setSortingBySeverity(severity);
       }
     };
-    
+
     // get the alert color based on the first word in the title of the report 
     const getReportHeaderColor=(title)=>{
       const alertType = title?.split(' ')[0]; 
@@ -1168,7 +1059,7 @@ const WeatherForecast = ({navigation}) => {
                   <View>
                   
                   <TouchableOpacity
-                    key={`${alert.headline}-${alert.effective}-${index}`}
+                    key={generateAlertKey(alert)}
                     onPress={() => {
                       setshowAlertModal(true);
                       setSelectedAlert(alert);
@@ -1296,11 +1187,12 @@ const WeatherForecast = ({navigation}) => {
 
 
           {/** show the serverity, warning type and headline and when clicked it should show the details of the alert */}
-          {filteredAlerts.slice(0,5).map((alert, index) => {
+          {filteredAlerts.slice(0,5).map((alert) => {
             // get the severity of the alert to render the box color accordingly
             const severityColor = getAlertColor(alert.severity);
+            const alertKey = generateAlertKey(alert);
             return (
-            <TouchableOpacity key={`${alert.headline}-${alert.effective}-${index}`} onPress={() => { setshowAlertModal(true); setSelectedAlert(alert); }}>
+            <TouchableOpacity key={alertKey} onPress={() => { setshowAlertModal(true); setSelectedAlert(alert); }}>
               <View style={[styles.alertBox, { backgroundColor: severityColor }]}>
                 <Text style={styles.alertTitle}>
                   <Text style={{ fontWeight: 'bold' }}>Headline: </Text>
@@ -1351,7 +1243,7 @@ const WeatherForecast = ({navigation}) => {
               label: area,
               value: area
             }));
-
+            // filtered alerts of filtered states
             const filteredAlerts = filteredStates.length > 0
               ? visibleAlerts.filter(alert =>{
                 let areas = [];
@@ -1449,7 +1341,8 @@ const WeatherForecast = ({navigation}) => {
           
                 {filteredAlerts.slice(0,5).map((alert, index) => {
                   const severityColor = getAlertColor(alert.severity);
-                  const alertKey = `${alert.headline}-${alert.effective}-${index}`;
+                  const alertKey = generateAlertKey(alert);
+                  // const alertKey = `${alert.headline}-${alert.effective}-${index}`;
                   return (
                     <TouchableOpacity   key={alertKey} onPress={() => {setshowAlertModal(true); setSelectedAlert(alert);}}>
                       <View style={[styles.alertBox, { backgroundColor: severityColor}]}>
@@ -1585,7 +1478,7 @@ const WeatherForecast = ({navigation}) => {
                   placeholder="e.g. Singapore / USA"
                   placeholderTextColor='#54626F'
                 />
-                {autoComplete.length > 0 && (
+                {/* {autoComplete.length > 0 && (
                   <View style={styles.suggestionsContainer}>
                     {autoComplete.map((item, index) => {
                       const displayName = item.properties.formatted;
@@ -1614,22 +1507,34 @@ const WeatherForecast = ({navigation}) => {
                       );
                   })}
                   </View>
-                )}
+                )} */}
                 <View style={{ padding: 20 }}>
-
-                  <TouchableOpacity
-                    onPress={addLocation}
-                    style={{
-                      backgroundColor: '#6200ee',
-                      padding: 10,
-                      borderRadius: 5,
-                      alignItems: 'center',
-                      marginBottom: 10,
-                    }}>
-                    <Text style={{ color: '#fff' }}>Add</Text>
-                  </TouchableOpacity>
+                  <View style={{flexDirection:'row', justifyContent:'space-between', width:'100%', marginBottom:10}}>
+                      <TouchableOpacity onPress={() =>setShowModal(false)}
+                       style={{
+                          backgroundColor: '#722fd1ff',
+                          padding: 10,
+                          borderRadius: 5,
+                          alignItems: 'center',
+                          marginBottom: 10,
+                        }}>
+                        <Text style={{ color: 'white', fontFamily:'times new roman' }}>Cancel</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={addLocation}
+                        style={{
+                          backgroundColor: '#722fd1ff',
+                          padding: 10,
+                          borderRadius: 5,
+                          alignItems: 'center',
+                          marginBottom: 10,
+                        }}>
+                        <Text style={{ color: 'white', fontFamily:'times new roman' }}>Add</Text>
+                      </TouchableOpacity>
+                  </View>
+                  
                   <ProgressBar progress={progress} color="#6200ee" style={{ height: 8, borderRadius: 4 }} />
-                  <Text style={{ marginTop: 5, textAlign: 'center' }}>{Math.round(progress * 100)}%</Text>
+                  <Text style={{ marginTop: 5, textAlign: 'center', color:'black' }}>{Math.round(progress * 100)}%</Text>
                  
                 </View>
               </View>
@@ -1665,6 +1570,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    color:'red',
+    padding:30,
+   
+  },
+  errMessage:{
+    color:'red',
+    fontFamily:'times new roman',
+    fontSize:17,
+    textAlign:'center'
   },
   header: {
     fontSize: 20,

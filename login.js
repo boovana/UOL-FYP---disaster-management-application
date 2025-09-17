@@ -58,18 +58,17 @@ const Login = ({navigation}) => {
           await currentUser.reload();
           setUser(currentUser);
 
+           // test case so bypass the email verification
+          if (currentUser.email.toLowerCase() === "test@gmail.com") {
+              navigation.navigate('home');
+              return;
+          }
+
           if (!currentUser.emailVerified) {
             setError("Your email is not verified. Please verify your email before you can log in.");
             return;
           }
          
-    
-          // if (email === 'test@gmail.com') {
-          //   console.log("mock login using test@gmail.com -- successful!");
-          //   setError("");
-          //   navigation.navigate('home');
-          //   return;
-          // }
           console.log("Successful login using correct email and password!");
           navigation.navigate('home');
         } 

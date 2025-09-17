@@ -202,6 +202,8 @@ const Home = ({ navigation }) => {
   //     loadBadge();
   //   }, [])
   // );
+
+  // load badges on the dashboard 
   useFocusEffect(
     useCallback(() => {
       const loadBadge = async () => {
@@ -345,14 +347,12 @@ const Home = ({ navigation }) => {
         );
         // num of disaster categories completed
         const numCompleted = completedDisasters.length;
-        // console.log(numCompleted)
         // num of categories with perfect score
         const perfectScoreDisasters = completedDisasters.filter(
           disaster => parseFloat(scores[disaster]) === 100
         );
         const numPerfectScores = perfectScoreDisasters.length;
-        // console.log('numCompleted:', numCompleted)
-        // console.log('numPerfectScores:', numPerfectScores)
+        
         setCompletedDisasters(completedDisasters);
 
         // checking eligibility for the milestone challenges
@@ -399,6 +399,7 @@ const Home = ({ navigation }) => {
     return [...array].sort(() => Math.random() - 0.5);
   };
 
+  // generate new challenge quiz by combining the questions 
   const generateProgressQuiz = (perfectScoreDisasters) => {
     let combinedQuestions = [];
 
@@ -411,9 +412,8 @@ const Home = ({ navigation }) => {
 
     return shuffleArray(combinedQuestions)
 
-    
   };
-
+  // load the badges 
   useFocusEffect(
     useCallback(() => {
       const loadBadges = async () => {
@@ -427,7 +427,6 @@ const Home = ({ navigation }) => {
             console.log(data)
             if (data.quarterlyChallengeCompleted === true) {
               setQuarterlyChallengeCompleted(true);
-              // setQuarterlyBadgeAwarded(true)
             }
 
             if (data.halfwayChallengeCompleted === true) {
@@ -456,75 +455,6 @@ const Home = ({ navigation }) => {
       }
     }, [userID])
   );
-  // quarterly badge awarded to user
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const loadQuarterlyBadge = async () => {
-  //       // get the quarterly challenge badge from the storage
-  //       try {
-  //         const completedAndAwardedQuarterlyBadge = await AsyncStorage.getItem(`${userID}_quarterlyChallengeCompleted`);
-  //         setQuarterlyChallengeCompleted(JSON.parse(completedAndAwardedQuarterlyBadge) === true);
-  //         // console.log("Loaded 25% milestone Badge :", completedAndAwardedQuarterlyBadge);
-  //       } 
-  //       // else show that it did not load the badge
-  //       catch (err) {
-  //         console.error("Failed to load quarterly badge:", err);
-  //       }
-  //     };
-  //     loadQuarterlyBadge();
-  //   }, [])
-  // );
-  
-  // half way progress badge for the user
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const loadMidBadge = async () => {
-  //       try {
-  //         const completedAndAwardedHalfWayBadge = await AsyncStorage.getItem(`${userID}_halfWayChallengeCompleted`);
-  //         setHalfWayChallengeCompleted(JSON.parse(completedAndAwardedHalfWayBadge) === true);
-  //         // console.log("Loaded 50% milestone Badge :", completedAndAwardedHalfWayBadge);
-  //       } 
-  //       catch (err) {
-  //         console.error("Failed to load mid badge:", err);
-  //       }
-  //     };
-  //     loadMidBadge();
-  //   }, [])
-  // );
-
-  // load 3/4 progress badge
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const loadThreeQuarterBadge = async () => {
-  //       try {
-  //         const completedAndAwardedThreeQuarterBadge = await AsyncStorage.getItem(`${userID}_threeQuarterChallengeCompleted`);
-  //         setThreeQuarterChallengeCompleted(JSON.parse(completedAndAwardedThreeQuarterBadge) === true);
-  //         // console.log("Loaded 75%% milestone Badge :", completedAndAwardedThreeQuarterBadge);
-  //       } 
-  //       catch (err) {
-  //         console.error("Failed to load 3/4 badge:", err);
-  //       }
-  //     };
-  //     loadThreeQuarterBadge();
-  //   }, [])
-  // );
-
-  //load final progress badge
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const loadFinalBadge = async () => {
-  //       try {
-  //         const completedAndAwardedFinalBadge = await AsyncStorage.getItem(`${userID}_finalChallengeCompleted`);
-  //         setFinalChallengeCompleted(JSON.parse(completedAndAwardedFinalBadge) === true);
-  //         // console.log("Loaded 100% milestone Badge :", completedAndAwardedFinalBadge);
-  //       } 
-  //       catch (err) {
-  //         console.error("Failed to load final badge:", err);
-  //       }
-  //     };
-  //     loadFinalBadge();
-  //   }, [])
-  // );
 
   
   // set the color of the alert
@@ -735,7 +665,7 @@ const Home = ({ navigation }) => {
                     ]}
                   >
                     <Image
-                      source={require('./assets/final.png')}
+                      source={require('./assets/threeQuarter.png')}
                       style={{ width: 30, height: 30, elevation: 4, shadowColor: '#4300FF', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 5 }}
                     />
                     <Text style={{ fontFamily: 'times new roman', marginTop: 5, color: threeQuarterChallengeCompleted ? 'green' : 'gray', fontSize: 13, textAlign: 'center' }}>
@@ -767,7 +697,7 @@ const Home = ({ navigation }) => {
                     ]}
                   >
                     <Image
-                      source={require('./assets/threeQuarter.png')}
+                      source={require('./assets/final.png')}
                       style={{ width: 30, height: 30, elevation: 4, shadowColor: '#4300FF', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 5 }}
                     />
                     <Text style={{ fontFamily: 'times new roman', marginTop: 5, color: finalChallengeCompleted ? 'green' : 'gray', fontSize: 13, textAlign: 'center' }}>
@@ -786,7 +716,7 @@ const Home = ({ navigation }) => {
                 
                 <View style={styles.innerModelContainer}>      
                   <View style ={styles.challengeHeader}>
-                    <Text style={{color:'white', fontFamily:'times new roman', fontSize:16}}> ~ Progress Challenge ~</Text>
+                    <Text style={{color:'white', fontFamily:'times new roman', fontSize:16}}> ~ Milestone Challenge ~</Text>
                   </View>           
                   <View style={{flexDirection:'row', padding:15, justifyContent:'space-between'}}>
                     <AntDesign
@@ -796,21 +726,21 @@ const Home = ({ navigation }) => {
                       size={30}
                     />
                     <Text style={{ fontFamily: 'times new roman', fontSize: 15, marginBottom: 15, textAlign: 'center', color:'black',}}>                   
-                    To unlock this challenge, you must score 100 in each disaster quiz!
+                    To unlock this challenge, you must score 100 in each disaster quiz that has been attempted!
                     </Text>
                   </View>
                   
                   <TouchableOpacity
                     style={{
-                      backgroundColor:'#3488e2ff',
-                      // backgroundColor: '#3d6dc7',
+                      // backgroundColor:'#3488e2ff',
+                      backgroundColor: '#c4b5e882',
                       paddingVertical: 10,
                       paddingHorizontal: 20,
                       borderRadius: 5
                     }}
                     onPress={() => setShowModal(false)}
                   >
-                    <Text style={{ color: 'white', fontFamily: 'times new roman' }}>Got it!</Text>
+                    <Text style={{ color: 'black',fontWeight:'bold', fontFamily: 'times new roman' }}>Got it!</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -963,7 +893,7 @@ const styles = StyleSheet.create({
     // height:'50%'
   },
   challengeHeader:{
-    backgroundColor:'#2C3863',
+    backgroundColor:'#8747a5ff',
     height:'40%',
     width:'85%',
     alignItems:'center',

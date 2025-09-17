@@ -8,13 +8,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "What items should be part of the Basic Disaster Supplies Kit",
+    "question": "What items should be part of the basic disaster supplies kit?",
+    "image": "basic-disaster-kit.png",
     "options": [
       "Food (at least a several-day supply of non-perishable food)",
-      "perfume",
+      "Perfume",
       "Battery-powered or hand crank radio and a NOAA Weather Radio with tone alert",
-      "Water (one gallon per person per day for several days, for drinking and sanitation)",
-      "teddy bear"
+      "Water (one gallon per person per day for several days, for drinking and sanitation)",
+      "Teddy bear"
     ],
     "correctAnswer": [
       "Water (one gallon per person per day for several days, for drinking and sanitation)",
@@ -31,17 +32,18 @@
         "Wildfire",
         "Tsunami",
         "Pandemic"],
-    "question": "What items should be part of the Additional Emergency Supplies",
+    "question": "What items should be part of the additional emergency supplies?",
+    "image": "basic-disaster-kit.png",
     "options": [
       "Soap, hand sanitizer and disinfecting wipes to disinfect surfaces",
-      "Prescription medications. About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency.",
-      "photos",
+      "Prescription medications",
+      "Photos",
       "Non-prescription medications such as pain relievers, anti-diarrhea medication, antacids or laxatives",
-      "camera"
+      "Camera"
     ],
     "correctAnswer": [
       "Soap, hand sanitizer and disinfecting wipes to disinfect surfaces",
-      "Prescription medications. About half of all Americans take a prescription medicine every day. An emergency can make it difficult for them to refill their prescription or to find an open pharmacy. Organize and protect your prescriptions, over-the-counter drugs, and vitamins to prepare for an emergency.",
+      "Prescription medications",
       "Non-prescription medications such as pain relievers, anti-diarrhea medication, antacids or laxatives"
     ]
   },
@@ -54,13 +56,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "What items should be part of the Emergency Kit for the Car",
+    "question": "What items should be part of the emergency kit for the car?",
+    "image": "emergency-disaster-carkit.png",
     "options": [
       "Jumper cables",
       "Flares or reflective triangle",
-      "games",
+      "Games",
       "Ice scraper",
-      "tv"
+      "Headphones"
     ],
     "correctAnswer": [
       "Jumper cables",
@@ -77,12 +80,13 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "How to Prepare Your Car for Emergencies",
+    "question": "How to prepare your car for emergencies?",
+    "image": "emergency-disaster-carkit.png",
     "options": [
       "Brakes",
       "Antifreeze levels",
-      "watches",
-      "camera",
+      "Seats",
+      "Camera",
       "Battery and ignition system"
     ],
     "correctAnswer": [
@@ -100,13 +104,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "What should be done to ensure Car Safety?",
+    "question": "What should be done to ensure car safety?",
+    "image": "emergency-disaster-car.png",
     "options": [
       "Do not drive through flooded areas. Six inches of water can cause a vehicle to lose control or possibly stall. A foot of water will float many cars.",
       "Keep your gas tank full in case of evacuation or power outages. A full tank will also keep the fuel line from freezing.",
       "Install good winter tires and make sure they have enough tread, or any chains or studs required in your local area.",
-      "perfume",
-      "remote"
+      "Keep car started when warnings are issued",
+      "Keep car wipes"
     ],
     "correctAnswer": [
       "Keep your gas tank full in case of evacuation or power outages. A full tank will also keep the fuel line from freezing.",
@@ -123,13 +128,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "What items should be part of the Suggested Emergency Food Supplies",
+    "question": "What items should be part of the suggested emergency food supplies?",
+    "image": "emergency-disaster-foodKit.png",
     "options": [
       "Ready-to-eat canned meats, fruits, vegetables and a can opener",
       "Protein or fruit bars",
-      "remote",
+      "Milk",
       "Dry cereal or granola",
-      "tv"
+      "Bread"
     ],
     "correctAnswer": [
       "Ready-to-eat canned meats, fruits, vegetables and a can opener",
@@ -146,13 +152,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "What are the correct ways to ensure Food Safety and Sanitation",
+    "question": "What are the correct ways to ensure food safety and sanitation?",
+    "image": "emergency-disaster-foodSafety.png",
     "options": [
       "Keep food in covered containers.",
       "Keep cooking and eating utensils clean.",
-      "remote",
+      "Use same utensils to prevent contaminating other utensils.",
       "Throw away any food that has come into contact with contaminated flood water.",
-      "sunglasses"
+      "Cook as much food as possible."
     ],
     "correctAnswer": [
       "Keep food in covered containers.",
@@ -169,13 +176,14 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "How to ensure safety during Cooking?",
+    "question": "How to ensure safety during cooking?",
+    "image": "emergency-disaster-cooking.png",
     "options": [
-      "remote",
+      "Kepp food such as meat, poultry or leftovers that have been above 40 degrees Fahrenheit for two hours or more.",
       "Keep the refrigerator and freezer doors closed as much as possible.",
       "The refrigerator will keep food cold for about four hours if it is unopened.",
       "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage.",
-      "photos"
+      "Refrigerated food should be safe as long as the power was out for no more than five hours."
     ],
     "correctAnswer": [
       "Keep the refrigerator and freezer doors closed as much as possible.",
@@ -193,12 +201,13 @@
       "Tsunami",
       "Pandemic"],
     "question": "How to manage food without power?",
+    "image": "emergency-disaster-power.jpg",
     "options": [
       "Keep the refrigerator and freezer doors closed as much as possible.",
-      "remote",
-      "games",
-      "The refrigerator will keep food cold for about four hours if it is unopened.",
-      "Refrigerated or frozen foods should be kept at 40 degrees Fahrenheit or below for proper food storage."
+      "Use a refrigerator thermometer to check temperature.",
+      "The food is edible if it tastes good regardless of how long it was left inside the refrigerator without power.",
+      "The refrigerator will keep food cold for about two hours if it is unopened.",
+      "Discard any perishable food that have been above 40 degrees Fahrenheit for two hours or more."
     ],
     "correctAnswer": [
       "Keep the refrigerator and freezer doors closed as much as possible.",
@@ -215,18 +224,516 @@
       "Wildfire",
       "Tsunami",
       "Pandemic"],
-    "question": "How to determine Water Needs",
+    "question": "How to determine water needs?",
+    "image": "emergency-disaster-water.png",
     "options": [
-      "camera",
+      "Drink any liquid that is available.",
       "Do not drink carbonated or caffeinated beverages instead of drinking water. Caffeinated drinks and alcohol dehydrate the body which increases the need for drinking water.",
-      "tv",
-      "Drink water that you know is not contaminated first. If necessary, suspicious water, such as cloudy water from regular faucets or water from streams or ponds, can be used after it has been treated. If water treatment is not possible put off drinking suspicious water as long as possible but do not become dehydrated.",
+      "Ration drinking water so you never know when it will run out.",
+      "Drink water that you know is not contaminated first.",
       "Never ration drinking water unless ordered to do so by authorities. Drink the amount you need today and try to find more for tomorrow. Minimize the amount of water your body needs by reducing activity and staying cool."
     ],
     "correctAnswer": [
       "Never ration drinking water unless ordered to do so by authorities. Drink the amount you need today and try to find more for tomorrow. Minimize the amount of water your body needs by reducing activity and staying cool.",
-      "Drink water that you know is not contaminated first. If necessary, suspicious water, such as cloudy water from regular faucets or water from streams or ponds, can be used after it has been treated. If water treatment is not possible put off drinking suspicious water as long as possible but do not become dehydrated.",
+      "Drink water that you know is not contaminated first.",
       "Do not drink carbonated or caffeinated beverages instead of drinking water. Caffeinated drinks and alcohol dehydrate the body which increases the need for drinking water."
+    ]
+  },
+  {
+    "id": "9f17b17b-b7a4-448d-81c4-6701f440d167",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options",
+    "image": "thinkingEmoji.png",
+    "options": [
+      "It's important to understand your location's risks because no two communities face the same extreme weather conditions",
+      "Whether it's the home of a friend or family member or a pre-designated shelter, know your evacuation destination.",
+      "Read up about evacuation during the time of the emergency",
+      "Build a go-bag with all the essentials you might need, so you don't need to scramble in an evacuation situation.",
+      "Start evacuation planning when warnings are issued"
+    ],
+    "correctAnswer": [
+      "It's important to understand your location's risks because no two communities face the same extreme weather conditions",
+      "Whether it's the home of a friend or family member or a pre-designated shelter, know your evacuation destination.",
+      "Build a go-bag with all the essentials you might need, so you don't need to scramble in an evacuation situation."
+    ]
+  },
+  {
+    "id": "7c11ffc7-3264-4e42-90f3-ba25fb0066c5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What to do before an Evacuation",
+    "image": "emergency-disaster-evacuation.png",
+    "options": [
+      "I stay in a safe area hence I don't need to know about evacuation planning",
+      "Plan how you will leave and where you will go if you are advised to evacuate.",
+      "Learn the types of disasters that are likely in your community and the local emergency, evacuation and shelter plans for each specific disaster.",
+      "Check with local officials about what shelter spaces are available for this year."
+    ],
+    "correctAnswer": [
+      "Learn the types of disasters that are likely in your community and the local emergency, evacuation and shelter plans for each specific disaster.",
+      "Plan how you will leave and where you will go if you are advised to evacuate.",
+      "Check with local officials about what shelter spaces are available for this year."
+    ]
+  },
+  {
+    "id": "44877253-8a28-4088-ad8c-916e9155fe48",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What to do during an Evacuation",
+    "image": "emergency-disaster-evacuation.png",
+    "options": [
+      "Listen to a battery-powered radio and follow local evacuation instructions.",
+      "Leave everything behind",
+      "Take shortcuts and reach destination faster",
+      "Take your emergency supply kit.",
+      "Leave early enough to avoid being trapped by severe weather."
+    ],
+    "correctAnswer": [
+      "Listen to a battery-powered radio and follow local evacuation instructions.",
+      "Take your emergency supply kit.",
+      "Leave early enough to avoid being trapped by severe weather."
+    ]
+  },
+  {
+    "id": "44877253-8a28-4088-ad8c-916e9155fe48",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What to do after an Evacuation",
+    "image": "emergency-disaster-evacuation.png",
+    "options": [
+      "If you evacuated for the storm, check with local officials both where you're staying and back home before you travel.",
+      "Return home immediately",
+      "If you are returning to disaster-affected areas, after significant events prepare for disruptions to daily activities and remember that returning home before storm debris is cleared is dangerous.",
+      "Let friends and family know before you leave and when you arrive."
+    ],
+    "correctAnswer": [
+      "If you evacuated for the storm, check with local officials both where you're staying and back home before you travel.",
+      "If you are returning to disaster-affected areas, after significant events prepare for disruptions to daily activities and remember that returning home before storm debris is cleared is dangerous.",
+      "Let friends and family know before you leave and when you arrive."
+    ]
+  },
+  {
+    "id": "ff2389af-38b4-4ad8-aee4-9c2841f52d75",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What are the correct ways to use gadgets during an emergency?",
+    "image": "emergency-disaster-gadgets.jpg",
+    "options": [
+      "Dont call anyone",
+      "Only wait for news to be telecast",
+      "Have an emergency charging option for your phone and other mobile devices.",
+      "Social media channels such as Facebook and Twitter can also be an effective way to update family and friends during emergencies. Facebook's Safety Check feature allows users to easily post a status update indicating that they are safe during a time of disaster.",
+      "Mobile networks can become overwhelmed during emergencies, making it hard to make and get phone calls. Text messages require less bandwidth, which means they are able to be transmitted more reliably during situations when many people are trying to use their mobile phones at the same time."
+    ],
+    "correctAnswer": [
+      "Mobile networks can become overwhelmed during emergencies, making it hard to make and get phone calls. Text messages require less bandwidth, which means they are able to be transmitted more reliably during situations when many people are trying to use their mobile phones at the same time.",
+      "Social media channels such as Facebook and Twitter can also be an effective way to update family and friends during emergencies. Facebook’s Safety Check feature allows users to easily post a status update indicating that they are safe during a time of disaster.",
+      "Have an emergency charging option for your phone and other mobile devices."
+    ]
+  },
+  {
+    "id": "d23e79f4-ce88-4ecc-a41a-50cdac0082af",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options",
+    "image": "thinkingEmoji.png",
+    "options": [
+      "Chances of a disaster occuring is low hence planning is not essential",
+      "Know what disasters could affect your area, which ones could call for an evacuation and when to shelter in place.",
+      "Keep a NOAA Weather Radio tuned to your local emergency station and monitor TV and radio. Follow mobile alerts and warnings about severe weather in your area.",
+    ],
+    "correctAnswer": [
+      "Know what disasters could affect your area, which ones could call for an evacuation and when to shelter in place.",
+      "Keep a NOAA Weather Radio tuned to your local emergency station and monitor TV and radio. Follow mobile alerts and warnings about severe weather in your area."
+    ]
+  },
+  {
+    "id": "079d74c6-2c96-4d00-a667-0c3293ed745f",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for making a plan for individuals with disabilities",
+    "image": "emergency-disaster-plan.png",
+    "options": [
+      "Plan ahead for accessible transportation that you may need for evacuation or getting around during or after disaster. Check with local transit providers as well as with your emergency management agency to identify appropriate accessible options.",
+      "Create a support network of people who can help you in a disaster. Keep a contact list in a watertight container in your emergency kit or on your electronic devices.",
+      "Inform your support network where you keep your emergency supplies. You may want to consider giving a trusted member a key to your house or apartment.",
+      "Start calling the doctor",
+      "Depend on one medical facility in case of an emergency"
+    ],
+    "correctAnswer": [
+      "Create a support network of people who can help you in a disaster. Keep a contact list in a watertight container in your emergency kit or on your electronic devices.",
+      "Inform your support network where you keep your emergency supplies. You may want to consider giving a trusted member a key to your house or apartment.",
+      "Plan ahead for accessible transportation that you may need for evacuation or getting around during or after disaster. Check with local transit providers as well as with your emergency management agency to identify appropriate accessible options."
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "What are tips relevant to prepping medications?",
+    "image": "emergency-disaster-medication.png",
+    "options": [
+      "Talk to your doctor or pharmacist about how you can create an emergency supply of medicines.",
+      "Keep a list of your prescription medicines. Include information about your diagnosis, dosage, frequency, medical supply needs and allergies.",
+      "Store extra nonprescription drugs, like pain and fever relievers, antihistamines and antidiarrheal medicines.",
+      "Pack only what is essential in the exact amount",
+    ],
+    "correctAnswer": [
+      "Talk to your doctor or pharmacist about how you can create an emergency supply of medicines.",
+      "Keep a list of your prescription medicines. Include information about your diagnosis, dosage, frequency, medical supply needs and allergies.",
+      "Store extra nonprescription drugs, like pain and fever relievers, antihistamines and antidiarrheal medicines."
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Tips for People Who are Deaf or Hard of Hearing",
+    "image": "emergency-disaster-helping.png",
+    "options": [
+      "Pen and paper",
+      "Weather radio",
+      "Extra hearing-aid batteries",
+      "Lights and matches as light source for communication if electricity is out"
+    ],
+    "correctAnswer": [
+      "Weather radio",
+      "Extra hearing-aid batteries",
+      "Pen and paper"
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Tips for People Who are Blind or Have Low Vision",
+    "image": "emergency-disaster-helping.png",
+    "options": [
+      "Mark emergency supplies with Braille labels or large print. Keep a list of your emergency supplies and where you bought them on a portable flash drive or make an audio file that is kept in a safe place where you can access it.",
+      "Keep communication devices for your particular needs, such as a Braille or deaf-blind communications device as part of your emergency supply kit.",
+      "Keep a pen and paper",
+      "Have an audio recorder"
+    ],
+    "correctAnswer": [
+      "Mark emergency supplies with Braille labels or large print. Keep a list of your emergency supplies and where you bought them on a portable flash drive or make an audio file that is kept in a safe place where you can access it.",
+      "Keep communication devices for your particular needs, such as a Braille or deaf-blind communications device as part of your emergency supply kit."
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Tips for People with Speech Disability",
+    "image": "emergency-disaster-helping.png",
+    "options": [
+      "Only keep the devices with you",
+      "If you use an augmentative communications device or other assistive technologies plan how you will evacuate with the devices or how you will replace equipment if it is lost or destroyed. Keep model information and note where the equipment came from (Medicaid, Medicare, private insurance, etc.)."
+    ],
+    "correctAnswer": [
+      "If you use an augmentative communications device or other assistive technologies plan how you will evacuate with the devices or how you will replace equipment if it is lost or destroyed. Keep model information and note where the equipment came from (Medicaid, Medicare, private insurance, etc.).",
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Tips for People with Mobility Disability",
+    "image": "emergency-disaster-wheelchair.png",
+    "options": [
+      "If you use a power wheelchair have a lightweight manual chair available as a backup if possible.",
+      "Ensure only one type of mobility device is kept in case of emergency",
+      "Show others how to assemble, disassemble and operate your wheelchair.",
+      "Purchase an extra battery for a power wheelchair or other battery-operated medical or assistive technology devices. If you can't purchase an extra battery, find out what agencies, organizations or local charitable groups can help you buy one. Keep extra batteries charged at all times."
+    ],
+    "correctAnswer": [
+      "If you use a power wheelchair have a lightweight manual chair available as a backup if possible.",
+      "Show others how to assemble, disassemble and operate your wheelchair.",
+      "Purchase an extra battery for a power wheelchair or other battery-operated medical or assistive technology devices. If you can't purchase an extra battery, find out what agencies, organizations or local charitable groups can help you buy one. Keep extra batteries charged at all times."
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Tips for Individuals with Alzheimer’s and Related Dementia",
+    "image": "emergency-disaster-helping.png",
+    "options": [
+      "Do not leave the person alone. Even those who aren’t prone to wandering away may do so in unfamiliar environments or situations.",
+      "If evacuating, help manage the change in environment by bringing a pillow and blanket or other comforting items they can hold onto.",
+      "When at a shelter, try to stay away from exits and choose a quiet corner.",
+      "Start going around to look for individuals that can help",
+    ],
+    "correctAnswer": [
+      "Do not leave the person alone. Even those who aren’t prone to wandering away may do so in unfamiliar environments or situations.",
+      "If evacuating, help manage the change in environment by bringing a pillow and blanket or other comforting items they can hold onto.",
+      "When at a shelter, try to stay away from exits and choose a quiet corner."
+    ]
+  },
+  {
+    "id": "ad6d72d6-a513-4615-ac25-6900d03fc5b5",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options for: Individuals with Intellectual or Developmental Disabilities",
+    "image": "emergency-disaster-helping.png",
+    "options": [
+      "Purchase spare chargers for electronic devices and keep them charged.",
+      "Keep handheld electronic devices charged and loaded with videos and activities.",
+      "Keep normal headphones",
+      "Include sheets and twine or a small pop-up tent (to decrease visual stimulation in a busy room or to provide instant privacy)."
+    ],
+    "correctAnswer": [
+      "Keep handheld electronic devices charged and loaded with videos and activities.",
+      "Purchase spare chargers for electronic devices and keep them charged.",
+      "Include sheets and twine or a small pop-up tent (to decrease visual stimulation in a busy room or to provide instant privacy)."
+    ]
+  },
+  {
+    "id": "e1b1dac7-ca75-4169-b116-9f352ef8c34d",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to make a plan for your pets?",
+    "image": "emergency-disaster-pets.png",
+    "options": [
+      "Have an evacuation plan for your pet. Many public shelters and hotels do not allow pets inside. Know a safe place where you can take your pets before disasters and emergencies happen.",
+      "Develop a buddy system. Plan with neighbors, friends or relatives to make sure that someone is available to care for or evacuate your pets if you are unable to do so.",
+      "Have your pet microchipped. Make sure to keep your address and phone number up-to-date and include contact information for an emergency contact outside of your immediate area.",
+      "Bring the pet around with you",
+    ],
+    "correctAnswer": [
+      "Have an evacuation plan for your pet. Many public shelters and hotels do not allow pets inside. Know a safe place where you can take your pets before disasters and emergencies happen.",
+      "Develop a buddy system. Plan with neighbors, friends or relatives to make sure that someone is available to care for or evacuate your pets if you are unable to do so.",
+      "Have your pet microchipped. Make sure to keep your address and phone number up-to-date and include contact information for an emergency contact outside of your immediate area."
+    ]
+  },
+  {
+    "id": "4c9d4570-3417-4633-ab4d-6b7a181ad2e0",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Build a Kit for Your Pet",
+    "image": "emergency-disaster-pets.png",
+    "options": [
+      "A picture of only your pet",
+      "Keep several days’ supply of food in an airtight, waterproof container.",
+      "Keep a few hours supply of water ",
+      "Keep an extra supply of the medicine your pet takes on a regular basis in a waterproof container."
+    ],
+    "correctAnswer": [
+      "Keep several days’ supply of food in an airtight, waterproof container.",
+      "Keep an extra supply of the medicine your pet takes on a regular basis in a waterproof container."
+    ]
+  },
+  {
+    "id": "8680242b-60ca-465b-990f-ffd4423a715e",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options",
+    "image": "emergency-disaster-pets.png",
+    "options": [
+      "Leave the carrier out in places your pet frequently visits",
+      "Leave the carrier closed",
+      "Feed them treats near the carrier – you can even try putting a few treats inside the carrier",
+      "Carry and put your pet inside",
+    ],
+    "correctAnswer": [
+      "Leave the carrier out in places your pet frequently visits",
+      "Feed them treats near the carrier – you can even try putting a few treats inside the carrier"
+    ]
+  },
+  {
+    "id": "2cd4264c-5e06-4d6b-9e87-d0974c38bba2",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to handle large animals during an emergency?",
+    "image": "emergency-disaster-largeAnimals.png",
+    "options": [
+      "Let all animals free immediately in case of an emergency",
+      "If you have pets such as horses, goats or pigs on your property, be sure to prepare before a disaster.",
+      "Ensure all animals have some form of identification.",
+      "Evacuate animals earlier, whenever possible. Map out primary and secondary routes in advance."
+    ],
+    "correctAnswer": [
+      "If you have pets such as horses, goats or pigs on your property, be sure to prepare before a disaster.",
+      "Ensure all animals have some form of identification.",
+      "Evacuate animals earlier, whenever possible. Map out primary and secondary routes in advance."
+    ]
+  },
+  {
+    "id": "2a576bfd-d8e8-4bf4-ab79-9ae315702473",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options.",
+    "image": "thinkingEmoji.png",
+    "options": [
+      "Pay attention to wireless emergency alerts for local alerts and warnings sent by state and local public safety officials.",
+      "Listen to local officials when told to evacuate or shelter in place.",
+      "Always bring pets indoors at the first sign or warning of a storm or disaster.",
+      "Bring all pets outside with you when warnings are issued"
+    ],
+    "correctAnswer": [
+      "Pay attention to wireless emergency alerts for local alerts and warnings sent by state and local public safety officials.",
+      "Listen to local officials when told to evacuate or shelter in place.",
+      "Always bring pets indoors at the first sign or warning of a storm or disaster."
+    ]
+  },
+  {
+    "id": "0365a087-4f44-41f9-945b-b5d1990b8f76",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to make a fire escape plan?",
+    "image": "emergency-disaster-fireescape.png",
+    "options": [
+      "Choose a safe meeting place a safe distance from your home.",
+      "Practice getting low and moving to your exits in case there is smoke.",
+      "Have a home fire drill at least twice a month.",
+      "Learn five ways out of every room in your home"
+    ],
+    "correctAnswer": [
+      "Practice getting low and moving to your exits in case there is smoke.",
+      "Choose a safe meeting place a safe distance from your home."
+    ]
+  },
+  {
+    "id": "4ea53ce1-ed28-457a-b7fa-2f9340054954",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "Select the correct options",
+    "image": "thinkingEmoji.png",
+    "options": [
+      "Have a plan for young children under six who cannot get outside by themselves. In your plan, talk about who will help each child get out safely.",
+      "Children should know what to do when they hear a smoke alarm and there is no adult around. Help them practice going to the outside meeting place.",
+      "Always carry your children and bring them with you",
+      "Teach children to be brave and courageously face the situation"
+    ],
+    "correctAnswer": [
+      "Have a plan for young children under six who cannot get outside by themselves. In your plan, talk about who will help each child get out safely.",
+      "Children should know what to do when they hear a smoke alarm and there is no adult around. Help them practice going to the outside meeting place.",
+    ]
+  },
+  {
+    "id": "4ea53ce1-ed28-457a-b7fa-2f9340054954",
+    "category": ["Flood",
+      "Earthquake",
+      "Hurricane",
+      "Tornado",
+      "Wildfire",
+      "Tsunami",
+      "Pandemic"],
+    "question": "How to conduct a home fire drill?",
+    "image": "emergency-disaster-fireDrill.jpg",
+    "options": [
+      "Know where to go. Review your safe meeting place. Explain to your kids that when the smoke alarm beeps, they need to get out of the house quickly and meet at that safety spot.",
+      "Test your smoke alarms by yourself",
+      "Do the drill. Have kids head to their bedrooms and wait for the drill to begin. Assign adults to help young children. Put one adult in charge of sounding the smoke alarm and running the drill. Next, sound the smoke alarm, start the timer and have everyone book it to the safety spot. Once everyone gets to the safe meeting place stop the timer. If you all made it in under two minutes, you each get an imaginary gold medal. If not, give it another try. In a real fire, get to the safe meeting place, then call 9-1-1 and keep everyone close until firefighters arrive.",
+    ],
+    "correctAnswer": [
+      "Know where to go. Review your safe meeting place. Explain to your kids that when the smoke alarm beeps, they need to get out of the house quickly and meet at that safety spot.",
+      "Do the drill. Have kids head to their bedrooms and wait for the drill to begin. Assign adults to help young children. Put one adult in charge of sounding the smoke alarm and running the drill. Next, sound the smoke alarm, start the timer and have everyone book it to the safety spot. Once everyone gets to the safe meeting place stop the timer. If you all made it in under two minutes, you each get an imaginary gold medal. If not, give it another try. In a real fire, get to the safe meeting place, then call 9-1-1 and keep everyone close until firefighters arrive."
     ]
   }
 ]

@@ -1,7 +1,7 @@
 
 import { auth } from './firebaseConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {EmailAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut as firebaseSignOut,GoogleAuthProvider,signInWithCredential,sendPasswordResetEmail,sendEmailVerification, updateProfile} from 'firebase/auth';
+import {EmailAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut as firebaseSignOut,GoogleAuthProvider,signInWithCredential,sendPasswordResetEmail,sendEmailVerification, updateProfile, updateEmail} from 'firebase/auth';
 
 // sign up with email and password
 export const signUp = async (email, password, displayName) => {
@@ -75,7 +75,7 @@ export const sendVerificationEmailToUser = async () => {
     await sendEmailVerification(user, actionCodeSettings);
     console.log("Verification email sent to:", user.email);
     const actionCodeSettings = {
-      url: "https://www.google.com", // harmless neutral destination
+      url: "https://www.google.com", 
       handleCodeInApp: false,
     };
 
@@ -83,5 +83,30 @@ export const sendVerificationEmailToUser = async () => {
   } catch (error) {
     console.error("Error sending verification email:", error);
     return { success: false, message: error.message };
+  }
+};
+
+
+
+export const updateUserEmail = async (user,newEmail) => {
+  try {
+    await updateEmail(user, newEmail); 
+
+    await sendEmailVerification(user);
+    return { success: true };
+  } 
+  catch (error) {
+    let errorMsg = '';
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMsg = 'Invalid email format!';
+        break;
+      case 'auth/email-already-in-use':
+        errorMsg = 'This email is already in use!';
+        break;
+      default:
+        errorMsg = 'Failed to update email, please try again!';
+    }
+    return { success: false, errorMsg };
   }
 };

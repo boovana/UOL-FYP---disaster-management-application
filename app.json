@@ -46,6 +46,7 @@
         }
       ],
       "expo-web-browser",
+      "expo-screen-orientation"
     ],
     "experiments": {
       "typedRoutes": true

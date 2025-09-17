@@ -33,24 +33,10 @@ const DisasterPrepTasks = ({navigation}) => {
 
 
     // find out if the disaster tasks have been completed
-    // useEffect(() => {
-    //     const loadCompletion = async () => {
-    //     try {
-    //         const stored = await AsyncStorage.getItem(`${userID}_disasterCompletion`);
-    //         if (stored) {
-    //         setDisasterCompleted(JSON.parse(stored));
-    //         }
-    //     } catch (error) {
-    //         console.error('Error loading disaster completion status:', error);
-    //     }
-    //     };
-
-    //     loadCompletion();
-    // }, []);
     useEffect(() => {
         const loadCompletion = async () => {
             try {
-            const docRef = doc(db, 'userProgress', userID); // adjust path if needed
+            const docRef = doc(db, 'userProgress', userID); 
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
@@ -74,7 +60,9 @@ const DisasterPrepTasks = ({navigation}) => {
 
     return (
         <View style={{ paddingBottom: 70, flex:1, backgroundColor:'white', padding:15}}>
-            <Text style={styles.header}>Complete tasks from each category below, earn points and badges and be disaster-ready!</Text>
+            <Text style={styles.header}>Prepare</Text>
+
+            <Text style={styles.subheader}>Complete tasks from each category below, earn points and badges and be disaster-ready!</Text>
             <FlatList
                 data = {disasterList} 
                 keyExtractor={(item, i) => i.toString()}
@@ -130,26 +118,35 @@ const DisasterPrepTasks = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  header:{
-    fontFamily:'times new roman',
-    fontSize:15,
-    marginBottom:10,
-    fontWeight:'bold',
-    color:'#54626F'
-  },  
-  disasterBox:{
-    backgroundColor:"#F5ECCF",
-    marginBottom:10,
-    padding:25,
-    borderRadius:10,
-    borderWidth:1,
-    borderColor:'#4d5d53',
-    elevation:3,
-  },
-  icon:{
-    width:40,
-    height:40
-  }
+    subheader:{
+        fontFamily:'times new roman',
+        fontSize:17,
+        padding:10,
+        marginBottom:20,
+        fontWeight:'bold',
+        color:'#54626F'
+    },  
+    header:{
+        fontFamily:'times new roman',
+        fontSize:25,
+        color:'#54626F',
+        fontWeight:'bold',
+        textAlign:'center',
+        margin:20
+    },
+    disasterBox:{
+        backgroundColor:"#F5ECCF",
+        marginBottom:10,
+        padding:25,
+        borderRadius:10,
+        borderWidth:1,
+        borderColor:'#4d5d53',
+        elevation:3,
+    },
+    icon:{
+        width:40,
+        height:40
+    }
 })
 
 

@@ -65,14 +65,11 @@ To start the project, run:
 npx expo run:android
 ```
 
-
-This will start the Expo development server and provide you with options to run the app on various platforms (iOS simulator, Android emulator, or web).
-
 ## Testing Login
 
 To test the login functionality, you can use the following credentials:
 
 - Email: test@gmail.com
-- Password: 12345678
+- Password: Password123!
 
 Alternatively, you can create a new account with a valid email entirely.

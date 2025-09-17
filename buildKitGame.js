@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import { NativeModules } from 'react-native';
 
 const BuildKitGame= () => {
   useEffect(() => {
+    console.log('ExpoScreenOrientation native module:', NativeModules.ExpoScreenOrientation);
+
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
 
     return () => {

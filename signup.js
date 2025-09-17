@@ -66,48 +66,35 @@ const SignUp = ({navigation}) =>{
             }
         };
     }
-    
-    // const googleSignIn = async () => {
-    //     console.log("Pressed sign in");
-
-    //     try {
-    //         await GoogleSignin.hasPlayServices();
-    //         const userInfo = await GoogleSignin.signIn();
-    //         console.log("Google Sign-In Successful:", userInfo);
-
-    //         // Create a Google credential with the token
-    //         const googleCredential = auth.GoogleAuthProvider.credential(
-    //             userInfo.idToken
-    //         );
-
-    //         // Sign-in the user with the credential
-    //         await auth().signInWithCredential(googleCredential);
-    //     } 
-    //     catch (error) {
-    //         console.error("Google Sign-In Error:", error);
-    //         setError(error.message);
-    //     }
-    // };
-
 
     return(
-        <View style={{flex:1,justifyContent:'center',backgroundColor:'white', padding:15, }}>
+        <View style={{flex:1,justifyContent:'center',backgroundColor:'white', padding:15}}>
             <Text style={styles.header}>Let's get started!</Text>
-            <View style={styles.signUpFormContainer}>
-                <TextInput style={styles.input} placeholderTextColor='#ACACAC' placeholder='Username' value={displayName} onChangeText={setDisplayName}/>
+            <View style={styles.container}>
+                <View style={styles.signUpFormContainer}>
+                    <Text style={styles.inputLabelText}>USERNAME</Text>
+                    <TextInput style={styles.input} placeholderTextColor='#ACACAC' placeholder='Username' value={displayName} onChangeText={setDisplayName}/>
+                </View>
+                {/* <View style={styles.signUpFormContainer}>
+                    <TextInput style={styles.input} placeholderTextColor='#ACACAC' placeholder='Username' value={displayName} onChangeText={setDisplayName}/>
+                </View> */}
+                <View  style={styles.signUpFormContainer}>
+                    <Text style={styles.inputLabelText}>EMAIL</Text>
+                    <TextInput style={styles.input} placeholderTextColor='#ACACAC' placeholder='Enter your email' value={email} onChangeText={setEmail} keyboardType="email-address"/>
+                </View>
+                <View  style={styles.signUpFormContainer}>
+                    <Text style={styles.inputLabelText}>PASSWORD</Text>
+                    <TextInput  style={styles.input}  placeholderTextColor='#ACACAC' placeholder='Password' secureTextEntry ={true} onChangeText={setPassword} value={password}/>
+                </View>
+                <View  style={styles.signUpFormContainer}>
+                    <Text style={styles.inputLabelText}>CONFIRM PASSWORD</Text>
+                    <TextInput  style={styles.input}  placeholderTextColor='#ACACAC' placeholder='Re-enter password' secureTextEntry={true} value={confirmPassword} onChangeText={setConfirmPassword}/>
+                </View>
             </View>
-            <View style={styles.signUpFormContainer}>
-                <TextInput style={styles.input} placeholderTextColor='#ACACAC' placeholder='Enter your email' value={email} onChangeText={setEmail} keyboardType="email-address"/>
-            </View>
-            <View style={styles.signUpFormContainer}>
-                <TextInput  style={styles.input}  placeholderTextColor='#ACACAC' placeholder='Password' secureTextEntry ={true} onChangeText={setPassword} value={password}/>
-            </View>
-            <View style={styles.signUpFormContainer}>
-                <TextInput  style={styles.input}  placeholderTextColor='#ACACAC' placeholder='Re-enter password' secureTextEntry={true} value={confirmPassword} onChangeText={setConfirmPassword}/>
-            </View>
+            
             {error ? <Text style={styles.errorText}>{error}</Text> : null}
             <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
-                <Text style={styles.signUpButtonText}>Sign up</Text>
+                <Text style={styles.signUpButtonText}>SIGN UP</Text>
             </TouchableOpacity>
 
             <Modal visible={modalVisible} transparent={true} animationType="slide" onRequestClose={() => setModalVisible(false)}>
@@ -124,30 +111,42 @@ const SignUp = ({navigation}) =>{
 }
 
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor:'#FAF5EF',
+        padding:10,
+        borderRadius:10,
+        elevation:5,
+        height:'60%',
+        justifyContent:'center'
+    },
     signUpFormContainer:{
-        width: '100%',
-        backgroundColor:"white",
-        padding:20,
-        alignItems:'center'
+        width: '90%',
+        marginBottom:20,
+        alignSelf:'center'
     },
     header:{
-        fontFamily:'times new roman',
         fontSize:30,
         fontWeight:'bold',
-        color:'#54626F',
-        textAlign:'center'
+        color:'#2C3E50',
+        textAlign:'center',
+        fontFamily: 'serif',
+        textShadowColor: 'rgba(0, 0, 0, 0.2)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 3,  
+        marginBottom:50
     },
     signUpButton: {
-        backgroundColor: "#007bff",
+        backgroundColor: "#9DC183",
         padding: 12,
-        borderRadius: 8,
+        borderRadius: 25,
         alignSelf:'flex-end',
         alignItems: 'center',
         width:'40%',
-        marginHorizontal:20
+        marginTop:20,
+        
     },
     signUpButtonText: {
-        color: "#fff",
+        color: "black",
         fontWeight: "bold",
         fontFamily:'times new roman'
     },
@@ -183,6 +182,7 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 16,
     },
+    
     input:{
         backgroundColor: '#F5F5F5',
         fontFamily:'times new roman',
@@ -193,7 +193,13 @@ const styles = StyleSheet.create({
         width:'100%',
         padding:10,
         height:50,
-    }
+    },
+    inputLabelText:{
+        fontFamily:'times new roman',
+        color:"black",
+        fontSize:13,
+        marginBottom:10
+    },
 })
 
 export default SignUp

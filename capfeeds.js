@@ -91,7 +91,8 @@ export const capFeeds = {
   "Hungary": ["https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-hungary"],
   "Iceland": ["https://api.vedur.is/cap/v1/capbroker/active/category/Met/"],
   "India": [
-    "https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml"
+    "https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml",
+    "https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml"
   ],
   "Indonesia": [
     "https://signature.bmkg.go.id/alert/public/rss.xml",
@@ -151,7 +152,7 @@ export const capFeeds = {
     "https://cap-sources.s3.amazonaws.com/mr-onm-ar/rss.xml"
   ],
   "Mauritius": ["https://cap-sources.s3.amazonaws.com/mu-mms-en/rss.xml"],
-  "Mexico": ["https://smn.conagua.gob.mx/tools/PHP/feedsmn/cap.php"],
+  "Mexico": ["https://cap-sources.s3.amazonaws.com/mx-cenapred-en/rss.xml"],
   "Mongolia": [
     "https://cap-sources.s3.amazonaws.com/mn-namem-en/rss.xml",
     "https://cap-sources.s3.amazonaws.com/mn-namem-mn/rss.xml"

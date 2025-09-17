@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text,TouchableOpacity, StyleSheet, Button, ScrollView, ActivityIndicator, Image, PermissionsAndroid} from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { auth, db} from './firebaseConfig';
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import {Platform, Alert } from 'react-native';
 import RNBlobUtil from 'react-native-blob-util';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import DisasterPrepTasks from "./disastersPrep"
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -92,10 +92,8 @@ const AllTasks =() =>{
             const grade = data?.quizScores?.[selectedDisaster];
             if (grade !== undefined) {
               setHighestGrade(grade);
-              console.log(`Loaded quiz score for ${selectedDisaster}:`, grade);
             } else {
               setHighestGrade(0);
-              console.log(`No quiz score found for ${selectedDisaster}`);
             }
           } else {
             console.log('No user progress document found');
@@ -229,35 +227,98 @@ const AllTasks =() =>{
 
 
     // fetch videos from youtube
-    useEffect(() => {
-      const fetchVideos = async () => {
-          try {
-            const query = selectedDisaster === 'Common preparation and tips'
-                ? 'disaster preparedness'
-                : `${selectedDisaster} safety tips`;
+    // useEffect(() => {
+    //   const fetchVideos = async () => {
+    //       try {
+    //         const query = selectedDisaster === 'Common preparation and tips'
+    //             ? 'disaster preparedness'
+    //             : `${selectedDisaster} safety tips`;
 
-            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
-                params: {
-                part: 'snippet',
-                q: query,
-                type: 'video',
-                maxResults: 3,
-                key: API_KEY,
-                },
-          });
-          setVideos(res.data.items);
-          } 
-          catch (err) {
-            console.error('Error fetching YouTube videos:', err);
-          } 
-          finally {
-            setLoadingVideos(false);
-          }
+    //         const res = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
+    //             params: {
+    //             part: 'snippet',
+    //             q: query,
+    //             type: 'video',
+    //             maxResults: 3,
+    //             key: API_KEY,
+    //             },
+    //       });
+    //       setVideos(res.data.items);
+    //       } 
+    //       catch (err) {
+    //         console.error('Error fetching YouTube videos:', err);
+    //       } 
+    //       finally {
+    //         setLoadingVideos(false);
+    //       }
+    //   };
+
+    // fetchVideos();
+    // }, [selectedDisaster]);
+
+    // fetch the videos and store in firestore
+    const fetchVideosForDisaster = async (selectedDisaster) => {
+      const docRef = doc(db, "disasterVideos", selectedDisaster);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return docSnap.data().videos;
+      } 
+      else {
+        const query = selectedDisaster === "Common preparation and tips" ? "disaster preparedness" : `${selectedDisaster} safety tips`;
+
+        const res = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
+          params: {
+            part: "snippet",
+            q: query,
+            type: "video",
+            maxResults: 3,
+            key: API_KEY,
+          },
+        });
+
+        const videoIds = res.data.items.map(item => item.id.videoId);
+
+        const detailsRes = await axios.get(`https://www.googleapis.com/youtube/v3/videos`, {
+          params: {
+            part: "snippet,status,contentDetails",
+            id: videoIds.join(","),
+            key: API_KEY,
+          },
+        });
+
+        const videos = detailsRes.data.items.map(item => ({
+          videoId: item.id,
+          title: item.snippet.title,
+          thumbnail: item.snippet.thumbnails.medium.url,
+        }));
+
+
+        // save to firestore 
+        await setDoc(docRef, {videos:videos,lastUpdated: new Date().toISOString()});
+
+        return videos;
+      }
+    };
+    // load videos
+    useEffect(() => {
+      const loadVideos = async () => {
+        setLoadingVideos(true);
+        try {
+          const data = await fetchVideosForDisaster(selectedDisaster);
+          setVideos(data);
+        } 
+        catch (err) {
+          console.error("Error fetching videos:", err);
+        }
+        finally {
+          setLoadingVideos(false);
+        }
       };
 
-    fetchVideos();
+      loadVideos();
     }, [selectedDisaster]);
-  
+
 
     // download the pdf files 
     const downloadPDF = async (url) => {
@@ -315,43 +376,53 @@ const AllTasks =() =>{
         {loadingVideos ? (
           <ActivityIndicator size="large" />
         ) : (
-          videos.map(video => (
+          videos.map((video, index) => (
             <TouchableOpacity 
-              key={video.id.videoId}
-              onPress={() => navigation.navigate('playVideo', { videoId: video.id.videoId })}
+              key={video.videoId || index}
+              onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${video.videoId}`)}
             >
               <Image
-                source={{ uri: video.snippet.thumbnails.medium.url }}
-                style={{ width: '100%', height: 200, borderRadius: 10, marginVertical: 10 }}
+                source={{ uri: video.thumbnail}}
+                style={{ width: '100%', height: 250, borderRadius: 10, marginVertical: 10 }}
               />
-              <Text style={styles.videoTitle}>{video.snippet.title}</Text>
+              <Text style={styles.videoTitle}>{video.title}</Text>
             </TouchableOpacity>
           ))
         )}
         {/* common emergency plan*/}
         {selectedDisaster === "Common preparation and tips" && (
         <View>
-          <TouchableOpacity
+          <View style={[styles.taskTitleContainer,{flexDirection:'column'}]}>
+            <TouchableOpacity 
             onPress={() =>
               navigation.navigate('viewPDF', {
                 url: 'https://www.redcross.org/content/dam/redcross/get-help/pdfs/American-Red-Cross-Emergency-Contact-Card.pdf',
                 title: 'Make a plan'
               })
-            }
-            style={styles.taskTitleContainer}
-          >
-            <Text style={styles.pdfLink}>
-              Create an emergency contact card
-            </Text>
-          </TouchableOpacity>
-            {/** nav to the interactive game on ready.gov to build a kit */}
-          <TouchableOpacity
-            onPress={() => navigation.navigate('buildKitGame')}
-            style={styles.taskTitleContainer}>
-            <Text style={styles.pdfLink}>
-              Can you build a kit?
-            </Text>
-          </TouchableOpacity>
+            }>
+              <Text style={styles.pdfLink}>
+                Create an emergency contact card
+              </Text> 
+
+              <View style={styles.downloadButton}>
+                <TouchableOpacity  onPress={() => downloadPDF('https://www.redcross.org/content/dam/redcross/get-help/pdfs/American-Red-Cross-Emergency-Contact-Card.pdf')} >
+                    <Text style={styles.downloadText}>Download</Text>
+                  </TouchableOpacity> 
+              </View>    
+            </TouchableOpacity>
+          </View>
+        
+          
+          <View style={styles.taskTitleContainer}>
+             {/** nav to the interactive game on ready.gov to build a kit */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate('buildKitGame')}
+              >
+              <Text style={styles.pdfLink}>
+                Can you build a kit?
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
           
         )}
@@ -371,9 +442,12 @@ const AllTasks =() =>{
                   Flood hazard information sheet
                 </Text>
               </TouchableOpacity>  
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
-              </TouchableOpacity>            
+              <View style={styles.downloadButton}>
+                <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2025-01/fema_flood-hazard-info-sheet.pdf')} >
+                  <Text style={styles.downloadText} >Download</Text>
+                </TouchableOpacity> 
+              </View>
+                         
             </View>    
             
           </View>
@@ -394,8 +468,8 @@ const AllTasks =() =>{
                   Earthquake information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_earthquake_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity  style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_earthquake_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -415,8 +489,8 @@ const AllTasks =() =>{
                   Hurricane information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_hurricane_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_hurricane_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -438,8 +512,8 @@ const AllTasks =() =>{
                   Pandemic information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_novel-pandemic_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_novel-pandemic_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -460,8 +534,8 @@ const AllTasks =() =>{
                   Tornado information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tornado_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tornado_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -482,8 +556,8 @@ const AllTasks =() =>{
                   Tsunami information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tsunami_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_tsunami_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -504,8 +578,8 @@ const AllTasks =() =>{
                   Wildfire information sheet
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_wildfire_hazard-info-sheet.pdf')} >
-                <Text style={{color:'red'}} >Download</Text>
+              <TouchableOpacity style={styles.downloadButton} onPress={() => downloadPDF('https://www.ready.gov/sites/default/files/2024-03/ready.gov_wildfire_hazard-info-sheet.pdf')} >
+                <Text style={styles.downloadText} >Download</Text>
               </TouchableOpacity> 
             </View>
           </View>
@@ -570,7 +644,7 @@ const styles = StyleSheet.create({
     startButton:{
       backgroundColor:'#9DC183',
       width:'28%',
-      height:'120%',
+      height:30,
       borderRadius:5
     },
     disabledButton: {
@@ -623,9 +697,6 @@ const styles = StyleSheet.create({
     taskTitleContainer:{
       flexDirection:'row',
       padding:20,
-      // backgroundColor:'red',
-      // width:'100%',
-      // height:'10%',
       backgroundColor:'#F5ECCF',
       marginTop:10,
       borderRadius:10,
@@ -635,6 +706,20 @@ const styles = StyleSheet.create({
     },
     icon:{
       marginLeft:10
+    },
+    downloadText:{
+      color:'black', 
+      textAlign:'center',
+      fontFamily:'times new roman',
+      fontSize:13
+    },
+    downloadButton:{
+      marginTop:10, 
+      backgroundColor:'#9DC183', 
+      width:'33%', 
+      height:30,
+      borderRadius:5, 
+      justifyContent:'center'
     }
 
 });

@@ -8,7 +8,9 @@ const VideoPlayerScreen = ({ route }) => {
     <WebView
       style={{ flex: 1 }}
       javaScriptEnabled
-      source={{ uri: `https://www.youtube.com/embed/${videoId}` }}
+      domStorageEnabled
+      source={{ uri: `https://www.youtube.com/embed/${videoId}?controls=1&autoplay=1` }}
+
     />
   );
 };

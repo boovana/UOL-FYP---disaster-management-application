@@ -3,8 +3,9 @@
     "id": "09f3a134-5f8e-4d1c-91ea-a94cc336b23d",
     "category": "supplies",
     "question": "What are some actions to take to prepare for Hurricanes?",
+    "image": "thinkingEmoji.png",
     "options": [
-      "Assume a hurricane will not occur",
+      "Hurricane do not occur.",
       "Keep all documents in random places",
       "Know your Evacuation Zone: You may have to evacuate quickly due to a hurricane if you live in an evacuation zone. Learn your evacuation routes, practice with your household and pets, and identify where you will stay. ",
       "Make an Emergency Plan: Make sure everyone in your household knows and understands your hurricane plans. Include the office, kids’ day care, and anywhere else you frequent in your hurricane plans. Ensure your business has a continuity plan to continue operating when disaster strikes.",
@@ -20,10 +21,11 @@
     "id": "d348241d-1777-4c0e-b90a-6e7232441765",
     "category": "supplies",
     "question": "What are some correct actions to stay safe during a Hurricane?",
+    "image": "hurricaneWarning.png",
     "options": [
-      "Immediately vacate",
-      "Wait for hurricane to pass",
+      "Immediately vacate your residential area.",
       "Determine how best to protect yourself from high winds and flooding.",
+      "Wait for hurricane to pass.",
       "If you live in a mandatory evacuation zone and local officials tell you to evacuate, do so immediately.",
       "Pay attention to emergency information and alerts."
     ],
@@ -37,12 +39,13 @@
     "id": "795337a7-716c-4f89-b21a-83b405aafa87",
     "category": "supplies",
     "question": "What are some correct actions to take for: Returning Home After a Hurricane?",
+    "image": "thinkingEmoji.png",
     "options": [
       "Wear protective clothing and work with someone else.",
       "Ask all family members to help with disaster cleanup",
       "Be careful during clean up. Wear protective clothing, use appropriate face coverings or masks if cleaning mold or other debris. People with asthma and other lung conditions and/or immune suppression should not enter buildings with indoor water leaks or mold growth that can be seen or smelled, even if these individuals are not allergic to mold. Children should not help with disaster cleanup work.",
       "Pay attention to local officials for information and special instructions.",
-      "Call everyone and inform the news"
+      "Call everyone and inform the news."
     ],
     "correctAnswer": [
       "Pay attention to local officials for information and special instructions.",

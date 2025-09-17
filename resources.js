@@ -260,6 +260,7 @@ const Resources = ({title,category, navigation}) => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.header}>Resources</Text>
             {/**search bar */}
             <View>
                 <Text style={{ padding: 10, fontSize:15, fontStyle:'italic', color:'black', fontFamily:'times new roman'}}>Looking for location specific resources?</Text>
@@ -350,6 +351,14 @@ const styles = StyleSheet.create({
         padding: 16,
         paddingBottom:100,
         backgroundColor:'white'
+    },
+    header:{
+        fontFamily:'times new roman',
+        fontSize:25,
+        color:'#54626F',
+        fontWeight:'bold',
+        textAlign:'center',
+        margin:20
     },
     title: { 
         fontSize: 20, 

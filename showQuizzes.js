@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet , ScrollView} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet , ScrollView, Image} from 'react-native';
 import taskInfo from './data/TaskInfo.json'
 import quizzes from './data/allQuizzes.json';
 import earthquakeQuizzes from './data/earthquakeQuizzes.json'
@@ -85,10 +85,48 @@ const ShowQuiz = () =>{
             
         }
     }
+
+    const imageMap = {
+        "basic-disaster-kit.png": require("./assets/images/basic-disaster-kit.png"),
+        "emergency-disaster-carkit.png": require("./assets/images/emergency-disaster-carkit.png"),
+        "emergency-disaster-car.png": require("./assets/images/emergency-disaster-car.png"),
+        "emergency-disaster-foodKit.png": require("./assets/images/emergency-disaster-foodKit.png"),
+        "emergency-disaster-foodSafety.png": require("./assets/images/emergency-disaster-foodSafety.png"),
+        "emergency-disaster-cooking.png": require("./assets/images/emergency-disaster-cooking.png"),
+        "emergency-disaster-power.jpg": require("./assets/images/emergency-disaster-power.jpg"),
+        "emergency-disaster-water.png": require("./assets/images/emergency-disaster-water.png"),
+        "emergency-disaster-helping.png": require("./assets/images/emergency-disaster-helping.png"),
+        "emergency-disaster-evacuation.png": require("./assets/images/emergency-disaster-evacuation.png"),
+        "emergency-disaster-largeAnimals.png": require("./assets/images/emergency-disaster-largeAnimals.png"),
+        "emergency-disaster-pets.png": require("./assets/images/emergency-disaster-pets.png"),
+        "emergency-disaster-fireescape.png": require("./assets/images/emergency-disaster-fireescape.png"),
+        "emergency-disaster-medication.png": require("./assets/images/emergency-disaster-medication.png"),
+        "emergency-disaster-plan.png": require("./assets/images/emergency-disaster-plan.png"),
+        "emergency-disaster-fireDrill.jpg": require("./assets/images/emergency-disaster-fireDrill.jpg"),
+        "emergency-disaster-wheelchair.png": require("./assets/images/emergency-disaster-wheelchair.png"),
+        "emergency-disaster-gadgets.jpg": require("./assets/images/emergency-disaster-gadgets.jpg"),
+        'thinkingEmoji.png': require('./assets/images/thinkingEmoji.png'),
+        'floodWarning.png': require('./assets/images/floodWarning.png'),
+        'earthquakeWarning.png': require('./assets/images/earthquakeWarning.png'),
+        'hurricaneWarning.png': require('./assets/images/hurricaneWarning.png'),
+        'tornadoWarning.png': require('./assets/images/tornadoWarning.png'),
+        'wildfireWarning.png': require('./assets/images/wildfireWarning.png'),
+        'wildfirePrepare.png': require('./assets/images/wildfirePrepare.png'),
+        'tsunamiWarning.png': require('./assets/images/tsunamiWarning.png'),
+        'pandemic.png': require('./assets/images/pandemic.png'),
+        'vaccine.png': require('./assets/images/vaccine.png'),
+    };
+
     return (
         <View style={styles.container}>
-            <View style={styles.questionContainer} >
-                <Text style={styles.question}>{currentQuestion.question}</Text>
+            <Image source={require('./assets/images/thinkingCap.png')} style={styles.capImg} />
+            <View style={styles.questionContainer}>
+                <View style={styles.question}>
+                    <Text style={styles.questionText}>{currentQuestion.question}</Text>
+                    
+                    <Image source={imageMap[currentQuestion.image]} style={styles.img} />
+                </View>
+                
                 <ScrollView style={styles.choicesContainer} >
                     {currentQuestion.options.map((choice, i) => (
                         <View key={i} style={styles.choiceRow}>
@@ -149,22 +187,38 @@ const styles = StyleSheet.create({
     question:{
         height:'45%',
         width:'95%',
+        borderRadius:10,
+        // marginTop:10,
+        paddingHorizontal:10,
+        backgroundColor:'#F5ECCF',
+        alignSelf:'center',
+        elevation:5,
+        justifyContent:'center',
+        // alignItems:'center'
+
+    },
+    questionText:{
         fontSize:18,
         fontFamily:'times new roman',
         fontWeight:'bold',
-        borderRadius:10,
-        marginTop:10,
-        padding:10,
-        backgroundColor:'#F5ECCF',
         textAlign:'center',
-        alignSelf:'center',
-        textAlignVertical: 'center', 
-        elevation:5,
-        color:'#54626F'
+        color:'#54626F',
+        marginTop:60
+        // marginBottom:50
+    },
+    capImg:{
+        width:120,
+        height:120
+    },
+    img:{
+        width:100,
+        height:100,
+        alignSelf:'flex-end',
+        // transform: [{ rotate: '20deg' }],
+        marginTop:20
     },
     choice:{
         paddingVertical:40,
-        
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -180,7 +234,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         
     },
-
     nextButton: {
         backgroundColor: '#9DC183',
         padding: 15,

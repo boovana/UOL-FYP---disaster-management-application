@@ -3,13 +3,14 @@
     "id": "cc1a6380-e483-4ce3-876e-8c81b27817b6",
     "category": "supplies",
     "question": "What are some correct actions to take to prepare for wildfires?",
+    "image": "wildfirePrepare.png",
     "options": [
-      "Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which requires no-sign up.",
+      "Have several ways to receive alerts. Download your local disaster management app and receive real-time alerts.",
       "Pay attention to air quality alerts.",
       "Wait for wildfire to happen and start preparing"
     ],
     "correctAnswer": [
-      "Have several ways to receive alerts. Download the FEMA app and receive real-time alerts from the National Weather Service for up to five locations nationwide. Sign up for community alerts in your area and be aware of the Emergency Alert System (EAS) and Wireless Emergency Alert (WEA), which requires no-sign up.",
+      "Have several ways to receive alerts. Download your local disaster management app and receive real-time alerts.",
       "Pay attention to air quality alerts."
     ]
   },
@@ -17,9 +18,10 @@
     "id": "b65b2cfb-8ae9-47b9-8db0-2cf646fb28cf",
     "category": "supplies",
     "question": "What are some correct actions to stay safe during a wildifre",
+    "image": "wildfireWarning.png",
     "options": [
       "Wait for wildfire to pass",
-      "Wait for wildfire to happen and start preparing",
+      "Gather people and water down the fires.",
       "Pay attention to emergency alerts and notifications for information and instructions."
     ],
     "correctAnswer": [
@@ -30,10 +32,11 @@
     "id": "eabfe4f9-c21d-492b-9b73-ce461bcc5485",
     "category": "supplies",
     "question": "What are some correct actions to take after a Wildfire?",
+    "image": "thinkingEmoji.png",
     "options": [
-      "Post teh situation on social media",
+      "Post the situation on social media.",
       "Avoid hot ash, charred trees, smoldering debris and live embers. The ground may contain heat pockets that can burn you or spark another fire.",
-      "Return home immediately",
+      "Return home immediately.",
       "When cleaning, wear protective clothing – including a long-sleeved shirt, long pants, work gloves and sturdy thick-soled shoes – during clean-up efforts."
     ],
     "correctAnswer": [

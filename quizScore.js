@@ -197,17 +197,6 @@ const QuizScore =() =>{
       catch (error) {
         console.error("❌ Error saving quiz score:", error);
       }
-        // try {
-        //     const stored = await AsyncStorage.getItem(`${userID}_quizScores`);
-        //     const scores = stored ? JSON.parse(stored) : {};
-        //     const existingGrade = parseFloat(scores[disaster] || 0);
-        //     const newGrade = Math.max(existingGrade, parseFloat(grade))
-        //     scores[disaster] = newGrade;
-        //     await AsyncStorage.setItem(`${userID}_quizScores`, JSON.stringify(scores));
-        // } 
-        // catch (error) {
-        //     console.error("Error saving quiz score:", error);
-        // }
     }
 
     useEffect(() => {
@@ -217,6 +206,13 @@ const QuizScore =() =>{
     }, [selectedDisaster, calculateHighestGrade]);
    
 
+    const milestoneBadgeMap = {
+      "Quarterly Challenge": require("./assets/quarter.png"),
+      "Halfway Challenge": require("./assets/silver.png"),
+      "Tri-Quarter Challenge": require("./assets/threeQuarter.png"),
+      "Final Challenge": require("./assets/final.png"),
+    };
+    const isMilestoneChallenge = selectedDisaster in milestoneBadgeMap;
 
     return (
         <View style={styles.container}>
@@ -225,7 +221,22 @@ const QuizScore =() =>{
             <Text style={styles.scoreText}>You scored {score} out of {total}</Text>
             <Text style={styles.scoreText}>Grade: {percent}%</Text>
 
-            {qualifyForGoldBadge ?
+            {isMilestoneChallenge ? (parseFloat(percent) >= 100 ? (
+              <View style={styles.badgeContainer}>
+                <Text style={styles.scoreText}>
+                  Congratulations, you completed the {selectedDisaster}!
+                </Text>
+                <Image
+                  source={milestoneBadgeMap[selectedDisaster]}
+                  style={styles.badgeImage}
+                />
+              </View>
+            ):(
+              <Text style={styles.tryAgainText}>
+                You need 100% to earn this milestone badge. Keep going!!
+              </Text>
+            )):
+            qualifyForGoldBadge ?
             (
               <View style={styles.badgeContainer}>
                 <Text style={styles.scoreText}>Congratulations, you earned a gold badge!</Text>
@@ -243,8 +254,11 @@ const QuizScore =() =>{
                 />
               </View>
             ) :(
-              <Text style={styles.tryAgainText}>Score at least 70% to earn a badge. Keep going!</Text>
+              <Text style={styles.tryAgainText}>
+                Score at least 70% to earn a badge. Keep going!
+              </Text>
             )}
+
             <View style={styles.buttons}>
               {/**retry button */}
               <TouchableOpacity style={styles.button} onPress={() =>navigation.replace('quiz', { reset: true, quizzes, selectedDisaster:selectedDisaster })}>

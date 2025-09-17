@@ -20,28 +20,9 @@ const PrepTasks =() =>{
     const [completedTask, setCompletedTask] = useState({tasks: [],quizzes: []});
     const [hasLoadedFromFirestore, setHasLoadedFromFirestore] = useState(false);
 
-    // const storageKey = `checkboxState-${selectedTitle}`;
     
     const userID = auth.currentUser?.uid;
     const userDocRef = doc(db, 'userProgress', userID);
-    // const storageKey = `${userID}_checkboxState-${selectedTitle}`;
-
-    // useEffect(() => {
-    //     const loadCheckedSteps = async () => {
-    //         try {
-    //             const saved = await AsyncStorage.getItem(storageKey);
-    //             if (saved) {
-    //             setCrossedSteps(JSON.parse(saved));
-    //             }
-    //             else {
-    //             setCrossedSteps(Array(filteredTask.steps.length).fill(false));
-    //             }
-    //         } catch (error) {
-    //             console.error("Error loading checkbox state", error);
-    //         }
-    //     };
-    //     loadCheckedSteps();
-    // }, [userID, selectedTitle]);
 
     // get prev checked steps
     useEffect(() => {
@@ -128,16 +109,6 @@ const PrepTasks =() =>{
 
             await setDoc(userDocRef, {completedTasks: updated}, { merge: true });
             navigation.navigate('allTasks', { selectedDisaster });
-
-            // const existing = await AsyncStorage.getItem(`${userID}_completedTasks`);
-            // const parsed = existing ? JSON.parse(existing) : [];
-
-            // // prevent duplicates
-            // const updated = Array.from(new Set([...parsed, taskId]));
-
-            // await AsyncStorage.setItem(`${userID}_completedTasks`, JSON.stringify(updated));
-            // console.log('completed all steps for: ', filteredTask.title)
-            // navigation.navigate('allTasks', {selectedDisaster,});
         } 
         catch (error) {
             console.error('Error saving completed task:', error);
